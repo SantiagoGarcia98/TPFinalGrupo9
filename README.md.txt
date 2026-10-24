@@ -9,7 +9,7 @@ Sistema de escritorio / web desarrollado para la materia **Programación 3** . P
 - **Gestión de Turnos:** Reserva, cancelación, reprogramación y seguimiento de estados (Pendiente, Confirmado, Completado).
 - **Gestión de Clientes:** Alta, baja, modificación y consulta del historial de turnos por cliente.
 - **Gestión de Profesionales y Servicios:** Asignación de especialidades, horarios de atención y costos/duración de cada servicio.
-- **Persistencia de Datos:** [Por ejemplo: Persistencia en archivos binarios / Base de datos SQL Server / MySQL].
-- **Reportes / Listados:** [Por ejemplo: Turnos del día, recaudación estimada, historial de prestaciones].
+- **Persistencia de Datos:**  Base de datos SQL Server .
+- **Reportes / Listados:** Turnos del día, recaudación estimada, historial de prestaciones.
 
 ---
