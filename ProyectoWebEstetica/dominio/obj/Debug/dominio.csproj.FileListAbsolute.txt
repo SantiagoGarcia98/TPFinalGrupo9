@@ -4,3 +4,9 @@ C:\Users\Santi\Desktop\Proyectos Programacion 3\Winforms\TPWinForm_Equipo9\TPWin
 C:\Users\Santi\Desktop\Proyectos Programacion 3\Winforms\TPWinForm_Equipo9\TPWinForm_Equipo9\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 C:\Users\Santi\Desktop\Proyectos Programacion 3\Winforms\TPWinForm_Equipo9\TPWinForm_Equipo9\dominio\obj\Debug\dominio.dll
 C:\Users\Santi\Desktop\Proyectos Programacion 3\Winforms\TPWinForm_Equipo9\TPWinForm_Equipo9\dominio\obj\Debug\dominio.pdb
+C:\Users\Santi\Desktop\Proyectos Programacion 3\ProyectoWebEstetica\dominio\bin\Debug\dominio.dll
+C:\Users\Santi\Desktop\Proyectos Programacion 3\ProyectoWebEstetica\dominio\bin\Debug\dominio.pdb
+C:\Users\Santi\Desktop\Proyectos Programacion 3\ProyectoWebEstetica\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\Santi\Desktop\Proyectos Programacion 3\ProyectoWebEstetica\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\Proyectos Programacion 3\ProyectoWebEstetica\dominio\obj\Debug\dominio.dll
+C:\Users\Santi\Desktop\Proyectos Programacion 3\ProyectoWebEstetica\dominio\obj\Debug\dominio.pdb

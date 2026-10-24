@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MiMaster.master.cs" Inherits="EsteticaWeb.MiMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es" data-bs-theme="light">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>EsteticaWeb</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">Estética Web</span>
+                </div>
+            </nav>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer>
+                <hr />
+                Footer
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
