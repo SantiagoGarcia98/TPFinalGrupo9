@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Santi\\Desktop\\Proyectos Programacion 3\\ProyectoWebEstetica\\",
+  "WorkspaceRootPath": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectos programacion 3\\proyectowebestetica\\esteticaweb\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\recepcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\recepcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectos programacion 3\\proyectowebestetica\\esteticaweb\\mimaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\recepcionmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\recepcionmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\mimaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\mimaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectos programacion 3\\proyectowebestetica\\esteticaweb\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,41 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MiMaster.Master",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\Proyectos Programacion 3\\ProyectoWebEstetica\\EsteticaWeb\\MiMaster.Master",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\MiMaster.Master",
               "RelativeDocumentMoniker": "EsteticaWeb\\MiMaster.Master",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\Proyectos Programacion 3\\ProyectoWebEstetica\\EsteticaWeb\\MiMaster.Master",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\MiMaster.Master",
               "RelativeToolTip": "EsteticaWeb\\MiMaster.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-10-24T18:29:47.412Z",
+              "WhenOpened": "2026-10-27T20:03:12.893Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Default.aspx",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\Proyectos Programacion 3\\ProyectoWebEstetica\\EsteticaWeb\\Default.aspx",
-              "RelativeDocumentMoniker": "EsteticaWeb\\Default.aspx",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\Proyectos Programacion 3\\ProyectoWebEstetica\\EsteticaWeb\\Default.aspx",
-              "RelativeToolTip": "EsteticaWeb\\Default.aspx",
+              "DocumentIndex": 1,
+              "Title": "RecepcionMaster.Master",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\RecepcionMaster.Master",
+              "RelativeDocumentMoniker": "EsteticaWeb\\RecepcionMaster.Master",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\RecepcionMaster.Master",
+              "RelativeToolTip": "EsteticaWeb\\RecepcionMaster.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-10-24T19:03:43.972Z",
+              "WhenOpened": "2026-10-27T19:53:18.019Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Login.aspx",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\Proyectos Programacion 3\\ProyectoWebEstetica\\EsteticaWeb\\Login.aspx",
-              "RelativeDocumentMoniker": "EsteticaWeb\\Login.aspx",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\Proyectos Programacion 3\\ProyectoWebEstetica\\EsteticaWeb\\Login.aspx",
-              "RelativeToolTip": "EsteticaWeb\\Login.aspx",
+              "Title": "Recepcion.aspx",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Recepcion.aspx",
+              "RelativeDocumentMoniker": "EsteticaWeb\\Recepcion.aspx",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Recepcion.aspx",
+              "RelativeToolTip": "EsteticaWeb\\Recepcion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-10-24T18:33:50.226Z",
+              "WhenOpened": "2026-10-27T19:53:33.95Z",
               "EditorCaption": ""
             }
           ]
