@@ -67,19 +67,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
+    <Content Include="Inicio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Recepcion.aspx" />
+    <Content Include="Recursos\Imagenes\Tulipanes.png" />
+    <Content Include="site.css" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -108,6 +110,7 @@
     </Compile>
     <Compile Include="RecepcionMaster.Master.cs">
       <DependentUpon>RecepcionMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RecepcionMaster.Master.designer.cs">
       <DependentUpon>RecepcionMaster.Master</DependentUpon>

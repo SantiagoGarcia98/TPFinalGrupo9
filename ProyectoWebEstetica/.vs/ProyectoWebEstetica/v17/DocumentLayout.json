@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\recepcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\recepcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\recepcionmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\recepcionmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\mimaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\esteticaweb\\mimaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\mimaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +30,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MiMaster.Master",
               "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\MiMaster.Master",
               "RelativeDocumentMoniker": "EsteticaWeb\\MiMaster.Master",
@@ -44,27 +44,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RecepcionMaster.Master",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\RecepcionMaster.Master",
-              "RelativeDocumentMoniker": "EsteticaWeb\\RecepcionMaster.Master",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\RecepcionMaster.Master",
-              "RelativeToolTip": "EsteticaWeb\\RecepcionMaster.Master",
+              "Title": "Inicio.aspx",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Inicio.aspx",
+              "RelativeDocumentMoniker": "EsteticaWeb\\Inicio.aspx",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Inicio.aspx",
+              "RelativeToolTip": "EsteticaWeb\\Inicio.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-10-27T19:53:18.019Z",
+              "WhenOpened": "2026-10-28T20:36:56.045Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Recepcion.aspx",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Recepcion.aspx",
-              "RelativeDocumentMoniker": "EsteticaWeb\\Recepcion.aspx",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Recepcion.aspx",
-              "RelativeToolTip": "EsteticaWeb\\Recepcion.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2026-10-27T19:53:33.95Z",
+              "DocumentIndex": 2,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\site.css",
+              "RelativeDocumentMoniker": "EsteticaWeb\\site.css",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\site.css",
+              "RelativeToolTip": "EsteticaWeb\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-10-28T21:09:05.911Z",
               "EditorCaption": ""
             }
           ]

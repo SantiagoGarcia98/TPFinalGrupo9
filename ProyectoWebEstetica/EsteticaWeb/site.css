@@ -1,0 +1,15 @@
+﻿
+.imagen-inicio {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("Recursos/Imagenes/Tulipanes.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 56px);
+}
+
+.imagen-inicio,
+.imagen-inicio h1,
+.imagen-inicio p {
+    color: #ffffff ;
+
+}
