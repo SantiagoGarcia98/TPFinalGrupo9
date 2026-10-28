@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="MenuCliente.aspx" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
   </ItemGroup>
@@ -83,8 +84,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MenuCliente.aspx.cs">
+      <DependentUpon>MenuCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuCliente.aspx.designer.cs">
+      <DependentUpon>MenuCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MiMaster.Master.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
