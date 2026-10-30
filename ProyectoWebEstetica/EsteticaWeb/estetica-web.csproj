@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Inicio.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="PanelAdmin.aspx" />
     <Content Include="Recepcion.aspx" />
     <Content Include="Recursos\Imagenes\Tulipanes.png" />
     <Content Include="site.css" />
@@ -76,6 +77,13 @@
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -92,6 +100,13 @@
     </Compile>
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmin.aspx.cs">
+      <DependentUpon>PanelAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelAdmin.aspx.designer.cs">
+      <DependentUpon>PanelAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login.aspx.cs">
@@ -122,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MiMaster.Master" />
+    <Content Include="Admin.Master" />
     <None Include="packages.config" />
     <Content Include="RecepcionMaster.Master" />
   </ItemGroup>

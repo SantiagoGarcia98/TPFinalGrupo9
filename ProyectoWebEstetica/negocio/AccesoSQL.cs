@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace negocio
         }
         public AccesoSQL()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["estetica"].ConnectionString);
             comando = new SqlCommand();
         }
         public void setConsulta(string consulta)

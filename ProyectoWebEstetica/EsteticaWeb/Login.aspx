@@ -16,7 +16,8 @@
             <div class="strength-bar" data-bs-strength=""></div>
         </div>
             <br />           
-            <asp:Button ID="BtnIngresar" runat="server" class="btn" Text="Ingresar" />
+            <asp:Button ID="BtnIngresar" OnClick="BtnIngresar_Click" runat="server" class="btn" Text="Ingresar" />
+            <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>
             <div class="vstack gap-2">
                 <br />
       <a class="theme-secondary" href="#">Registrate</a>
