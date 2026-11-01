@@ -73,6 +73,11 @@
     <Content Include="ListaTurnos.aspx" />
     <Content Include="MenuCliente.aspx" />
     <Content Include="SolicitudTurno.aspx" />
+    <Content Include="Inicio.aspx" />
+    <Content Include="PanelAdmin.aspx" />
+    <Content Include="Recepcion.aspx" />
+    <Content Include="Recursos\Imagenes\Tulipanes.png" />
+    <Content Include="site.css" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
   </ItemGroup>
@@ -88,8 +93,19 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -115,6 +131,13 @@
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="PanelAdmin.aspx.cs">
+      <DependentUpon>PanelAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelAdmin.aspx.designer.cs">
+      <DependentUpon>PanelAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -130,6 +153,20 @@
     <Compile Include="SolicitudTurno.aspx.designer.cs">
       <DependentUpon>SolicitudTurno.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Recepcion.aspx.cs">
+      <DependentUpon>Recepcion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recepcion.aspx.designer.cs">
+      <DependentUpon>Recepcion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecepcionMaster.Master.cs">
+      <DependentUpon>RecepcionMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecepcionMaster.Master.designer.cs">
+      <DependentUpon>RecepcionMaster.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -137,7 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MiMaster.Master" />
+    <Content Include="Admin.Master" />
     <None Include="packages.config" />
+    <Content Include="RecepcionMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dominio\dominio.csproj">
