@@ -16,3 +16,9 @@ C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\dominio\obj\D
 C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
 C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\dominio\obj\Debug\dominio.dll
 C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\dominio\obj\Debug\dominio.pdb
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\dominio\bin\Debug\dominio.dll
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\dominio\bin\Debug\dominio.pdb
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\dominio\obj\Debug\dominio.dll
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\dominio\obj\Debug\dominio.pdb

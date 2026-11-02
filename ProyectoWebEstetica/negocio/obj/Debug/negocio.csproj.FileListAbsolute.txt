@@ -25,3 +25,12 @@ C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\negocio\obj\D
 C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\negocio\obj\Debug\negocio.csproj.Up2Date
 C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\negocio\obj\Debug\negocio.dll
 C:\Users\ysyary\Documents\GitHub\TPFinalGrupo9\ProyectoWebEstetica\negocio\obj\Debug\negocio.pdb
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\bin\Debug\negocio.dll
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\bin\Debug\negocio.pdb
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\bin\Debug\dominio.dll
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\bin\Debug\dominio.pdb
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\obj\Debug\negocio.csproj.Up2Date
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\obj\Debug\negocio.dll
+C:\Users\Santi\Desktop\ProyectoFinal\ProyectoWebEstetica\negocio\obj\Debug\negocio.pdb
