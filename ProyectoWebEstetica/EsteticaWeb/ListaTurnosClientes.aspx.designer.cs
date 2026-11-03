@@ -11,7 +11,7 @@ namespace EsteticaWeb
 {
 
 
-    public partial class ListaTurnos
+    public partial class ListaTurnosClientes
     {
 
         /// <summary>

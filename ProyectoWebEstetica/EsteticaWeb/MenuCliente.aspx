@@ -11,7 +11,7 @@
     <asp:Panel ID="pnlSolicitarTurno" runat="server" HorizontalAlign="Center">
     <asp:Button ID="btnSolicitarTurno" runat="server" CausesValidation="False" Text="Solicitar Turno" BackColor="#99CCFF" Width="200px" PostBackUrl="~/SolicitudTurno.aspx" />
         <asp:Panel ID="pnlMisTurnos" runat="server">
-    <asp:Button ID="btnMisTurnos" runat="server" BackColor="#99CCFF" CausesValidation="False" Text="Mis turnos" Width="200px" PostBackUrl="~/ListaTurnos.aspx" />
+    <asp:Button ID="btnMisTurnos" runat="server" BackColor="#99CCFF" CausesValidation="False" Text="Mis turnos" Width="200px" PostBackUrl="~/ListaTurnosClientes.aspx" />
         </asp:Panel>
     </asp:Panel>
 </asp:Content>

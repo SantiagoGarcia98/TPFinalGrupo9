@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace EsteticaWeb
 {
-    public partial class ListaTurnos : System.Web.UI.Page
+    public partial class ListaTurnosClientes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
