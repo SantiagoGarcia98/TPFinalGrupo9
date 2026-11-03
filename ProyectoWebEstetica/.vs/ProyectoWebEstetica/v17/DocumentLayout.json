@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DB77A74D-99C3-4429-B801-D63FFE0AB94F}|negocio\\negocio.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\negocio\\datausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DB77A74D-99C3-4429-B801-D63FFE0AB94F}|negocio\\negocio.csproj|solutionrelative:negocio\\datausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\recepcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\recepcion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\dominio\\tipousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|solutionrelative:dominio\\tipousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\recepcionmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\recepcionmaster.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\dominio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|solutionrelative:dominio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\dominio\\sucursal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|solutionrelative:dominio\\sucursal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\dominio\\profesional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|solutionrelative:dominio\\profesional.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\dominio\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|solutionrelative:dominio\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\dominio\\especialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8230234-EDA5-4E9E-94C8-EA58E424A7F6}|dominio\\dominio.csproj|solutionrelative:dominio\\especialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|c:\\users\\santi\\desktop\\proyectofinal\\proyectowebestetica\\esteticaweb\\listaturnos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{6BB383DA-FE0C-4892-988F-196E597BDFCF}|EsteticaWeb\\estetica-web.csproj|solutionrelative:esteticaweb\\listaturnos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,93 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\negocio\\DataUsuario.cs",
-              "RelativeDocumentMoniker": "negocio\\DataUsuario.cs",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\negocio\\DataUsuario.cs",
-              "RelativeToolTip": "negocio\\DataUsuario.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAqwBIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T23:50:45.693Z",
+              "DocumentIndex": 1,
+              "Title": "RecepcionMaster.Master",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\RecepcionMaster.Master",
+              "RelativeDocumentMoniker": "EsteticaWeb\\RecepcionMaster.Master",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\RecepcionMaster.Master",
+              "RelativeToolTip": "EsteticaWeb\\RecepcionMaster.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-11-03T16:24:45.048Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TIpoUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\TIpoUsuario.cs",
-              "RelativeDocumentMoniker": "dominio\\TIpoUsuario.cs",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\TIpoUsuario.cs",
-              "RelativeToolTip": "dominio\\TIpoUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T23:49:37.087Z",
+              "DocumentIndex": 0,
+              "Title": "Recepcion.aspx",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Recepcion.aspx",
+              "RelativeDocumentMoniker": "EsteticaWeb\\Recepcion.aspx",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\Recepcion.aspx",
+              "RelativeToolTip": "EsteticaWeb\\Recepcion.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-11-03T16:24:56.274Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Usuario.cs",
-              "RelativeDocumentMoniker": "dominio\\Usuario.cs",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Usuario.cs",
-              "RelativeToolTip": "dominio\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T23:49:04.31Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Sucursal.cs",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Sucursal.cs",
-              "RelativeDocumentMoniker": "dominio\\Sucursal.cs",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Sucursal.cs",
-              "RelativeToolTip": "dominio\\Sucursal.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T23:47:41.546Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Profesional.cs",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Profesional.cs",
-              "RelativeDocumentMoniker": "dominio\\Profesional.cs",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Profesional.cs",
-              "RelativeToolTip": "dominio\\Profesional.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T23:46:31.209Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Especialidad.cs",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Especialidad.cs",
-              "RelativeDocumentMoniker": "dominio\\Especialidad.cs",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Especialidad.cs",
-              "RelativeToolTip": "dominio\\Especialidad.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T23:43:57.447Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Cliente.cs",
-              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Cliente.cs",
-              "RelativeDocumentMoniker": "dominio\\Cliente.cs",
-              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\dominio\\Cliente.cs",
-              "RelativeToolTip": "dominio\\Cliente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-02T23:42:01.211Z",
+              "Title": "ListaTurnos.aspx",
+              "DocumentMoniker": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\ListaTurnos.aspx",
+              "RelativeDocumentMoniker": "EsteticaWeb\\ListaTurnos.aspx",
+              "ToolTip": "C:\\Users\\Santi\\Desktop\\ProyectoFinal\\ProyectoWebEstetica\\EsteticaWeb\\ListaTurnos.aspx",
+              "RelativeToolTip": "EsteticaWeb\\ListaTurnos.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-11-03T16:24:19.443Z",
               "EditorCaption": ""
             }
           ]

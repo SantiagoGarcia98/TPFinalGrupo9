@@ -16,10 +16,10 @@
         <div>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4" data-bs-theme="dark">
                 <div class="container-fluid">
-                    <span class="navbar-brand mb-0 h1">RECEPCION</span>
+                    <a class="navbar-brand fw-bold" href="Inicio.aspx">Recepcion</a>
                 </div>
             </nav>
-            <div class="nav-overflow" data-bs-toggle="nav-overflow">
+            <%--<div class="nav-overflow" data-bs-toggle="nav-overflow">
                 <ul class="nav nav-underline">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="Inicio.aspx">HOME</a>
@@ -31,12 +31,12 @@
                         <a class="nav-link" href="#">LIQUIDACIONES</a>
                     </li>           
                 </ul>
-            </div>
+            </div>--%>
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            
+
         </div>
     </form>
 </body>
