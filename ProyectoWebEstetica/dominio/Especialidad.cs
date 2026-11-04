@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dominio
+{
+    internal class Especialidad
+    {
+        public int IdEspecialidad { get; set; }
+        public string Descripcion { get; set; }
+        public int Precio { get; set; }
+    }
+}

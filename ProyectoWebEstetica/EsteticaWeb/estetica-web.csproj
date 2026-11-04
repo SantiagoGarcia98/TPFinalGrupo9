@@ -73,6 +73,7 @@
     <Content Include="MenuCliente.aspx" />
     <Content Include="SolicitudTurno.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="ListaTurnos.aspx" />
     <Content Include="PanelAdmin.aspx" />
     <Content Include="Recepcion.aspx" />
     <Content Include="Recursos\Imagenes\Tulipanes.png" />
@@ -118,6 +119,13 @@
     </Compile>
     <Compile Include="MenuCliente.aspx.designer.cs">
       <DependentUpon>MenuCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaTurnos.aspx.cs">
+      <DependentUpon>ListaTurnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaTurnos.aspx.designer.cs">
+      <DependentUpon>ListaTurnos.aspx</DependentUpon>
     </Compile>
     <Compile Include="MiMaster.Master.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
