@@ -67,8 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Inicio.aspx" />
+    <Content Include="AltaCliente.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="ListaTurnosClientes.aspx" />
+    <Content Include="MenuCliente.aspx" />
+    <Content Include="SolicitudTurno.aspx" />
+    <Content Include="Inicio.aspx" />
     <Content Include="ListaTurnos.aspx" />
     <Content Include="PanelAdmin.aspx" />
     <Content Include="Recepcion.aspx" />
@@ -78,6 +82,13 @@
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AltaCliente.aspx.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaCliente.aspx.designer.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,6 +105,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ListaTurnosClientes.aspx.cs">
+      <DependentUpon>ListaTurnosClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaTurnosClientes.aspx.designer.cs">
+      <DependentUpon>ListaTurnosClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCliente.aspx.cs">
+      <DependentUpon>MenuCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuCliente.aspx.designer.cs">
+      <DependentUpon>MenuCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaTurnos.aspx.cs">
       <DependentUpon>ListaTurnos.aspx</DependentUpon>
@@ -123,6 +148,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudTurno.aspx.cs">
+      <DependentUpon>SolicitudTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SolicitudTurno.aspx.designer.cs">
+      <DependentUpon>SolicitudTurno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Recepcion.aspx.cs">
       <DependentUpon>Recepcion.aspx</DependentUpon>
