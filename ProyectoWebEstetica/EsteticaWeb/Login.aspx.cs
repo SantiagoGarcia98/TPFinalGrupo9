@@ -32,19 +32,19 @@ namespace EsteticaWeb
 
                 Session["usuario"] = usuario;
 
-                if (string.Equals(usuario.Rol, "Admin", StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(usuario.Rol, "Administrador", StringComparison.OrdinalIgnoreCase))
                 {
                     Response.Redirect("PanelAdmin.aspx", false);
                 }
-                else if (string.Equals(usuario.Rol, "Recepcion", StringComparison.OrdinalIgnoreCase))
+                else if (string.Equals(usuario.Rol, "Recepcionista", StringComparison.OrdinalIgnoreCase))
                 {
                     Response.Redirect("Recepcion.aspx", false);
                 }
-                else if (string.Equals(usuario.Rol, "Profesional", StringComparison.OrdinalIgnoreCase))
-                {
-                    Response.Redirect("Recepcion.aspx", false); //Agregar aca cuando se creen estos perfiles.
-                }
                 else if (string.Equals(usuario.Rol, "Cliente", StringComparison.OrdinalIgnoreCase))
+                {
+                    Response.Redirect("MenuCliente.aspx", false); //Agregar aca cuando se creen estos perfiles.
+                }
+                else if (string.Equals(usuario.Rol, "Profesional", StringComparison.OrdinalIgnoreCase))
                 {
                     Response.Redirect("Recepcion.aspx", false); //Agregar aca cuando se creen estos perfiles.
                 }

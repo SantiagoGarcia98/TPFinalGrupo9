@@ -17,9 +17,9 @@ namespace negocio
 
             try
             {
-                datos.setConsulta("SELECT Id, Nombre, Apellido, Email, Rol, Activo FROM Usuarios WHERE Email = @email AND Clave = @clave AND Activo = 1");
-                datos.setParametro("@email", email);
-                datos.setParametro("@clave", clave);
+                datos.setConsulta("SELECT U.Id, U.Usuario, T.Descripcion AS Rol " + "FROM Usuario U " + "INNER JOIN TipoUsuario T ON T.Id = U.TipoUsuarioId " + "WHERE U.Usuario = @usuario AND U.Pass = @pass AND U.Baja = 0");
+                datos.setParametro("@usuario", email);
+                datos.setParametro("@pass", clave);
                 datos.ConsultaBD();
 
                 if (!datos.Lector.Read())
@@ -29,11 +29,8 @@ namespace negocio
 
                 Usuario usuario = new Usuario();
                 usuario.Id = (int)datos.Lector["Id"];
-                usuario.Nombre = (string)datos.Lector["Nombre"];
-                usuario.Apellido = (string)datos.Lector["Apellido"];
-                usuario.Email = (string)datos.Lector["Email"];
+                usuario.Email = (string)datos.Lector["Usuario"];
                 usuario.Rol = (string)datos.Lector["Rol"];
-                usuario.Activo = (bool)datos.Lector["Activo"];
                 return usuario;
             }
             finally
