@@ -21,7 +21,7 @@
                         <p class="text-muted">Registrar y consultar clientes.</p>
                         <div class="d-flex gap-2">
                             <asp:LinkButton ID="LnkAltaClientes" runat="server" CssClass="btn btn-primary btn-sm">Nuevo cliente</asp:LinkButton>
-                            <asp:LinkButton ID="LnkListaClientes" runat="server" CssClass="btn btn-outline-primary btn-sm">Ver clientes</asp:LinkButton>
+                            <asp:LinkButton ID="LnkListaClientes" runat="server" OnClick="LnkListaClientes_Click" CssClass="btn btn-outline-primary btn-sm">Ver clientes</asp:LinkButton>
                         </div>
                     </div>
                 </div>
