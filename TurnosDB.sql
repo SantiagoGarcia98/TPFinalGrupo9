@@ -31,7 +31,8 @@ CREATE TABLE TipoUsuario (
 -- 2. Cuenta de acceso. Administrador y Recepcionista viven solo acá.
 CREATE TABLE Usuario (
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    Usuario VARCHAR(50) NOT NULL,
+    users VARCHAR(50) NOT NULL,
+    Email VARCHAR(150) NOT NULL,
     Pass VARCHAR(255) NOT NULL,
     Baja BIT NOT NULL DEFAULT 0,
     TipoUsuarioId INT NOT NULL,
@@ -45,7 +46,6 @@ CREATE TABLE Cliente (
     DNI VARCHAR(20) NOT NULL,
     FechaNac DATE NULL,
     Telefono VARCHAR(30) NULL,
-    Email VARCHAR(150) NULL,
     UsuarioId INT NOT NULL,
     CONSTRAINT FK_Cliente_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuario(Id)
 );
@@ -55,10 +55,11 @@ CREATE TABLE Profesional (
     Nombre VARCHAR(100) NOT NULL,
     Apellido VARCHAR(100) NOT NULL,
     DNI VARCHAR(20) NOT NULL,
+    Matricula VARCHAR(30) NOT NULL,
     Telefono VARCHAR(30) NULL,
-    Email VARCHAR(150) NULL,
     SucursalId INT NOT NULL,
     UsuarioId INT NOT NULL,
+    CONSTRAINT UQ_Profesional_Matricula UNIQUE (Matricula),
     CONSTRAINT FK_Profesional_Sucursal FOREIGN KEY (SucursalId) REFERENCES Sucursal(Id),
     CONSTRAINT FK_Profesional_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuario(Id)
 );
@@ -80,6 +81,7 @@ CREATE TABLE Turno (
     Observaciones VARCHAR(500) NULL,
     ProfesionalId INT NOT NULL,
     Baja BIT NOT NULL DEFAULT 0,
+    Abonado BIT NOT NULL DEFAULT 0,
     SucursalId INT NOT NULL,
     TurnoEstadoId INT NOT NULL,
     CONSTRAINT FK_Turno_Cliente FOREIGN KEY (ClienteId) REFERENCES Cliente(Id),
@@ -96,6 +98,16 @@ CREATE TABLE TurnoServicio (
     PrecioUnitario DECIMAL(10,2) NOT NULL,
     CONSTRAINT FK_TurnoServicio_Turno FOREIGN KEY (TurnoId) REFERENCES Turno(Id),
     CONSTRAINT FK_TurnoServicio_Especialidad FOREIGN KEY (EspecialidadId) REFERENCES Especialidad(Id)
+);
+
+-- Cobros de un turno. Puede haber más de uno (seña y saldo).
+CREATE TABLE Pago (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    TurnoId INT NOT NULL,
+    Fecha DATETIME NOT NULL,
+    Monto DECIMAL(10,2) NOT NULL,
+    Medio VARCHAR(30) NOT NULL,
+    CONSTRAINT FK_Pago_Turno FOREIGN KEY (TurnoId) REFERENCES Turno(Id)
 );
 GO
 
@@ -125,20 +137,21 @@ INSERT INTO Sucursal (Nombre, Direccion, Telefono, Activo) VALUES
 ('Sucursal Norte', 'Ruta 8 Km 40', '1144556688', 1);
 
 -- 5. Usuarios: 1 Cliente, 2 y 3 Profesionales
-INSERT INTO Usuario (Usuario, Pass, Baja, TipoUsuarioId) VALUES
-('cgonzalez', 'usu123', 0, 3),
-('jperez', 'pro123', 0, 4),
-('mgomez', 'pro123', 0, 4),
-('admin', 'admin123', 0, 1);
+INSERT INTO Usuario (users,Email, Pass, Baja, TipoUsuarioId) VALUES
+('cgonzalez','cgonzalez@estetica.com', 'usu123', 0, 3),
+('jperez', 'jperez@estetica.com','pro123', 0, 4),
+('mgomez','mgomez@estetica.com' ,'pro123', 0, 4),
+('admin', 'admin@estetica.com','admin123', 0, 1),
+('recepionista', 'recep@estetica.com','recep123', 0, 2);
 
 -- 6. Cliente vinculado al usuario 1
-INSERT INTO Cliente (Nombre, Apellido, DNI, FechaNac, Telefono, Email, UsuarioId) VALUES
-('Carlos', 'González', '30123456', '1990-05-15', '1122334455', 'carlos@email.com', 1);
+INSERT INTO Cliente (Nombre, Apellido, DNI, FechaNac, Telefono, UsuarioId) VALUES
+('Carlos', 'González', '30123456', '1990-05-15', '1122334455', 1);
 
 -- 7. Profesionales vinculados a su usuario y a una sucursal
-INSERT INTO Profesional (Nombre, Apellido, DNI, Telefono, Email, SucursalId, UsuarioId) VALUES
-('Juan', 'Pérez', '25111222', '1133445566', 'juan@email.com', 1, 2),
-('María', 'Gómez', '27333444', '1133445577', 'maria@email.com', 2, 3);
+INSERT INTO Profesional (Nombre, Apellido, DNI, Matricula, Telefono, SucursalId, UsuarioId) VALUES
+('Juan', 'Pérez', '25111222', 'MP-1001', '1133445566', 1, 2),
+('María', 'Gómez', '27333444', 'MP-1002', '1133445577', 2, 3);
 
 -- 8. Servicios que realiza cada profesional
 INSERT INTO ProfesionalServicio (ProfesionalId, EspecialidadId) VALUES
@@ -147,13 +160,14 @@ INSERT INTO ProfesionalServicio (ProfesionalId, EspecialidadId) VALUES
 (2, 3);
 
 -- 9. Turno de ejemplo
-INSERT INTO Turno (ClienteId, FechaTurno, Precio, Observaciones, ProfesionalId, Baja, SucursalId, TurnoEstadoId) VALUES
+INSERT INTO Turno (ClienteId, FechaTurno, Precio, Observaciones, ProfesionalId, Baja, Abonado, SucursalId, TurnoEstadoId) VALUES
 (
     1,
     '2026-11-15 10:30:00',
     15000.00,
     'Turno de ejemplo',
     1,
+    0,
     0,
     1,
     1
@@ -162,3 +176,7 @@ INSERT INTO Turno (ClienteId, FechaTurno, Precio, Observaciones, ProfesionalId, 
 -- 10. Servicio incluido en ese turno
 INSERT INTO TurnoServicio (TurnoId, EspecialidadId, PrecioUnitario) VALUES
 (1, 1, 15000.00);
+
+-- 11. Seña del turno. El saldo sigue impago, por eso Abonado quedó en 0.
+INSERT INTO Pago (TurnoId, Fecha, Monto, Medio) VALUES
+(1, '2026-11-10 18:00:00', 5000.00, 'Efectivo');
