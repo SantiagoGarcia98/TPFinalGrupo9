@@ -34,7 +34,7 @@
                         <p class="text-muted">Registrar, listar o revisar turnos asignados.</p>
                         <div class="d-flex gap-2">
                             <asp:LinkButton ID="LnkAltaTurno" runat="server" CssClass="btn btn-primary btn-sm">Nuevo turno</asp:LinkButton>
-                            <asp:LinkButton ID="LnkListaTurnos" runat="server" CssClass="btn btn-outline-primary btn-sm">Ver turnos</asp:LinkButton>
+                            <asp:LinkButton ID="LnkListaTurnos" runat="server" onclick="LnkListaTurnos_Click" CssClass="btn btn-outline-primary btn-sm">Ver turnos</asp:LinkButton>
                         </div>
                     </div>
                 </div>

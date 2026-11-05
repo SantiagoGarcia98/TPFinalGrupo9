@@ -1,4 +1,5 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,9 @@ namespace EsteticaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            DataTurno data = new DataTurno();
+            dgvTurnos.DataSource = data.ListarTurnoSp();
+            dgvTurnos.DataBind();
 
         }
     }

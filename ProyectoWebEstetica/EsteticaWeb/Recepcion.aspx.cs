@@ -13,5 +13,10 @@ namespace EsteticaWeb
         {
 
         }
+
+        protected void LnkListaTurnos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("listaTurnos.aspx");
+        }
     }
 }
