@@ -43,5 +43,39 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public void AgregarCliente(Cliente nuevo, string usuario, string pass)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setearprocedimiento("storedAgregarCliente");
+
+                // Parámetros del Cliente
+                datos.setParametro("@Nombre", nuevo.Nombre);
+                datos.setParametro("@Apellido", nuevo.Apellido);
+                datos.setParametro("@DNI", nuevo.DNI);
+                datos.setParametro("@FechaNac", nuevo.fechaNac);
+                datos.setParametro("@Telefono", nuevo.Telefono);
+                datos.setParametro("@Email", nuevo.Email);
+
+                // Parámetros del Usuario
+                datos.setParametro("@Usuario", usuario);
+                datos.setParametro("@Pass", pass);
+                // TipoUsuarioId de cliente es 3 
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

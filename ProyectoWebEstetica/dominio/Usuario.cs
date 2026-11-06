@@ -8,11 +8,18 @@ namespace dominio
 {
     public class Usuario
     {
+        //public int Id { get; set; }
+        //public string Nombre { get; set; }
+        //public string Apellido { get; set; }
+        //public string Email { get; set; }
+        //public string Rol { get; set; }
+        //public bool Activo { get; set; }
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public string User { get; set; } 
         public string Email { get; set; }
-        public string Rol { get; set; }
-        public bool Activo { get; set; }
+        public string Pass { get; set; }
+        public bool Baja { get; set; }
+        public int TipoUsuarioId { get; set; } 
     }
+}
 }

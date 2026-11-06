@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MiMaster.Master" AutoEventWireup="true" CodeBehind="AltaCliente.aspx.cs" Inherits="EsteticaWeb.AltaCliente" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style1 {
@@ -30,7 +31,7 @@
                     <asp:Label ID="lblApellido" runat="server" Font-Bold="True" Text="Apellido:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtApellido" runat="server" EnableViewState="False" Font-Bold="False" style="margin-bottom: 0px" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtApellido" runat="server" EnableViewState="False" Font-Bold="False" Style="margin-bottom: 0px" Width="250px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -43,14 +44,6 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblEmail" runat="server" Font-Bold="True" Text="Correo Electrónico:"></asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="txtEmail" runat="server" Width="250px"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <asp:Label ID="lblTelefono" runat="server" Font-Bold="True" Text="Teléfono:"></asp:Label>
                 </td>
                 <td>
@@ -59,26 +52,46 @@
             </tr>
             <tr>
                 <td>
+                    <label class="form-label">Fecha de Nacimiento</label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtFechaNac" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                </td>
+            </tr>      
+           
+            <tr>
+                <td>
+                    <asp:Label ID="lblEmail" runat="server" Font-Bold="True" Text="Correo Electrónico:"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="250px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <asp:Label ID="lblContrasena" runat="server" Font-Bold="True" Text="Contraseña: "></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtcontrsena" runat="server" TextMode="Password" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtpass" runat="server" TextMode="Password" Width="250px"></asp:TextBox>
                 </td>
             </tr>
         </table>
     </p>
     <p>
-        &nbsp;</p>
+        &nbsp;
+    </p>
     <asp:Panel ID="pnlBotonRegistro" runat="server" HorizontalAlign="Center" Width="100%">
-        <asp:Button ID="btnRegistrarse" runat="server" BackColor="#99CCFF" CausesValidation="False" Text="Registrarse" Width="250px" />
+        <asp:Button ID="btnRegistrarse" runat="server" OnClick="btnRegistrarse_Click" BackColor="#99CCFF" CausesValidation="False" Text="Registrarse" Width="250px" />
     </asp:Panel>
     <p>
         <asp:HyperLink ID="lnkVolverMenu" runat="server" NavigateUrl="~/MenuCliente.aspx">Vovler al menú</asp:HyperLink>
     </p>
     <p>
-        &nbsp;</p>
+        &nbsp;
+    </p>
     <p>
-        &nbsp;</p>
+        &nbsp;
+    </p>
     <p>
     </p>
     <p>
