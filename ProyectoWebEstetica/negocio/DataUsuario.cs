@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using System;
 using dominio;
 
 namespace negocio
@@ -17,9 +15,18 @@ namespace negocio
 
             try
             {
-                datos.setConsulta("SELECT U.Id, U.users, U.Email,T.Descripcion AS Rol " + "FROM Usuario U " + "INNER JOIN TipoUsuario T ON T.Id = U.TipoUsuarioId " + "WHERE U.Email = @usuario AND U.Pass = @pass AND U.Baja = 0");
+                datos.setConsulta(
+                    "SELECT U.Id, U.users, U.Email, U.TipoUsuarioId " +
+                    "FROM Usuario U " +
+                    "INNER JOIN TipoUsuario T ON T.Id = U.TipoUsuarioId " +
+                    "WHERE U.Email = @usuario " +
+                    "AND U.Pass = @pass " +
+                    "AND U.Baja = 0"
+                );
+
                 datos.setParametro("@usuario", email);
                 datos.setParametro("@pass", clave);
+
                 datos.ConsultaBD();
 
                 if (!datos.Lector.Read())
@@ -28,9 +35,13 @@ namespace negocio
                 }
 
                 Usuario usuario = new Usuario();
+
                 usuario.Id = (int)datos.Lector["Id"];
+                usuario.User = (string)datos.Lector["users"];
                 usuario.Email = (string)datos.Lector["Email"];
-                usuario.Rol = (string)datos.Lector["Rol"];
+                usuario.TipoUsuarioId = (int)datos.Lector["TipoUsuarioId"];
+                usuario.Baja = false;
+
                 return usuario;
             }
             finally

@@ -11,7 +11,21 @@ namespace EsteticaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                dominio.Usuario usuario = Session["usuario"] as dominio.Usuario;
 
+                if (usuario == null || usuario.TipoUsuarioId != 3)
+                {
+                    Response.Redirect("Login.aspx");
+                    return;
+                }
+
+                negocio.DataTurno datos = new negocio.DataTurno();
+
+                gvTurnosCliente.DataSource = datos.ListarTurnosPorCliente(usuario.Id);
+                gvTurnosCliente.DataBind();
+            }
         }
 
         protected void gvTurnosCliente_SelectedIndexChanged(object sender, EventArgs e)

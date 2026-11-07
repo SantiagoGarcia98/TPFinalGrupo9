@@ -22,4 +22,3 @@ namespace dominio
         public int TipoUsuarioId { get; set; } 
     }
 }
-}
