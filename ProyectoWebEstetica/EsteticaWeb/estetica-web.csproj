@@ -79,6 +79,7 @@
     <Content Include="Recepcion.aspx" />
     <Content Include="Recursos\Imagenes\Tulipanes.png" />
     <Content Include="site.css" />
+    <Content Include="Usuarios\ListarUsuario.aspx" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
   </ItemGroup>
@@ -177,6 +178,13 @@
     </Compile>
     <Compile Include="RecepcionMaster.Master.designer.cs">
       <DependentUpon>RecepcionMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\ListarUsuario.aspx.cs">
+      <DependentUpon>ListarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios\ListarUsuario.aspx.designer.cs">
+      <DependentUpon>ListarUsuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

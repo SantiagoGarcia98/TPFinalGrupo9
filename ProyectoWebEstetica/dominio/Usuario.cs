@@ -19,7 +19,8 @@ namespace dominio
         public string Email { get; set; }
         public string Pass { get; set; }
         public bool Baja { get; set; }
+        public string Rol { get; set; }
         public int TipoUsuarioId { get; set; } 
     }
-}
+
 }

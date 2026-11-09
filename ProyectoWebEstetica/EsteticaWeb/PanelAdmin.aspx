@@ -10,7 +10,7 @@
                     <h2 class="h5">Usuarios</h2>
                     <p class="text-muted">Crear, consultar y modificar usuarios del sistema.</p>
                     <div>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Ver usuarios</a>
+                        <a href="Usuarios/ListarUsuario.aspx" class="btn btn-outline-primary btn-sm">Ver usuarios</a>
                         <a href="#" class="btn btn-primary btn-sm me-2">Cargar usuario</a>
                         <a href="#" class="btn btn-primary btn-sm me-2">Modificar usuario</a>
 
