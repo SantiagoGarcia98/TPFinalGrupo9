@@ -44,6 +44,57 @@ namespace negocio
             }
         }
 
+        public List<Cliente> ListarClientes(string id = "")
+        {
+            List<Cliente> lista = new List<Cliente>();
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                string consulta = "SELECT Id, Nombre, Apellido, DNI, FechaNac, Telefono, Email, UsuarioId FROM Cliente";
+                //if (id!="")
+                //{
+                //    consulta += "WHERE id = " + id;
+                //}
+                if (!string.IsNullOrWhiteSpace(id))
+                {
+                    consulta += " WHERE Id = @id";
+                    datos.setParametro("@id", int.Parse(id));
+                }
+                datos.setConsulta(consulta);
+                datos.ConsultaBD();
+
+                while (datos.Lector.Read())
+                {
+                    Cliente aux = new Cliente();
+                    aux.IdCliente = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Apellido = (string)datos.Lector["Apellido"];
+                    aux.DNI = datos.Lector["DNI"] != DBNull.Value ? (string)datos.Lector["DNI"] : "";
+                    aux.Telefono = datos.Lector["Telefono"] != DBNull.Value ? (string)datos.Lector["Telefono"] : "";
+                    aux.Email = datos.Lector["Email"] != DBNull.Value ? (string)datos.Lector["Email"] : "";
+
+                    if (!(datos.Lector["FechaNac"] is DBNull))
+                        aux.fechaNac = (DateTime)datos.Lector["FechaNac"];
+
+                    if (!(datos.Lector["UsuarioId"] is DBNull))
+                        aux.UsuarioId = (int)datos.Lector["UsuarioId"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
         public void AgregarCliente(Cliente nuevo, string usuario, string pass)
         {
