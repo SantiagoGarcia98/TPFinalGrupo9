@@ -72,6 +72,7 @@
     <Content Include="ListaCliente.aspx" />
     <Content Include="ListaTurnosClientes.aspx" />
     <Content Include="MenuCliente.aspx" />
+    <Content Include="ModificarCliente.aspx" />
     <Content Include="SolicitudTurno.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListaTurnos.aspx" />
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarCliente.aspx.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarCliente.aspx.designer.cs">
+      <DependentUpon>ModificarCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="PanelAdmin.aspx.cs">
       <DependentUpon>PanelAdmin.aspx</DependentUpon>

@@ -16,5 +16,11 @@ namespace EsteticaWeb
             dgvclientes.DataSource = data.ListarClientes();
             dgvclientes.DataBind();
         }
+
+        protected void dgvclientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvclientes.SelectedDataKey.Value.ToString();
+            Response.Redirect("ModificarCliente.aspx?id="+id);
+        }
     }
 }
