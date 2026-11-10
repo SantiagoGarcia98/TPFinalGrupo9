@@ -28,7 +28,7 @@
                         <div class="drawer-body">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="Inicio.aspx">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="~/Inicio.aspx" runat="server">Home</a>
                                 </li>
                             </ul>
                         </div>

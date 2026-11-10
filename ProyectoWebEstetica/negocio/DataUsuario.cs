@@ -49,5 +49,35 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<Usuario> Listar()
+        {
+            List<Usuario> lista = new List<Usuario>();
+            AccesoSQL datos = new AccesoSQL();
+
+
+            try 
+            {
+                datos.setConsulta("SELECT U.Id, U.users, U.Email,T.Descripcion AS Rol FROM Usuario U INNER JOIN TipoUsuario T ON T.Id = U.TipoUsuarioId ");
+                datos.ConsultaBD();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.Id = (int)datos.Lector["Id"];
+                    usuario.User = (string)datos.Lector["users"];
+                    usuario.Email = (string)datos.Lector["Email"];
+                    usuario.Rol = (string)datos.Lector["Rol"];
+                    lista.Add(usuario);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }
