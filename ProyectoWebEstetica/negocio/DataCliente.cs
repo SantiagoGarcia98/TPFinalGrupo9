@@ -128,5 +128,36 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificarCliente(Cliente mod)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setearprocedimiento("storedModificarCliente");
+
+                // Parámetros del Cliente
+                datos.setParametro("@Id", mod.IdCliente);
+                datos.setParametro("@Nombre", mod.Nombre);
+                datos.setParametro("@Apellido", mod.Apellido);
+                datos.setParametro("@DNI", mod.DNI);
+                datos.setParametro("@FechaNac", mod.fechaNac);
+                datos.setParametro("@Telefono", mod.Telefono);
+                datos.setParametro("@Email", mod.Email);
+          
+                // TipoUsuarioId de cliente es 3 
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

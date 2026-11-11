@@ -33,12 +33,45 @@ namespace EsteticaWeb
                         txtApellido.Text = seleccionado.Apellido;
                         TxtTelefono.Text = seleccionado.Telefono;
                         txtEmail.Text = seleccionado.Email;
-                        txtFecha.Text = seleccionado.fechaNac.ToString("yyyy-mm-dd");
+                        txtFecha.Text = seleccionado.fechaNac.ToString("yyyy-MM-dd");
                     }
 
                 }
             }
         }
 
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cliente mod = new Cliente();
+                mod.IdCliente = int.Parse(Request.QueryString["id"]);
+                mod.Nombre = txtNombre.Text;
+                mod.Apellido = txtApellido.Text;
+                mod.DNI = txtDni.Text;
+                mod.Telefono = TxtTelefono.Text;
+                mod.Email = txtEmail.Text;
+                DateTime fecha;
+                if (DateTime.TryParse(txtFecha.Text, out fecha))
+                {
+                    mod.fechaNac = fecha;
+                }
+                else
+                {                
+                    return;
+                }// pregunte en chat por que vivia dandome error la fecha , posible eliminacion del dato  
+
+                DataCliente data = new DataCliente();
+                data.modificarCliente(mod);
+
+                Response.Redirect("listaCliente.aspx"); // O el nombre de tu página de listado
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
+
+        }
     }
 }

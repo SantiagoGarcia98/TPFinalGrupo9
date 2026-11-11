@@ -73,8 +73,7 @@
                     <label for="txtFecha" class="form-label">Fecha de nacimiento</label>
                     <asp:TextBox runat="server" TextMode="Date" ID="txtFecha" CssClass="form-control" />
                 </div>
-
-                <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-primary" />
+                <asp:Button ID="btnModificar" runat="server" Text="Modificar"  OnClick="btnModificar_Click" CssClass="btn btn-primary" />
             </div>
         </div>
     </div>

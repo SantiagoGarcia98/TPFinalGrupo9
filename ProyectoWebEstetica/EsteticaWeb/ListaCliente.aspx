@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:GridView runat="server" ID="dgvclientes" AutoGenerateColumns="false" CssClass="table" DataKeyNames="idCliente" OnSelectedIndexChanged="dgvclientes_SelectedIndexChanged">
+    <%-- <asp:GridView runat="server" ID="dgvclientes" AutoGenerateColumns="false" CssClass="table" DataKeyNames="idCliente" OnSelectedIndexChanged="dgvclientes_SelectedIndexChanged">
         <Columns>
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -13,6 +13,25 @@
             <asp:BoundField HeaderText="Email" DataField="Email" />
             <asp:CommandField HeaderText="Modificar" ShowSelectButton="true" SelectText="Modificar" />
         </Columns>
-    </asp:GridView>
+    </asp:GridView>--%>
+   <div class="container mt-4">
+    <div class="card shadow-sm rounded-3 overflow-hidden">
+        <div class="table-responsive">
+            <asp:GridView runat="server" ID="dgvclientes" AutoGenerateColumns="false" 
+                CssClass="table table-hover mb-0" GridLines="None"
+                DataKeyNames="IdCliente" 
+                OnSelectedIndexChanged="dgvclientes_SelectedIndexChanged">
+                <Columns>
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                    <asp:BoundField HeaderText="DNI" DataField="DNI" />
+                    <asp:BoundField HeaderText="Teléfono" DataField="Telefono" />
+                    <asp:BoundField HeaderText="Email" DataField="Email" />
+                    <asp:CommandField HeaderText="Modificar" ShowSelectButton="true" SelectText="Modificar" />
+                </Columns>
+            </asp:GridView>
+        </div>
+    </div>
+</div>
 
 </asp:Content>
