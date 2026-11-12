@@ -391,3 +391,78 @@ BEGIN
     ORDER BY T.FechaTurno DESC;
 END;
 GO
+
+CREATE OR ALTER PROCEDURE storedListarClientes
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        c.Id,
+        c.Nombre,
+        c.Apellido,
+        c.DNI,
+        c.FechaNac,
+        c.Telefono,
+        u.email,
+        c.UsuarioId
+    FROM Cliente c
+    inner join Usuario u
+    on c.UsuarioId = u.Id
+    ORDER BY Apellido ASC, Nombre ASC;
+END
+GO
+
+CREATE OR ALTER PROCEDURE storedListarTurnos
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        T.Id,
+        T.FechaTurno,
+        T.Precio,
+        T.Observaciones,
+        C.Nombre + ' ' + C.Apellido AS Cliente,
+        P.Nombre + ' ' + P.Apellido AS Profesional,
+        S.Nombre AS Sucursal,
+        TE.Descripcion AS Estado
+    FROM Turno T
+    INNER JOIN Cliente C ON T.ClienteId = C.Id
+    INNER JOIN Profesional P ON T.ProfesionalId = P.Id
+    INNER JOIN Sucursal S ON T.SucursalId = S.Id
+    INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id
+    WHERE T.Baja = 0
+    ORDER BY T.FechaTurno DESC;
+END
+GO
+
+CREATE OR ALTER PROCEDURE storedModificarCliente
+    @Id INT,
+    @Nombre VARCHAR(100),
+    @Apellido VARCHAR(100),
+    @DNI VARCHAR(20),
+    @FechaNac DATE,
+    @Telefono VARCHAR(30),
+    @Email VARCHAR(150)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- 1. Actualizamos los datos personales en la tabla Cliente
+    UPDATE Cliente
+    SET 
+        Nombre = @Nombre,
+        Apellido = @Apellido,
+        DNI = @DNI,
+        FechaNac = @FechaNac,
+        Telefono = @Telefono
+    WHERE Id = @Id;
+
+    -- 2. Actualizamos el email en la tabla Usuario asociada
+    UPDATE Usuario
+    SET 
+        email = @Email
+    WHERE Id = (SELECT UsuarioId FROM Cliente WHERE Id = @Id);
+END
+GO

@@ -89,7 +89,7 @@
 
                 <div class="col">
                     <div class="card h-100 bg-dark bg-opacity-75 text-white border-0 rounded-4 shadow">
-                        <img src="Recursos/Imagenes/depilacionlaser.jpg"
+                        <img src="https://via.placeholder.com/400x200"
                             class="card-img-top rounded-top-4"
                             style="height: 200px;"
                             alt="...">

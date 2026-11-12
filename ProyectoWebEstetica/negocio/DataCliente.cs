@@ -44,6 +44,56 @@ namespace negocio
             }
         }
 
+        //public List<Cliente> ListarClientes(string id = "")
+        //{
+        //    List<Cliente> lista = new List<Cliente>();
+        //    AccesoSQL datos = new AccesoSQL();
+
+        //    try
+        //    {
+        //        string consulta = "SELECT Id, Nombre, Apellido, DNI, FechaNac, Telefono, Email, UsuarioId FROM Cliente";
+        //        //if (id!="")
+        //        //{
+        //        //    consulta += "WHERE id = " + id;
+        //        //}
+        //        if (!string.IsNullOrWhiteSpace(id))
+        //        {
+        //            consulta += " WHERE Id = @id";
+        //            datos.setParametro("@id", int.Parse(id));
+        //        }
+        //        datos.setConsulta(consulta);
+        //        datos.ConsultaBD();
+
+        //        while (datos.Lector.Read())
+        //        {
+        //            Cliente aux = new Cliente();
+        //            aux.IdCliente = (int)datos.Lector["Id"];
+        //            aux.Nombre = (string)datos.Lector["Nombre"];
+        //            aux.Apellido = (string)datos.Lector["Apellido"];
+        //            aux.DNI = datos.Lector["DNI"] != DBNull.Value ? (string)datos.Lector["DNI"] : "";
+        //            aux.Telefono = datos.Lector["Telefono"] != DBNull.Value ? (string)datos.Lector["Telefono"] : "";
+        //            aux.Email = datos.Lector["Email"] != DBNull.Value ? (string)datos.Lector["Email"] : "";
+
+        //            if (!(datos.Lector["FechaNac"] is DBNull))
+        //                aux.fechaNac = (DateTime)datos.Lector["FechaNac"];
+
+        //            if (!(datos.Lector["UsuarioId"] is DBNull))
+        //                aux.UsuarioId = (int)datos.Lector["UsuarioId"];
+
+        //            lista.Add(aux);
+        //        }
+
+        //        return lista;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
         public List<Cliente> ListarClientes(string id = "")
         {
             List<Cliente> lista = new List<Cliente>();
@@ -51,16 +101,16 @@ namespace negocio
 
             try
             {
-                string consulta = "SELECT Id, Nombre, Apellido, DNI, FechaNac, Telefono, Email, UsuarioId FROM Cliente";
-                //if (id!="")
-                //{
-                //    consulta += "WHERE id = " + id;
-                //}
+                string consulta = "SELECT c.Id, c.Nombre, c.Apellido, c.DNI, c.FechaNac, c.Telefono, u.email, c.UsuarioId " +
+                                  "FROM Cliente c " +
+                                  "INNER JOIN Usuario u ON c.UsuarioId = u.Id";
+
                 if (!string.IsNullOrWhiteSpace(id))
                 {
-                    consulta += " WHERE Id = @id";
+                    consulta += " WHERE c.Id = @id";
                     datos.setParametro("@id", int.Parse(id));
                 }
+
                 datos.setConsulta(consulta);
                 datos.ConsultaBD();
 
@@ -72,7 +122,7 @@ namespace negocio
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.DNI = datos.Lector["DNI"] != DBNull.Value ? (string)datos.Lector["DNI"] : "";
                     aux.Telefono = datos.Lector["Telefono"] != DBNull.Value ? (string)datos.Lector["Telefono"] : "";
-                    aux.Email = datos.Lector["Email"] != DBNull.Value ? (string)datos.Lector["Email"] : "";
+                    aux.Email = datos.Lector["email"] != DBNull.Value ? (string)datos.Lector["email"] : "";
 
                     if (!(datos.Lector["FechaNac"] is DBNull))
                         aux.fechaNac = (DateTime)datos.Lector["FechaNac"];

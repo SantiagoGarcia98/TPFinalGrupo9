@@ -75,8 +75,7 @@
         runat="server"
         ShowGridLines="True"
         Width="300px"
-        OnSelectionChanged="calFechaTurno_SelectionChanged">
-    </asp:Calendar>
+        OnSelectionChanged="calFechaTurno_SelectionChanged"></asp:Calendar>
 
     <br />
     <br />
@@ -113,12 +112,12 @@
             CausesValidation="False"
             Text="Solicitar turno"
             Width="200px"
-            OnClick="btnSolicitarTurno_Click"/>
+            OnClick="btnSolicitarTurno_Click" />
         <br />
         <br />
         <asp:Label ID="lblMensajeTurno" runat="server"
-             Font-Bold="True"
-             Text="">
+            Font-Bold="True"
+            Text="">
         </asp:Label>
 
 
