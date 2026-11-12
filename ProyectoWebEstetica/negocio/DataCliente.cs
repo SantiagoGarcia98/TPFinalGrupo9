@@ -128,6 +128,33 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+
+        }
+
+        public int ObtenerIdPorUsuario(int usuarioId)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT Id FROM Cliente WHERE UsuarioId = @UsuarioId"
+                );
+
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ConsultaBD();
+
+                if (datos.Lector.Read())
+                {
+                    return (int)datos.Lector["Id"];
+                }
+
+                throw new Exception("No se encontró el cliente asociado al usuario.");
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
         public void modificarCliente(Cliente mod)
         {

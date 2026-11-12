@@ -73,5 +73,65 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public System.Data.DataTable ListarHorariosOcupados(int profesionalId, DateTime fecha)
+        {
+            AccesoSQL datos = new AccesoSQL();
+            System.Data.DataTable tabla = new System.Data.DataTable();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT T.FechaTurno, " +
+                    "SUM(E.DuracionMinutos) AS DuracionMinutos " +
+                    "FROM Turno T " +
+                    "INNER JOIN TurnoServicio TS ON T.Id = TS.TurnoId " +
+                    "INNER JOIN Especialidad E ON TS.EspecialidadId = E.Id " +
+                    "INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id " +
+                    "WHERE T.ProfesionalId = @ProfesionalId " +
+                    "AND T.FechaTurno >= @InicioDia " +
+                    "AND T.FechaTurno < @FinDia " +
+                    "AND T.Baja = 0 " +
+                    "AND TE.Descripcion <> 'Cancelado' " +
+                    "GROUP BY T.Id, T.FechaTurno " +
+                    "ORDER BY T.FechaTurno"
+                );
+
+                datos.setParametro("@ProfesionalId", profesionalId);
+                datos.setParametro("@InicioDia", fecha.Date);
+                datos.setParametro("@FinDia", fecha.Date.AddDays(1));
+
+                datos.ConsultaBD();
+
+                tabla.Load(datos.Lector);
+
+                return tabla;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void ReservarTurno(int usuarioId, int especialidadId, int profesionalId, DateTime fechaTurno)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setearprocedimiento("storedReservarTurno");
+
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.setParametro("@EspecialidadId", especialidadId);
+                datos.setParametro("@ProfesionalId", profesionalId);
+                datos.setParametro("@FechaTurno", fechaTurno);
+
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
