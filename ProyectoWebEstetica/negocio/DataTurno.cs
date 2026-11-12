@@ -52,5 +52,26 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public System.Data.DataTable ListarTurnosPorCliente(int usuarioId)
+        {
+            AccesoSQL datos = new AccesoSQL();
+            System.Data.DataTable tabla = new System.Data.DataTable();
+
+            try
+            {
+                datos.setearprocedimiento("storedListarTurnosPorCliente");
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ConsultaBD();
+
+                tabla.Load(datos.Lector);
+
+                return tabla;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

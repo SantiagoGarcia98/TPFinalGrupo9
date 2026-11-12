@@ -13,7 +13,8 @@
     <p>
         <asp:GridView ID="gvTurnosCliente" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvTurnosCliente_SelectedIndexChanged" Width="100%">
             <Columns>
-                <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
+                <asp:BoundField DataField="Fecha" HeaderText="Fecha"
+                    DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
                 <asp:BoundField DataField="Horario" HeaderText="Horario" />
                 <asp:BoundField DataField="Tratamiento" HeaderText="Tratamiento" />
                 <asp:BoundField DataField="Profesional" HeaderText="Profesional" />
