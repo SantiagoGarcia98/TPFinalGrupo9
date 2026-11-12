@@ -14,12 +14,13 @@ namespace EsteticaWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario logueado = Session["usuario"] as Usuario;
-            filaRol.Visible = logueado != null && logueado.Rol == "Administrador";
+            filaRol.Visible = logueado != null && logueado.TipoUsuarioId == 1;
+
             if (logueado == null)
                 lnkVolverMenu.NavigateUrl = "~/Login.aspx";
-            else if (logueado.Rol == "Administrador")
+            else if (logueado.TipoUsuarioId == 1)
                 lnkVolverMenu.NavigateUrl = "~/PanelAdmin.aspx";
-            else if (logueado.Rol == "Recepcionista" || logueado.Rol == "Profesional")
+            else if (logueado.TipoUsuarioId == 2 || logueado.TipoUsuarioId == 4)
                 lnkVolverMenu.NavigateUrl = "~/Recepcion.aspx";
             else
                 lnkVolverMenu.NavigateUrl = "~/MenuCliente.aspx";
