@@ -59,7 +59,7 @@ namespace EsteticaWeb
                 else
                 {                
                     return;
-                }// pregunte en chat por que vivia dandome error la fecha , posible eliminacion del dato  
+                }// pregunte con IA por que vivia dandome error la fecha , posible eliminacion del dato  
 
                 DataCliente data = new DataCliente();
                 data.modificarCliente(mod);

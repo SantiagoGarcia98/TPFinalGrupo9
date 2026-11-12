@@ -73,6 +73,10 @@
     <Content Include="ListaTurnosClientes.aspx" />
     <Content Include="MenuCliente.aspx" />
     <Content Include="ModificarCliente.aspx" />
+    <Content Include="Recursos\Imagenes\depilacionLaser.jpg" />
+    <Content Include="Recursos\Imagenes\electrodos.jpg" />
+    <Content Include="Recursos\Imagenes\lifting.jpg" />
+    <Content Include="Recursos\Imagenes\manicura.jpg" />
     <Content Include="SolicitudTurno.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListaTurnos.aspx" />
