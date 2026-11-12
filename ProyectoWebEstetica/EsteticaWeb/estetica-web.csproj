@@ -81,6 +81,7 @@
     <Content Include="Recursos\Imagenes\Tulipanes.png" />
     <Content Include="site.css" />
     <Content Include="Usuarios\ListarUsuario.aspx" />
+    <Content Include="Usuarios\ModificarUsuario.aspx" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
   </ItemGroup>
@@ -193,6 +194,13 @@
     </Compile>
     <Compile Include="Usuarios\ListarUsuario.aspx.designer.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\ModificarUsuario.aspx.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios\ModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

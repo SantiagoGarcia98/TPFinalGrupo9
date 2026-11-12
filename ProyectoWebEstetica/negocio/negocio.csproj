@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="AccesoSQL.cs" />
     <Compile Include="DataCliente.cs" />
+    <Compile Include="DataEspecialidad.cs" />
+    <Compile Include="DataSucursal.cs" />
     <Compile Include="DataTurno.cs" />
     <Compile Include="DataUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
