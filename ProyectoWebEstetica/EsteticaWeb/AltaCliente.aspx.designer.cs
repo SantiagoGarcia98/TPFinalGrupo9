@@ -39,7 +39,7 @@ namespace EsteticaWeb
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow filaRol;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl filaRol;
 
         /// <summary>
         /// Control lblRol.

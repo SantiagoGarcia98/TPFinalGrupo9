@@ -14,7 +14,7 @@ namespace EsteticaWeb
             {
                 dominio.Usuario usuario = Session["usuario"] as dominio.Usuario;
 
-                if (usuario == null || usuario.TipoUsuarioId != 3)
+                if (usuario.TipoUsuarioId !=2 && usuario.TipoUsuarioId != 3)
                 {
                     Response.Redirect("~/Login.aspx", false);
                     Context.ApplicationInstance.CompleteRequest();
