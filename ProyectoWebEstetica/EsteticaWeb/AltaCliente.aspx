@@ -145,21 +145,45 @@
                         <div class="col-md-6">
                             <asp:Label ID="lblNombre" runat="server" CssClass="form-label fw-bold" Text="Nombre:"></asp:Label>
                             <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="revNombre" runat="server"
+                                ControlToValidate="txtNombre"
+                                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                                ErrorMessage="Solo se permiten letras."
+                                CssClass="text-danger small" Display="Dynamic">
+                            </asp:RegularExpressionValidator>
                         </div>
 
                         <div class="col-md-6">
                             <asp:Label ID="lblApellido" runat="server" CssClass="form-label fw-bold" Text="Apellido:"></asp:Label>
                             <asp:TextBox ID="txtApellido" runat="server" EnableViewState="False" CssClass="form-control"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                ControlToValidate="txtNombre"
+                                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                                ErrorMessage="Solo se permiten letras."
+                                CssClass="text-danger small" Display="Dynamic">
+                            </asp:RegularExpressionValidator>
                         </div>
 
                         <div class="col-md-6">
                             <asp:Label ID="lblDNI" runat="server" CssClass="form-label fw-bold" Text="DNI:"></asp:Label>
                             <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="revDNI" runat="server"
+                                ControlToValidate="txtDNI"
+                                ValidationExpression="^\d{7,8}$"
+                                ErrorMessage="El DNI debe tener 7 u 8 números."
+                                CssClass="text-danger small" Display="Dynamic">
+                            </asp:RegularExpressionValidator>
                         </div>
 
                         <div class="col-md-6">
                             <asp:Label ID="lblTelefono" runat="server" CssClass="form-label fw-bold" Text="Teléfono:"></asp:Label>
                             <asp:TextBox ID="txtTelefono" runat="server" TextMode="Phone" CssClass="form-control"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="revTelefono" runat="server"
+                                ControlToValidate="txtTelefono"
+                                ValidationExpression="^\d{8,15}$"
+                                ErrorMessage="El teléfono debe tener entre 8 y 15 números."
+                                CssClass="text-danger small" Display="Dynamic">
+                            </asp:RegularExpressionValidator>
                         </div>
 
 
@@ -200,7 +224,7 @@
                     <asp:Panel ID="pnlBotonRegistro" runat="server" CssClass="text-start mt-4">
                         <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger d-block mb-2 fw-semibold"></asp:Label>
                         <div class="d-flex align-items-center gap-3">
-                            <asp:Button ID="btnRegistrarse" runat="server" OnClick="btnRegistrarse_Click" CausesValidation="False" Text="Registrarse" CssClass="btn btn-primary px-4" />
+                            <asp:Button ID="btnRegistrarse" runat="server" OnClick="btnRegistrarse_Click" CausesValidation="true" Text="Registrarse" CssClass="btn btn-primary px-4" />
                             <asp:HyperLink ID="lnkVolverMenu" runat="server" CssClass="btn btn-outline-secondary">Volver al menú</asp:HyperLink>
                         </div>
                     </asp:Panel>

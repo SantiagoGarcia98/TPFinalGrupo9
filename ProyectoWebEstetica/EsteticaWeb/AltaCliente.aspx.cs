@@ -13,6 +13,11 @@ namespace EsteticaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                lblMensaje.Text = ""; // Solo se limpia la primera vez que entrás
+            }
+
             Usuario logueado = Session["usuario"] as Usuario;
             filaRol.Visible = logueado != null && logueado.TipoUsuarioId == 1;
 
@@ -53,48 +58,67 @@ namespace EsteticaWeb
 
         protected void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            try
+            if (Page.IsValid)
             {
-                int tipo = 3;
-                Usuario logueado = Session["usuario"] as Usuario;
-                if (logueado != null && logueado.Rol == "Administrador")
-                    tipo = int.Parse(ddlRol.SelectedValue);
-
-                DateTime? fecha = null;
-                if (tipo == 3)
-                    fecha = DateTime.Parse(txtFechaNac.Text);
-
-                List<string> ids = new List<string>();
-                foreach (ListItem item in cblEspecialidades.Items)
+                try
                 {
-                    if (item.Selected)
-                        ids.Add(item.Value);
+                    int tipo = 3;
+                    Usuario logueado = Session["usuario"] as Usuario;
+                    if (logueado != null && logueado.Rol == "Administrador")
+                        tipo = int.Parse(ddlRol.SelectedValue);
+
+                    DateTime? fecha = null;
+                    if (tipo == 3)
+                        fecha = DateTime.Parse(txtFechaNac.Text);
+
+                    List<string> ids = new List<string>();
+                    foreach (ListItem item in cblEspecialidades.Items)
+                    {
+                        if (item.Selected)
+                            ids.Add(item.Value);
+                    }
+                    string especialidades = string.Join(",", ids);
+
+                    int? sucursal = null;
+                    if (tipo == 4)
+                        sucursal = int.Parse(ddlSucursal.SelectedValue);
+
+                    new DataUsuario().Agregar(
+                        tipo,
+                        txtEmail.Text.Trim(),
+                        txtEmail.Text.Trim(),
+                        txtpass.Text,
+                        txtNombre.Text.Trim(),
+                        txtApellido.Text.Trim(),
+                        txtDNI.Text.Trim(),
+                        txtTelefono.Text.Trim(),
+                        fecha,
+                        txtMatricula.Text.Trim(),
+                        sucursal,
+                        especialidades);
+
+                    lblMensaje.ForeColor = System.Drawing.Color.Green;
+                    lblMensaje.Text = "Usuario registrado con éxito.";
+
                 }
-                string especialidades = string.Join(",", ids);
+                catch (Exception ex)
+                {
 
-                int? sucursal = null;
-                if (tipo == 4)
-                    sucursal = int.Parse(ddlSucursal.SelectedValue);
+                    //lblMensaje.Text = ex.Message;
+                    lblMensaje.ForeColor = System.Drawing.Color.Red;
+                    lblMensaje.Text = ex.Message;
+                }
 
-                new DataUsuario().Agregar(
-                    tipo,
-                    txtEmail.Text.Trim(),
-                    txtEmail.Text.Trim(),
-                    txtpass.Text,
-                    txtNombre.Text.Trim(),
-                    txtApellido.Text.Trim(),
-                    txtDNI.Text.Trim(),
-                    txtTelefono.Text.Trim(),
-                    fecha,
-                    txtMatricula.Text.Trim(),
-                    sucursal,
-                    especialidades);
+
             }
-            catch (Exception ex)
+            else
             {
-                lblMensaje.Text = ex.Message;
+                lblMensaje.ForeColor = System.Drawing.Color.Orange;
+                lblMensaje.Text = "Faltan completar campos o hay datos inválidos.";
             }
+
         }
+
         protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool esProfesional = ddlRol.SelectedValue == "4";
