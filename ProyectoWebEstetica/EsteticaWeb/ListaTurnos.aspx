@@ -7,11 +7,12 @@
         <Columns>
 
             <asp:BoundField HeaderText="Fecha" DataField="fecha" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
-            <asp:BoundField HeaderText="Precio" DataField="precio" DataFormatString="{0:C}" />
+            <asp:BoundField HeaderText="Precio" DataField="precio" DataFormatString="" />
 
             <asp:BoundField HeaderText="Cliente" DataField="cliente.Nombre" />
             <asp:BoundField HeaderText="Profesional" DataField="Profesional.Nombre" />
             <asp:BoundField HeaderText="Sucursal" DataField="Sucursal.Nombre" />
+            <asp:CommandField headertext="Modificar" ShowSelectButton="true" />      
         </Columns>
     </asp:GridView>
 

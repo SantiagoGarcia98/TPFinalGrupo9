@@ -13,13 +13,32 @@ namespace EsteticaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario logueado = Session["usuario"] as Usuario;
+            filaRol.Visible = logueado != null && logueado.TipoUsuarioId == 1;
 
+            if (logueado == null)
+                lnkVolverMenu.NavigateUrl = "~/Login.aspx";
+            else if (logueado.TipoUsuarioId == 1)
+                lnkVolverMenu.NavigateUrl = "~/PanelAdmin.aspx";
+            else if (logueado.TipoUsuarioId == 2 || logueado.TipoUsuarioId == 4)
+                lnkVolverMenu.NavigateUrl = "~/Recepcion.aspx";
+            else
+                lnkVolverMenu.NavigateUrl = "~/MenuCliente.aspx";
             try
             {
                 if (!IsPostBack)
                 {
                     DataCliente cliente = new DataCliente();
                     List<Cliente> lista = cliente.ListarClientes();
+                    ddlSucursal.DataSource = new DataSucursal().Listar();
+                    ddlSucursal.DataValueField = "IdSucursal";
+                    ddlSucursal.DataTextField = "Nombre";
+                    ddlSucursal.DataBind();
+
+                    cblEspecialidades.DataSource = new DataEspecialidad().Listar();
+                    cblEspecialidades.DataValueField = "IdEspecialidad";
+                    cblEspecialidades.DataTextField = "Descripcion";
+                    cblEspecialidades.DataBind();
                 }
 
             }
@@ -36,29 +55,52 @@ namespace EsteticaWeb
         {
             try
             {
-                Cliente nuevo = new Cliente();
-                nuevo.Nombre = txtNombre.Text;
-                nuevo.Apellido = txtApellido.Text;
-                nuevo.DNI = txtDNI.Text;
-                nuevo.Email = txtEmail.Text;
-                nuevo.Telefono = txtTelefono.Text;
-                nuevo.fechaNac = DateTime.Parse(txtFechaNac.Text);
+                int tipo = 3;
+                Usuario logueado = Session["usuario"] as Usuario;
+                if (logueado != null && logueado.Rol == "Administrador")
+                    tipo = int.Parse(ddlRol.SelectedValue);
 
-                string usuario = txtEmail.Text; // o usar txtEmail.Text como nombre de usuario
-                string pass = txtpass.Text;
- 
+                DateTime? fecha = null;
+                if (tipo == 3)
+                    fecha = DateTime.Parse(txtFechaNac.Text);
 
-                DataCliente data = new DataCliente();
-                data.AgregarCliente(nuevo, usuario, pass);
+                List<string> ids = new List<string>();
+                foreach (ListItem item in cblEspecialidades.Items)
+                {
+                    if (item.Selected)
+                        ids.Add(item.Value);
+                }
+                string especialidades = string.Join(",", ids);
 
-                //Response.Redirect("listaTurnos.aspx");
+                int? sucursal = null;
+                if (tipo == 4)
+                    sucursal = int.Parse(ddlSucursal.SelectedValue);
+
+                new DataUsuario().Agregar(
+                    tipo,
+                    txtEmail.Text.Trim(),
+                    txtEmail.Text.Trim(),
+                    txtpass.Text,
+                    txtNombre.Text.Trim(),
+                    txtApellido.Text.Trim(),
+                    txtDNI.Text.Trim(),
+                    txtTelefono.Text.Trim(),
+                    fecha,
+                    txtMatricula.Text.Trim(),
+                    sucursal,
+                    especialidades);
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-              
+                lblMensaje.Text = ex.Message;
             }
-
+        }
+        protected void ddlRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool esProfesional = ddlRol.SelectedValue == "4";
+            filaMatricula.Visible = esProfesional;
+            filaSucursal.Visible = esProfesional;
+            filaEspecialidades.Visible = esProfesional;
         }
     }
 }
