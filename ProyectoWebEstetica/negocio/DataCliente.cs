@@ -111,6 +111,7 @@ namespace negocio
                 datos.setParametro("@FechaNac", nuevo.fechaNac);
                 datos.setParametro("@Telefono", nuevo.Telefono);
                 datos.setParametro("@Email", nuevo.Email);
+                
 
                 // Parámetros del Usuario
                 datos.setParametro("@Usuario", usuario);

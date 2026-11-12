@@ -180,3 +180,183 @@ INSERT INTO TurnoServicio (TurnoId, EspecialidadId, PrecioUnitario) VALUES
 -- 11. Seña del turno. El saldo sigue impago, por eso Abonado quedó en 0.
 INSERT INTO Pago (TurnoId, Fecha, Monto, Medio) VALUES
 (1, '2026-11-10 18:00:00', 5000.00, 'Efectivo');
+
+-- 12 stored procedure
+
+USE [TurnosDB]
+GO
+/****** Objeto: StoredProcedure [dbo].[storedListarClientes] Fecha de script: 12/11/2026 00:42:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER   PROCEDURE [dbo].[storedListarClientes]
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        c.Id,
+        c.Nombre,
+        c.Apellido,
+        c.DNI,
+        c.FechaNac,
+        c.Telefono,
+        u.email,
+        c.UsuarioId
+    FROM Cliente c
+    inner join Usuario u
+    on c.UsuarioId = u.Id
+    where u.TipoUsuarioId = 3
+    ORDER BY Apellido ASC, Nombre ASC;
+END
+
+
+-- 13 storedAgregarCliente
+CREATE OR ALTER PROCEDURE storedAgregarCliente
+    @Nombre VARCHAR(50),
+    @Apellido VARCHAR(50),
+    @DNI VARCHAR(20),
+    @FechaNac DATE,
+    @Telefono VARCHAR(20),
+    @Email VARCHAR(100),
+    @Usuario VARCHAR(50),
+    @Pass VARCHAR(100),
+    @TipoUsuarioId INT = 3 -- ID por defecto para Cliente en la tabla Usuario
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        -- 1. Insertar el Usuario
+        INSERT INTO Usuario (users, Email, Pass, Baja, TipoUsuarioId)
+        VALUES (@Usuario, @Email, @Pass, 0, @TipoUsuarioId);
+
+        -- Obtener el ID del Usuario recién insertado
+        DECLARE @NuevoUsuarioId INT = SCOPE_IDENTITY();
+
+        -- 2. Insertar el Cliente vinculado al Usuario
+        INSERT INTO Cliente (Nombre, Apellido, DNI, FechaNac, Telefono, UsuarioId)
+        VALUES (@Nombre, @Apellido, @DNI, @FechaNac, @Telefono, @NuevoUsuarioId);
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END
+GO
+
+-- 14 storedAgregarUsuario
+CREATE OR ALTER PROCEDURE storedAgregarUsuario
+    @Usuario VARCHAR(50),
+    @Email VARCHAR(150),
+    @Pass VARCHAR(255),
+    @TipoUsuarioId INT,
+    @Nombre VARCHAR(100) = NULL,
+    @Apellido VARCHAR(100) = NULL,
+    @DNI VARCHAR(20) = NULL,
+    @Telefono VARCHAR(30) = NULL,
+    @FechaNac DATE = NULL,
+    @Matricula VARCHAR(30) = NULL,
+    @SucursalId INT = NULL,
+    @Especialidades VARCHAR(200) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Rol VARCHAR(50);
+
+    SELECT @Rol = Descripcion
+    FROM TipoUsuario
+    WHERE Id = @TipoUsuarioId;
+
+    IF @Rol IS NULL
+        THROW 50001, 'El rol no existe.', 1;
+
+    IF @Usuario IS NULL OR LTRIM(RTRIM(@Usuario)) = ''
+        OR @Email IS NULL OR LTRIM(RTRIM(@Email)) = ''
+        OR @Pass IS NULL OR LTRIM(RTRIM(@Pass)) = ''
+        THROW 50002, 'Usuario, email y contraseña son obligatorios.', 1;
+
+    IF EXISTS (SELECT 1 FROM Usuario WHERE Email = @Email)
+        THROW 50003, 'El email ya está registrado.', 1;
+
+    IF @Rol IN ('Cliente', 'Profesional')
+    BEGIN
+        IF @Nombre IS NULL OR LTRIM(RTRIM(@Nombre)) = ''
+            OR @Apellido IS NULL OR LTRIM(RTRIM(@Apellido)) = ''
+            OR @DNI IS NULL OR LTRIM(RTRIM(@DNI)) = ''
+            OR @Telefono IS NULL OR LTRIM(RTRIM(@Telefono)) = ''
+            THROW 50004, 'Nombre, apellido, DNI y teléfono son obligatorios.', 1;
+    END
+
+    IF @Rol = 'Cliente' AND @FechaNac IS NULL
+        THROW 50005, 'La fecha de nacimiento es obligatoria.', 1;
+
+    IF @Rol = 'Profesional'
+    BEGIN
+        IF @Matricula IS NULL OR LTRIM(RTRIM(@Matricula)) = ''
+            THROW 50006, 'La matrícula es obligatoria.', 1;
+
+        IF EXISTS (SELECT 1 FROM Profesional WHERE Matricula = @Matricula)
+            THROW 50007, 'La matrícula ya está registrada.', 1;
+
+        IF @SucursalId IS NULL
+            OR NOT EXISTS (SELECT 1 FROM Sucursal WHERE Id = @SucursalId AND Activo = 1)
+            THROW 50008, 'La sucursal no existe.', 1;
+
+        IF @Especialidades IS NULL OR LTRIM(RTRIM(@Especialidades)) = ''
+            THROW 50009, 'Tiene que elegir al menos una especialidad.', 1;
+
+        IF EXISTS (
+            SELECT 1
+            FROM STRING_SPLIT(@Especialidades, ',') AS parte
+            WHERE TRY_CAST(LTRIM(RTRIM(parte.[value])) AS INT) IS NULL
+               OR NOT EXISTS (
+                    SELECT 1
+                    FROM Especialidad
+                    WHERE Id = TRY_CAST(LTRIM(RTRIM(parte.[value])) AS INT)
+               )
+        )
+            THROW 50010, 'Hay una especialidad que no existe.', 1;
+    END
+
+    BEGIN TRANSACTION;
+    BEGIN TRY
+        INSERT INTO Usuario (users, Email, Pass, Baja, TipoUsuarioId)
+        VALUES (@Usuario, @Email, @Pass, 0, @TipoUsuarioId);
+
+        DECLARE @NuevoUsuarioId INT = SCOPE_IDENTITY();
+
+        IF @Rol = 'Cliente'
+        BEGIN
+            INSERT INTO Cliente (Nombre, Apellido, DNI, FechaNac, Telefono, UsuarioId)
+            VALUES (@Nombre, @Apellido, @DNI, @FechaNac, @Telefono, @NuevoUsuarioId);
+        END
+        ELSE IF @Rol = 'Profesional'
+        BEGIN
+            INSERT INTO Profesional (Nombre, Apellido, DNI, Matricula, Telefono, SucursalId, UsuarioId)
+            VALUES (@Nombre, @Apellido, @DNI, @Matricula, @Telefono, @SucursalId, @NuevoUsuarioId);
+
+            DECLARE @NuevoProfesionalId INT = SCOPE_IDENTITY();
+
+            INSERT INTO ProfesionalServicio (ProfesionalId, EspecialidadId)
+            SELECT DISTINCT @NuevoProfesionalId, CAST(LTRIM(RTRIM(parte.[value])) AS INT)
+            FROM STRING_SPLIT(@Especialidades, ',') AS parte;
+
+            IF @@ROWCOUNT = 0
+                THROW 50009, 'Tiene que elegir al menos una especialidad.', 1;
+        END
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END
+GO

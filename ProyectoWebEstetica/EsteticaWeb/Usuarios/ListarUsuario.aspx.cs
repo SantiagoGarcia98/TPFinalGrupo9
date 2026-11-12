@@ -11,15 +11,15 @@ namespace EsteticaWeb.Usuarios
     public partial class ListarUsuario : System.Web.UI.Page
     {
 
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarUsuarios(); 
+            CargarUsuarios();
         }
 
         private void CargarUsuarios()
         {
-            dgvUsuarios.DataSource = new DataUsuario().Listar();
+            dgvUsuarios.DataSource = new DataUsuario().Listar("");
             dgvUsuarios.DataBind();
         }
 
