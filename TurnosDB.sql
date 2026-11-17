@@ -1,18 +1,19 @@
-CREATE DATABASE TurnosDB
+CREATE DATABASE TurnosDB;
 GO
 USE TurnosDB;
 GO
 
--- 1. Catálogos
+-- =============================================
+-- 1. CREACIÓN DE TABLAS (CATÁLOGOS Y ENTIDADES)
+-- =============================================
+
 CREATE TABLE Especialidad (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Descripcion VARCHAR(100) NOT NULL,
-    Precio DECIMAL(10,2) NOT NULL -- Precio base sugerido al dar de alta el turno
+    Precio DECIMAL(10,2) NOT NULL, -- Precio base sugerido al dar de alta el turno
+    DuracionMinutos INT NULL,
+    Activo BIT NOT NULL DEFAULT 1
 );
-
--- Le agrego activo a especialidad para poder desactivarlos si fuese necesario 20261117
-  alter table especialidad
-  add Activo bit not null default 1;
 
 CREATE TABLE Sucursal (
     Id INT IDENTITY(1,1) PRIMARY KEY,
@@ -32,7 +33,7 @@ CREATE TABLE TipoUsuario (
     Descripcion VARCHAR(50) NOT NULL -- Administrador, Recepcionista, Cliente, Profesional
 );
 
--- 2. Cuenta de acceso. Administrador y Recepcionista viven solo acá.
+-- Cuenta de acceso. Administrador y Recepcionista viven solo acá.
 CREATE TABLE Usuario (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     users VARCHAR(50) NOT NULL,
@@ -115,86 +116,77 @@ CREATE TABLE Pago (
 );
 GO
 
--- 1. Tipos de Usuario
+-- =============================================
+-- 2. DATOS INICIALES (SEED DATA)
+-- =============================================
+
+-- Tipos de Usuario
 INSERT INTO TipoUsuario (Descripcion) VALUES
 ('Administrador'),
 ('Recepcionista'),
 ('Cliente'),
 ('Profesional');
 
--- 2. Estados del Turno
+-- Estados del Turno
 INSERT INTO TurnoEstado (Descripcion) VALUES
 ('Pendiente'),
 ('Confirmado'),
 ('Cancelado'),
 ('Atendido');
 
--- 3. Especialidades
-INSERT INTO Especialidad (Descripcion, Precio) VALUES
-('Manicura', 15000.00),
-('Perfilado', 30000.00),
-('Lifting', 25000.00);
+-- Especialidades (con precio, duración y estado activo)
+INSERT INTO Especialidad (Descripcion, Precio, DuracionMinutos, Activo) VALUES
+('Manicura', 15000.00, 90, 1),
+('Perfilado', 30000.00, 30, 1),
+('Lifting', 25000.00, 90, 1);
 
--- 4. Sucursales
+-- Sucursales
 INSERT INTO Sucursal (Nombre, Direccion, Telefono, Activo) VALUES
 ('Casa Central', 'Tigre 2828', '1144556677', 1),
 ('Sucursal Norte', 'Ruta 8 Km 40', '1144556688', 1);
 
--- 5. Usuarios: 1 Cliente, 2 y 3 Profesionales
-INSERT INTO Usuario (users,Email, Pass, Baja, TipoUsuarioId) VALUES
-('cgonzalez','cgonzalez@estetica.com', 'usu123', 0, 3),
-('jperez', 'jperez@estetica.com','pro123', 0, 4),
-('mgomez','mgomez@estetica.com' ,'pro123', 0, 4),
-('admin', 'admin@estetica.com','admin123', 0, 1),
-('recepionista', 'recep@estetica.com','recep123', 0, 2);
+-- Usuarios: 1 Cliente, 2 y 3 Profesionales, 4 Admin, 5 Recepcionista
+INSERT INTO Usuario (users, Email, Pass, Baja, TipoUsuarioId) VALUES
+('cgonzalez', 'cgonzalez@estetica.com', 'usu123', 0, 3),
+('jperez', 'jperez@estetica.com', 'pro123', 0, 4),
+('mgomez', 'mgomez@estetica.com', 'pro123', 0, 4),
+('admin', 'admin@estetica.com', 'admin123', 0, 1),
+('recepionista', 'recep@estetica.com', 'recep123', 0, 2);
 
--- 6. Cliente vinculado al usuario 1
+-- Cliente vinculado al usuario 1
 INSERT INTO Cliente (Nombre, Apellido, DNI, FechaNac, Telefono, UsuarioId) VALUES
 ('Carlos', 'González', '30123456', '1990-05-15', '1122334455', 1);
 
--- 7. Profesionales vinculados a su usuario y a una sucursal
+-- Profesionales vinculados a su usuario y a una sucursal
 INSERT INTO Profesional (Nombre, Apellido, DNI, Matricula, Telefono, SucursalId, UsuarioId) VALUES
 ('Juan', 'Pérez', '25111222', 'MP-1001', '1133445566', 1, 2),
 ('María', 'Gómez', '27333444', 'MP-1002', '1133445577', 2, 3);
 
--- 8. Servicios que realiza cada profesional
+-- Servicios que realiza cada profesional
 INSERT INTO ProfesionalServicio (ProfesionalId, EspecialidadId) VALUES
 (1, 1),
 (2, 2),
 (2, 3);
 
--- 9. Turno de ejemplo
+-- Turno de ejemplo
 INSERT INTO Turno (ClienteId, FechaTurno, Precio, Observaciones, ProfesionalId, Baja, Abonado, SucursalId, TurnoEstadoId) VALUES
-(
-    1,
-    '2026-11-15 10:30:00',
-    15000.00,
-    'Turno de ejemplo',
-    1,
-    0,
-    0,
-    1,
-    1
-);
+(1, '2026-11-15 10:30:00', 15000.00, 'Turno de ejemplo', 1, 0, 0, 1, 1);
 
--- 10. Servicio incluido en ese turno
+-- Servicio incluido en ese turno
 INSERT INTO TurnoServicio (TurnoId, EspecialidadId, PrecioUnitario) VALUES
 (1, 1, 15000.00);
 
--- 11. Seña del turno. El saldo sigue impago, por eso Abonado quedó en 0.
+-- Seña del turno (el saldo sigue impago, por eso Abonado quedó en 0)
 INSERT INTO Pago (TurnoId, Fecha, Monto, Medio) VALUES
 (1, '2026-11-10 18:00:00', 5000.00, 'Efectivo');
+GO
 
--- 12 stored procedure
+-- =============================================
+-- 3. PROCEDIMIENTOS ALMACENADOS
+-- =============================================
 
-USE [TurnosDB]
-GO
-/****** Objeto: StoredProcedure [dbo].[storedListarClientes] Fecha de script: 12/11/2026 00:42:07 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER   PROCEDURE [dbo].[storedListarClientes]
+-- Listar Clientes
+CREATE OR ALTER PROCEDURE storedListarClientes
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -209,14 +201,12 @@ BEGIN
         u.email,
         c.UsuarioId
     FROM Cliente c
-    inner join Usuario u
-    on c.UsuarioId = u.Id
-    where u.TipoUsuarioId = 3
-    ORDER BY Apellido ASC, Nombre ASC;
-END
+    INNER JOIN Usuario u ON c.UsuarioId = u.Id
+    ORDER BY c.Apellido ASC, c.Nombre ASC;
+END;
+GO
 
-
--- 13 storedAgregarCliente
+-- Agregar Cliente (Alta simple)
 CREATE OR ALTER PROCEDURE storedAgregarCliente
     @Nombre VARCHAR(50),
     @Apellido VARCHAR(50),
@@ -226,34 +216,32 @@ CREATE OR ALTER PROCEDURE storedAgregarCliente
     @Email VARCHAR(100),
     @Usuario VARCHAR(50),
     @Pass VARCHAR(100),
-    @TipoUsuarioId INT = 3 -- ID por defecto para Cliente en la tabla Usuario
+    @TipoUsuarioId INT = 3 -- ID por defecto para Cliente
 AS
 BEGIN
     SET NOCOUNT ON;
     
     BEGIN TRANSACTION;
     BEGIN TRY
-        -- 1. Insertar el Usuario
         INSERT INTO Usuario (users, Email, Pass, Baja, TipoUsuarioId)
         VALUES (@Usuario, @Email, @Pass, 0, @TipoUsuarioId);
 
-        -- Obtener el ID del Usuario recién insertado
         DECLARE @NuevoUsuarioId INT = SCOPE_IDENTITY();
 
-        -- 2. Insertar el Cliente vinculado al Usuario
         INSERT INTO Cliente (Nombre, Apellido, DNI, FechaNac, Telefono, UsuarioId)
         VALUES (@Nombre, @Apellido, @DNI, @FechaNac, @Telefono, @NuevoUsuarioId);
 
         COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
-        ROLLBACK TRANSACTION;
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
         THROW;
     END CATCH
-END
+END;
 GO
 
--- 14 storedAgregarUsuario
+-- Agregar Usuario (Alta general por rol: Cliente, Profesional, Admin, Recepcionista)
 CREATE OR ALTER PROCEDURE storedAgregarUsuario
     @Usuario VARCHAR(50),
     @Email VARCHAR(150),
@@ -362,61 +350,39 @@ BEGIN
             ROLLBACK TRANSACTION;
         THROW;
     END CATCH
-END
-GO
-
--- 15 storedListarTurnosPorCliente
-CREATE OR ALTER PROCEDURE storedListarTurnosPorCliente
-    @UsuarioId INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    SELECT
-        T.Id,
-        CAST(T.FechaTurno AS DATE) AS Fecha,
-        CONVERT(VARCHAR(5), T.FechaTurno, 108) AS Horario,
-        E.Descripcion AS Tratamiento,
-        P.Nombre + ' ' + P.Apellido AS Profesional,
-        TE.Descripcion AS Estado
-    FROM Turno T
-    INNER JOIN Cliente C
-        ON T.ClienteId = C.Id
-    INNER JOIN Profesional P
-        ON T.ProfesionalId = P.Id
-    INNER JOIN TurnoEstado TE
-        ON T.TurnoEstadoId = TE.Id
-    INNER JOIN TurnoServicio TS
-        ON T.Id = TS.TurnoId
-    INNER JOIN Especialidad E
-        ON TS.EspecialidadId = E.Id
-    WHERE C.UsuarioId = @UsuarioId
-      AND T.Baja = 0
-    ORDER BY T.FechaTurno DESC;
 END;
 GO
 
-CREATE OR ALTER PROCEDURE storedListarClientes
+-- Modificar Cliente
+CREATE OR ALTER PROCEDURE storedModificarCliente
+    @Id INT,
+    @Nombre VARCHAR(100),
+    @Apellido VARCHAR(100),
+    @DNI VARCHAR(20),
+    @FechaNac DATE,
+    @Telefono VARCHAR(30),
+    @Email VARCHAR(150)
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT 
-        c.Id,
-        c.Nombre,
-        c.Apellido,
-        c.DNI,
-        c.FechaNac,
-        c.Telefono,
-        u.email,
-        c.UsuarioId
-    FROM Cliente c
-    inner join Usuario u
-    on c.UsuarioId = u.Id
-    ORDER BY Apellido ASC, Nombre ASC;
-END
+    UPDATE Cliente
+    SET 
+        Nombre = @Nombre,
+        Apellido = @Apellido,
+        DNI = @DNI,
+        FechaNac = @FechaNac,
+        Telefono = @Telefono
+    WHERE Id = @Id;
+
+    UPDATE Usuario
+    SET 
+        email = @Email
+    WHERE Id = (SELECT UsuarioId FROM Cliente WHERE Id = @Id);
+END;
 GO
 
+-- Listar todos los Turnos activos
 CREATE OR ALTER PROCEDURE storedListarTurnos
 AS
 BEGIN
@@ -438,36 +404,216 @@ BEGIN
     INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id
     WHERE T.Baja = 0
     ORDER BY T.FechaTurno DESC;
-END
+END;
 GO
 
-CREATE OR ALTER PROCEDURE storedModificarCliente
-    @Id INT,
-    @Nombre VARCHAR(100),
-    @Apellido VARCHAR(100),
-    @DNI VARCHAR(20),
-    @FechaNac DATE,
-    @Telefono VARCHAR(30),
-    @Email VARCHAR(150)
+-- Listar Turnos por Cliente conectado
+CREATE OR ALTER PROCEDURE storedListarTurnosPorCliente
+    @UsuarioId INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- 1. Actualizamos los datos personales en la tabla Cliente
-    UPDATE Cliente
-    SET 
-        Nombre = @Nombre,
-        Apellido = @Apellido,
-        DNI = @DNI,
-        FechaNac = @FechaNac,
-        Telefono = @Telefono
-    WHERE Id = @Id;
-
-    -- 2. Actualizamos el email en la tabla Usuario asociada
-    UPDATE Usuario
-    SET 
-        email = @Email
-    WHERE Id = (SELECT UsuarioId FROM Cliente WHERE Id = @Id);
-END
+    SELECT
+        T.Id,
+        CAST(T.FechaTurno AS DATE) AS Fecha,
+        CONVERT(VARCHAR(5), T.FechaTurno, 108) AS Horario,
+        E.Descripcion AS Tratamiento,
+        P.Nombre + ' ' + P.Apellido AS Profesional,
+        TE.Descripcion AS Estado
+    FROM Turno T
+    INNER JOIN Cliente C ON T.ClienteId = C.Id
+    INNER JOIN Profesional P ON T.ProfesionalId = P.Id
+    INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id
+    INNER JOIN TurnoServicio TS ON TS.TurnoId = T.Id
+    INNER JOIN Especialidad E ON TS.EspecialidadId = E.Id
+    WHERE C.UsuarioId = @UsuarioId
+      AND T.Baja = 0
+    ORDER BY T.FechaTurno DESC;
+END;
 GO
 
+-- Reservar Turno (con validación de horarios, solapamientos y bloqueo transaccional)
+CREATE OR ALTER PROCEDURE storedReservarTurno
+    @UsuarioId INT,
+    @EspecialidadId INT,
+    @ProfesionalId INT,
+    @FechaTurno DATETIME
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Cliente
+        WHERE UsuarioId = @UsuarioId
+    )
+    BEGIN
+        RAISERROR('No se encontró el cliente asociado al usuario.', 16, 1);
+        RETURN;
+    END;
+
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Especialidad E
+        INNER JOIN ProfesionalServicio PS
+            ON E.Id = PS.EspecialidadId
+        WHERE E.Id = @EspecialidadId
+          AND PS.ProfesionalId = @ProfesionalId
+          AND E.DuracionMinutos > 0
+    )
+    BEGIN
+        RAISERROR('El profesional no realiza este tratamiento o falta configurar su duración.', 16, 1);
+        RETURN;
+    END;
+
+    IF @FechaTurno <= GETDATE()
+    BEGIN
+        RAISERROR('No se pueden reservar turnos en fechas u horas pasadas.', 16, 1);
+        RETURN;
+    END;
+
+    IF DATEDIFF(DAY, '19000101', CAST(@FechaTurno AS DATE)) % 7 IN (5, 6)
+    BEGIN
+        RAISERROR('No se pueden reservar turnos los fines de semana.', 16, 1);
+        RETURN;
+    END;
+
+    DECLARE @DuracionMinutos INT;
+
+    SELECT @DuracionMinutos = DuracionMinutos
+    FROM Especialidad
+    WHERE Id = @EspecialidadId;
+
+    IF CAST(@FechaTurno AS TIME) < '09:00'
+       OR DATEADD(MINUTE, @DuracionMinutos, @FechaTurno) >
+          DATEADD(HOUR, 19, CAST(CAST(@FechaTurno AS DATE) AS DATETIME))
+    BEGIN
+        RAISERROR('El turno debe comenzar a partir de las 9:00 y finalizar antes de las 19:00.', 16, 1);
+        RETURN;
+    END;
+
+    IF DATEPART(MINUTE, @FechaTurno) NOT IN (0, 30)
+       OR DATEPART(SECOND, @FechaTurno) <> 0
+       OR DATEPART(MILLISECOND, @FechaTurno) <> 0
+    BEGIN
+        RAISERROR('Los turnos deben comenzar cada 30 minutos.', 16, 1);
+        RETURN;
+    END;
+
+    DECLARE @ClienteId INT;
+    DECLARE @SucursalId INT;
+    DECLARE @Precio DECIMAL(10,2);
+    DECLARE @EstadoPendienteId INT;
+
+    SELECT @ClienteId = Id
+    FROM Cliente
+    WHERE UsuarioId = @UsuarioId;
+
+    SELECT @SucursalId = SucursalId
+    FROM Profesional
+    WHERE Id = @ProfesionalId;
+
+    SELECT @Precio = Precio
+    FROM Especialidad
+    WHERE Id = @EspecialidadId;
+
+    SELECT @EstadoPendienteId = Id
+    FROM TurnoEstado
+    WHERE Descripcion = 'Pendiente';
+
+    IF @ClienteId IS NULL
+       OR @SucursalId IS NULL
+       OR @Precio IS NULL
+       OR @EstadoPendienteId IS NULL
+    BEGIN
+        RAISERROR('Faltan datos para registrar el turno.', 16, 1);
+        RETURN;
+    END;
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        DECLARE @RecursoBloqueo NVARCHAR(100);
+        DECLARE @ResultadoBloqueo INT;
+
+        SET @RecursoBloqueo =
+            'Turno_' + CAST(@ProfesionalId AS VARCHAR(20))
+            + '_' + CONVERT(VARCHAR(8), @FechaTurno, 112);
+
+        EXEC @ResultadoBloqueo = sp_getapplock
+            @Resource = @RecursoBloqueo,
+            @LockMode = 'Exclusive',
+            @LockOwner = 'Transaction',
+            @LockTimeout = 10000;
+
+        IF @ResultadoBloqueo < 0
+        BEGIN
+            RAISERROR('No se pudo reservar el horario. Intentá nuevamente.', 16, 1);
+        END;
+
+        IF EXISTS (
+            SELECT 1
+            FROM Turno T
+            INNER JOIN TurnoServicio TS ON T.Id = TS.TurnoId
+            INNER JOIN Especialidad E ON TS.EspecialidadId = E.Id
+            INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id
+            WHERE T.ProfesionalId = @ProfesionalId
+              AND T.Baja = 0
+              AND TE.Descripcion <> 'Cancelado'
+              AND T.FechaTurno >= CAST(@FechaTurno AS DATE)
+              AND T.FechaTurno < DATEADD(DAY, 1, CAST(@FechaTurno AS DATE))
+            GROUP BY T.Id, T.FechaTurno
+            HAVING @FechaTurno < DATEADD(MINUTE, SUM(E.DuracionMinutos), T.FechaTurno)
+               AND DATEADD(MINUTE, @DuracionMinutos, @FechaTurno) > T.FechaTurno
+        )
+        BEGIN
+            RAISERROR('El profesional ya tiene un turno reservado en ese horario.', 16, 1);
+        END;
+
+        INSERT INTO Turno (
+            ClienteId,
+            FechaTurno,
+            Precio,
+            ProfesionalId,
+            SucursalId,
+            TurnoEstadoId,
+            Baja,
+            Abonado
+        )
+        VALUES (
+            @ClienteId,
+            @FechaTurno,
+            @Precio,
+            @ProfesionalId,
+            @SucursalId,
+            @EstadoPendienteId,
+            0,
+            0
+        );
+
+        DECLARE @TurnoId INT;
+        SET @TurnoId = SCOPE_IDENTITY();
+
+        INSERT INTO TurnoServicio (
+            TurnoId,
+            EspecialidadId,
+            PrecioUnitario
+        )
+        VALUES (
+            @TurnoId,
+            @EspecialidadId,
+            @Precio
+        );
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        DECLARE @MensajeError NVARCHAR(4000) = ERROR_MESSAGE();
+        RAISERROR('%s', 16, 1, @MensajeError);
+    END CATCH;
+END;
+GO

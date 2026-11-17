@@ -14,12 +14,12 @@ namespace EsteticaWeb
             {
                 dominio.Usuario usuario = Session["usuario"] as dominio.Usuario;
 
-                if (usuario.TipoUsuarioId !=2 && usuario.TipoUsuarioId != 3)
-                {
-                    Response.Redirect("~/Login.aspx", false);
-                    Context.ApplicationInstance.CompleteRequest();
-                    return;
-                }
+                //if (usuario.TipoUsuarioId !=2 && usuario.TipoUsuarioId != 3)
+                //{
+                //    Response.Redirect("~/Login.aspx", false);
+                //    Context.ApplicationInstance.CompleteRequest();
+                //    return;
+                //}
 
                 if (!IsPostBack)
                 {
