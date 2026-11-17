@@ -10,6 +10,10 @@ CREATE TABLE Especialidad (
     Precio DECIMAL(10,2) NOT NULL -- Precio base sugerido al dar de alta el turno
 );
 
+-- Le agrego activo a especialidad para poder desactivarlos si fuese necesario 20261117
+  alter table especialidad
+  add Activo bit not null default 1;
+
 CREATE TABLE Sucursal (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
@@ -466,3 +470,4 @@ BEGIN
     WHERE Id = (SELECT UsuarioId FROM Cliente WHERE Id = @Id);
 END
 GO
+

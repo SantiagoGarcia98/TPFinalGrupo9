@@ -25,9 +25,9 @@
                     <h2 class="h5">Servicios</h2>
                     <p class="text-muted">Crear, consultar y modificar servicios del sistema.</p>
                     <div>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Ver servicios</a>
-                        <a href="#" class="btn btn-primary btn-sm me-2">Nuevo servicio</a>
-                        <a href="#" class="btn btn-primary btn-sm me-2">Modificar servicio</a>
+                        <a href="Servicios/ListarEspecialidades.aspx" class="btn btn-outline-primary btn-sm">Ver servicios</a>
+                        <a href="Servicios/AgregarEspecialidad.aspx" class="btn btn-primary btn-sm me-2">Nuevo servicio</a>
+
 
                     </div>
                 </div>

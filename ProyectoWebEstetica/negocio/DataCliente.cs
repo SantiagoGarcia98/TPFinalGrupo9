@@ -237,5 +237,26 @@ namespace negocio
             }
 
         }
+
+        public static void modificarClienteAdmin(string id , String Nombre, String apellido, String dni, String telefono)
+        {
+            AccesoSQL datos = new AccesoSQL();
+            try
+            {
+                datos.setConsulta("update cliente set Nombre = ISNULL(@Nombre,Nombre),apellido = ISNULL(@apellido,apellido),dni = ISNULL(@dni,dni),telefono = ISNULL(@telefono,telefono) where usuarioId=@id");
+                datos.setParametro("@id", int.Parse(id));
+                datos.setParametro("@nombre", string.IsNullOrWhiteSpace(Nombre) ? (object)DBNull.Value : Nombre);
+                datos.setParametro("@apellido", string.IsNullOrWhiteSpace(apellido) ? (object)DBNull.Value : apellido);
+                datos.setParametro("@dni", string.IsNullOrWhiteSpace(dni) ? (object)DBNull.Value : dni);
+                datos.setParametro("@telefono", string.IsNullOrWhiteSpace(telefono) ? (object)DBNull.Value : telefono);
+                datos.ejecutarAccion();
+
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

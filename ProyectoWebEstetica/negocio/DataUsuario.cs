@@ -95,7 +95,7 @@ namespace negocio
 
             try
             {
-                datos.setConsulta("SELECT U.Id, U.users, U.Email, U.Pass, U.Baja, U.TipoUsuarioId FROM Usuario U  WHERE U.Id = @id");
+                datos.setConsulta("SELECT U.Id, U.users, U.Email, U.Pass, U.Baja, U.TipoUsuarioId, T.descripcion as rol FROM Usuario U INNER JOIN TipoUsuario T ON T.Id = U.TipoUsuarioId  WHERE U.Id = @id");
                 datos.setParametro("@id", int.Parse(id));
                 datos.ConsultaBD();
 
@@ -108,7 +108,7 @@ namespace negocio
                     usuario.Pass = (string)datos.Lector["Pass"];
                     usuario.Baja = (bool)datos.Lector["Baja"];
                     usuario.TipoUsuarioId = (int)datos.Lector["TipoUsuarioId"];
-
+                    usuario.Rol = (string)datos.Lector["rol"];
                     lista.Add(usuario);
                 }
 
@@ -156,5 +156,53 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public Usuario UsuarioAMod(string id)
+        {
+            AccesoSQL datos = new AccesoSQL();
+            try
+            {
+                datos.setConsulta("Select * from usuario where id = @id");
+                datos.setParametro("@id", id);
+
+                datos.ConsultaBD();
+
+                if (!datos.Lector.Read())
+                {
+                    return null;
+                }
+
+                Usuario modificar = new Usuario();
+
+                modificar.Id = (int)datos.Lector["Id"];
+                modificar.User = (string)datos.Lector["users"];
+                modificar.Email = (string)datos.Lector["Email"];
+                modificar.Pass = (string)datos.Lector["Pass"];
+                modificar.Baja = (bool)datos.Lector["Baja"];
+                modificar.TipoUsuarioId = (int)datos.Lector["TipoUsuarioId"];
+
+                return modificar;
+            }
+            finally {
+                datos.cerrarConexion();
+            }
+
+        }
+        public static void modificarUsuario(string id, string pass, string baja, string tipoUsuarioId)
+        {
+            AccesoSQL datos = new AccesoSQL();
+            try
+            {
+                datos.setConsulta("UPDATE Usuario SET Pass = ISNULL(@pass, Pass), Baja = ISNULL(@baja, Baja), TipoUsuarioId = ISNULL(@tipo, TipoUsuarioId) WHERE Id = @id");
+                datos.setParametro("@id", int.Parse(id));
+                datos.setParametro("@pass", string.IsNullOrWhiteSpace(pass) ? (object)DBNull.Value : pass);
+                datos.setParametro("@baja", string.IsNullOrWhiteSpace(baja) ? (object)DBNull.Value : bool.Parse(baja));
+                datos.setParametro("@tipo", string.IsNullOrWhiteSpace(tipoUsuarioId) ? (object)DBNull.Value : int.Parse(tipoUsuarioId));
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        } 
     }
 }

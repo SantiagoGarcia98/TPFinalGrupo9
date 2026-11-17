@@ -77,6 +77,9 @@
     <Content Include="Recursos\Imagenes\electrodos.jpg" />
     <Content Include="Recursos\Imagenes\lifting.jpg" />
     <Content Include="Recursos\Imagenes\manicura.jpg" />
+    <Content Include="Servicios\AgregarEspecialidad.aspx" />
+    <Content Include="Servicios\ListarEspecialidades.aspx" />
+    <Content Include="Servicios\ModificarEspecialidades.aspx" />
     <Content Include="SolicitudTurno.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListaTurnos.aspx" />
@@ -170,6 +173,27 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\AgregarEspecialidad.aspx.cs">
+      <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios\AgregarEspecialidad.aspx.designer.cs">
+      <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\ListarEspecialidades.aspx.cs">
+      <DependentUpon>ListarEspecialidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios\ListarEspecialidades.aspx.designer.cs">
+      <DependentUpon>ListarEspecialidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\ModificarEspecialidades.aspx.cs">
+      <DependentUpon>ModificarEspecialidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicios\ModificarEspecialidades.aspx.designer.cs">
+      <DependentUpon>ModificarEspecialidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="SolicitudTurno.aspx.cs">
       <DependentUpon>SolicitudTurno.aspx</DependentUpon>

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 class="h3 mb-3">Lista Usuarios</h1>
+    
     <h2 class="h4 mb-4">Listado de usuarios registrados</h2>
     <div class="d-flex mb-3">
         <asp:TextBox ID="txtFiltro" runat="server" CssClass="form-control me-2" Style="max-width: 320px" placeholder="Buscar usuario, email o rol" />

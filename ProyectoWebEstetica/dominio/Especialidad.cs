@@ -11,6 +11,8 @@ namespace dominio
     {
         public int IdEspecialidad { get; set; }
         public string Descripcion { get; set; }
-        public int Precio { get; set; }
+        public decimal Precio { get; set; }
+        public bool Activo { get; set; }
+        public int duracionMinutos { get; set; }
     }
 }

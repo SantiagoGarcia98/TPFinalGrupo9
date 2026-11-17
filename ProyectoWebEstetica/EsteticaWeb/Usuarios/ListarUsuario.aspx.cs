@@ -14,12 +14,12 @@ namespace EsteticaWeb.Usuarios
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarUsuarios();
+            CargarUsuarios(txtFiltro.Text);
         }
 
-        private void CargarUsuarios()
+        private void CargarUsuarios(string filtro)
         {
-            dgvUsuarios.DataSource = new DataUsuario().Listar("");
+            dgvUsuarios.DataSource = new DataUsuario().Listar(filtro);
             dgvUsuarios.DataBind();
         }
 
