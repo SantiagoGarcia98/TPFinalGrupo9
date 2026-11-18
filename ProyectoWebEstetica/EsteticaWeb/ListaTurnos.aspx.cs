@@ -17,5 +17,12 @@ namespace EsteticaWeb
             dgvTurnos.DataBind();
 
         }
+        protected void dgvTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //int idTurno = Convert.ToInt32(dgvTurnos.SelectedDataKey.Value);
+            //Response.Redirect("ModificarTurno.aspx?id=" + idTurno);
+            string id = dgvTurnos.SelectedDataKey.Value.ToString();
+            Response.Redirect("ModificarTurnoRecepcion.aspx?id=" + id);
+        }
     }
 }

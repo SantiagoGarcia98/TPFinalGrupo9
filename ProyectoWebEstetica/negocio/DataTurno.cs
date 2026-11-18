@@ -132,6 +132,81 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }     
+        public void ModificarTurno(Turno mod)
+        {
+            AccesoSQL data = new AccesoSQL();
+
+            try
+            {
+                data.setearprocedimiento("storedModificarTurno");
+
+                data.setParametro("@Id", mod.id);
+                data.setParametro("@ClienteId", mod.cliente.IdCliente);
+                data.setParametro("@FechaTurno", mod.fecha);
+                data.setParametro("@Precio", mod.precio);
+                data.setParametro("@Observaciones", (object)mod.observaciones ?? DBNull.Value);
+                data.setParametro("@ProfesionalId", mod.Profesional.IdProfesional);
+                data.setParametro("@Baja", mod.Baja);
+                data.setParametro("@Abonado", mod.Abonado);
+                data.setParametro("@SucursalId", mod.Sucursal.IdSucursal);
+                data.setParametro("@TurnoEstadoId", mod.Estado.Id);
+
+                data.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.cerrarConexion();
+            }
+        }
+
+
+        public Turno ObtenerPorId(int id)
+        {
+            AccesoSQL data = new AccesoSQL();
+            Turno turno = null;
+
+            try
+            {
+                data.setearprocedimiento("storedObtenerTurnoPorId");
+                data.setParametro("@Id", id);
+                data.ConsultaBD();
+
+                if (data.Lector.Read())
+                {
+                    turno = new Turno();
+                    turno.id = (int)data.Lector["Id"];
+                    turno.fecha = (DateTime)data.Lector["FechaTurno"];
+                    turno.precio = (decimal)data.Lector["Precio"];
+                    turno.observaciones = data.Lector["Observaciones"] != DBNull.Value
+                        ? data.Lector["Observaciones"].ToString()
+                        : "";
+                    turno.Baja = (bool)data.Lector["Baja"];
+                    turno.Abonado = (bool)data.Lector["Abonado"];
+
+                    turno.cliente.IdCliente = (int)data.Lector["ClienteId"];
+                    turno.Profesional.IdProfesional = (int)data.Lector["ProfesionalId"];
+                    turno.Sucursal.IdSucursal = (int)data.Lector["SucursalId"];
+                    turno.Estado.Id = (int)data.Lector["TurnoEstadoId"];
+
+                    if (data.Lector["EspecialidadId"] != DBNull.Value)
+                        turno.Especialidad.IdEspecialidad = (int)data.Lector["EspecialidadId"];
+                }
+
+                return turno;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.cerrarConexion();
+            }
         }
     }
 }
