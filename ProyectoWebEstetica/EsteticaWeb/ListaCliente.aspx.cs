@@ -22,5 +22,11 @@ namespace EsteticaWeb
             string id = dgvclientes.SelectedDataKey.Value.ToString();
             Response.Redirect("ModificarCliente.aspx?id="+id);
         }
+
+        protected void Btnvolver2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Recepcion.aspx");
+
+        }
     }
 }

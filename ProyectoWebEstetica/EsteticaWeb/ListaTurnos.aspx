@@ -4,29 +4,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <%-- <asp:GridView runat="server" ID="dgvTurnos" AutoGenerateColumns="false"
-        CssClass="table table-hover mb-0" GridLines="None"
-        DataKeyNames="id"
-        OnSelectedIndexChanged="dgvTurnos_SelectedIndexChanged">
-        <Columns>
-            <asp:BoundField HeaderText="Fecha" DataField="fecha" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
-            <asp:BoundField HeaderText="Precio" DataField="precio" DataFormatString="{0:C}" />
-            <asp:BoundField HeaderText="Cliente" DataField="cliente.Nombre" />
-            <asp:BoundField HeaderText="Profesional" DataField="Profesional.Nombre" />
-            <asp:BoundField HeaderText="Sucursal" DataField="Sucursal.Nombre" />
-            <asp:CommandField HeaderText="Modificar" ShowSelectButton="true" SelectText="Modificar" />
-        </Columns>
-    </asp:GridView>--%>
+ 
 
     <div class="container-fluid py-5 px-4">
+        <asp:Button ID="BtnVolver" runat="server" Text="Panel Principal" OnClick="BtnVolver_Click" cssclass="btn btn-secondary"/>
 
         <!-- Encabezado y botón de alta -->
         <div class="d-flex justify-content-between align-items-center mx-auto mb-4" style="max-width: 1300px;">
             <h2 class="fw-bold mb-0">Listado de Turnos</h2>
            
         </div>
-
-        <!-- Tarjeta contenedora -->
+      
         <div class="card border rounded shadow-sm overflow-hidden mx-auto" style="max-width: 1300px;">
             <div class="table-responsive">
                 <asp:GridView runat="server" ID="dgvTurnos" AutoGenerateColumns="false"
@@ -63,8 +51,8 @@
                     </Columns>
                 </asp:GridView>
             </div>
-        </div>
-
+            
+        </div>              
     </div>
 
 </asp:Content>

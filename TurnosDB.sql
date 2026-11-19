@@ -617,3 +617,127 @@ BEGIN
     END CATCH;
 END;
 GO
+
+SELECT * 
+FROM turno
+
+CREATE PROCEDURE storedModificarTurno
+    @Id INT,
+    @ClienteId INT,
+    @FechaTurno DATETIME,
+    @Precio DECIMAL(10,2),
+    @Observaciones VARCHAR(500) = NULL,
+    @ProfesionalId INT,
+    @Baja BIT,
+    @Abonado BIT,
+    @SucursalId INT,
+    @TurnoEstadoId INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Turno
+    SET 
+        ClienteId = @ClienteId,
+        FechaTurno = @FechaTurno,
+        Precio = @Precio,
+        Observaciones = @Observaciones,
+        ProfesionalId = @ProfesionalId,
+        Baja = @Baja,
+        Abonado = @Abonado,
+        SucursalId = @SucursalId,
+        TurnoEstadoId = @TurnoEstadoId
+    WHERE Id = @Id;
+END;
+GO
+
+CREATE  PROCEDURE storedObtenerTurnoPorId
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        T.Id,
+        T.ClienteId,
+        T.FechaTurno,
+        T.Precio,
+        T.Observaciones,
+        T.ProfesionalId,
+        T.Baja,
+        T.Abonado,
+        T.SucursalId,
+        T.TurnoEstadoId,
+        TS.EspecialidadId
+    FROM Turno T
+    LEFT JOIN TurnoServicio TS ON T.Id = TS.TurnoId
+    WHERE T.Id = @Id;
+END;
+GO
+
+ ALTER PROCEDURE storedModificarTurno
+    @Id INT,
+    @ClienteId INT,
+    @FechaTurno DATETIME,
+    @Precio DECIMAL(10,2),
+    @Observaciones VARCHAR(500) = NULL,
+    @ProfesionalId INT,
+    @Baja BIT,
+    @Abonado BIT,
+    @SucursalId INT,
+    @TurnoEstadoId INT,
+    @EspecialidadId INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Turno
+    SET 
+        ClienteId = @ClienteId,
+        FechaTurno = @FechaTurno,
+        Precio = @Precio,
+        Observaciones = @Observaciones,
+        ProfesionalId = @ProfesionalId,
+        Baja = @Baja,
+        Abonado = @Abonado,
+        SucursalId = @SucursalId,
+        TurnoEstadoId = @TurnoEstadoId
+    WHERE Id = @Id;
+
+    IF EXISTS (SELECT 1 FROM TurnoServicio WHERE TurnoId = @Id)
+    BEGIN
+        UPDATE TurnoServicio
+        SET EspecialidadId = @EspecialidadId,
+            PrecioUnitario = @Precio
+        WHERE TurnoId = @Id;
+    END
+    ELSE
+    BEGIN
+        INSERT INTO TurnoServicio (TurnoId, EspecialidadId, PrecioUnitario)
+        VALUES (@Id, @EspecialidadId, @Precio);
+    END
+END;
+GO
+
+
+USE TurnosDB;
+GO
+
+INSERT INTO Turno (ClienteId, FechaTurno, Precio, Observaciones, ProfesionalId, Baja, Abonado, SucursalId, TurnoEstadoId)
+VALUES
+    (1, '2026-11-20 10:00:00', 15000.00, 'Manicura semipermanente', 1, 0, 1, 1, 2),
+    (2, '2026-11-21 11:30:00', 25000.00, 'Perfilado y laminado de cejas', 2, 0, 0, 2, 1),
+    (3, '2026-11-22 15:00:00', 30000.00, 'Lifting de pestañas', 2, 0, 1, 1, 2),
+    (4, '2026-11-23 17:00:00', 35000.00, 'Sesión Babylips hidratación', 1, 0, 0, 2, 1);
+
+-- 5. Asociar cada turno con su tratamiento en TurnoServicio
+INSERT INTO TurnoServicio (TurnoId, EspecialidadId, PrecioUnitario)
+VALUES
+    (1, 3, 15000.00),
+    (2, 4, 25000.00),
+    (3, 2, 30000.00),
+    (4, 1, 35000.00);
+
+
+
+
