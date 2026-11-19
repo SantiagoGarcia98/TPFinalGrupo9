@@ -25,12 +25,45 @@
 </head>
 <body>
     <form id="form1" runat="server">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-black py-2" data-bs-theme="dark">
+           <nav class="navbar navbar-expand-lg navbar-dark py-2"
+     style="background: linear-gradient(90deg, #28133f, #5b2c83);"
+     data-bs-theme="dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand fw-bold" href="Inicio.aspx">Estética Web</a>
-                    <div class="d-flex ms-auto">
-                        <a href="login.aspx" class="btn btn-outline-light btn-sm fw-semibold px-3">Ingresar</a>
-                    </div>
+                    <a class="navbar-brand fw-bold" href="Inicio.aspx">
+    <span style="color: #c58be9; font-size: 26px;">🪷</span>
+    EstetiMed
+    <small class="ms-2 fw-normal" style="font-size: 13px; color: #d8c9e9;">
+        | Medicina Estética
+    </small>
+</a>
+                    <div class="d-flex ms-auto align-items-center">
+
+    <asp:HyperLink
+        ID="lnkIngresar"
+        runat="server"
+        NavigateUrl="~/Login.aspx"
+        CssClass="btn btn-outline-light btn-sm fw-semibold px-3">
+        Ingresar
+    </asp:HyperLink>
+
+    <asp:Label
+        ID="lblUsuarioNavbar"
+        runat="server"
+        CssClass="text-white me-3"
+        Visible="false">
+    </asp:Label>
+
+    <asp:LinkButton
+        ID="btnCerrarSesion"
+        runat="server"
+        CssClass="btn btn-outline-light btn-sm fw-semibold px-3"
+        CausesValidation="false"
+        Visible="false"
+        OnClick="btnCerrarSesion_Click">
+        Cerrar sesión
+    </asp:LinkButton>
+
+</div>
                 </div>
             </nav>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

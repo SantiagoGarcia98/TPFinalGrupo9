@@ -33,6 +33,24 @@ namespace EsteticaWeb
         protected global::System.Web.UI.WebControls.Label lblTituloTurnos;
 
         /// <summary>
+        /// Control txtBuscarTurnos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarTurnos;
+
+        /// <summary>
+        /// Control btnBuscarTurnos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarTurnos;
+
+        /// <summary>
         /// Control gvTurnosCliente.
         /// </summary>
         /// <remarks>

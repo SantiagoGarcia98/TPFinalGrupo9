@@ -32,5 +32,44 @@ namespace EsteticaWeb
         {
 
         }
+
+        protected void btnBuscarTurnos_Click(object sender, EventArgs e)
+        {
+            dominio.Usuario usuario = Session["usuario"] as dominio.Usuario;
+
+            if (usuario == null || usuario.TipoUsuarioId != 3)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
+            negocio.DataTurno datos = new negocio.DataTurno();
+
+            System.Data.DataTable turnos = datos.ListarTurnosPorCliente(usuario.Id);
+
+            string busqueda = txtBuscarTurnos.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(busqueda))
+            {
+                System.Data.DataTable filtrados = turnos.Clone();
+
+                foreach (System.Data.DataRow fila in turnos.Rows)
+                {
+                    string tratamiento = Convert.ToString(fila["Tratamiento"]);
+                    string profesional = Convert.ToString(fila["Profesional"]);
+
+                    if (tratamiento.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        profesional.IndexOf(busqueda, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        filtrados.ImportRow(fila);
+                    }
+                }
+
+                turnos = filtrados;
+            }
+
+            gvTurnosCliente.DataSource = turnos;
+            gvTurnosCliente.DataBind();
+        }
     }
 }
