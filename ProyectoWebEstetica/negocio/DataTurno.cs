@@ -27,6 +27,12 @@ namespace negocio
                     aux.fecha = (DateTime)datos.Lector["FechaTurno"];
                     aux.precio = (decimal)datos.Lector["Precio"];
 
+                    aux.Abonado = (bool)datos.Lector["Abonado"];
+
+                    aux.observaciones = datos.Lector["Observaciones"] != DBNull.Value
+                    ? datos.Lector["Observaciones"].ToString()
+                    : "-";
+
                     aux.cliente = new Cliente();
                     aux.cliente.Nombre = (string)datos.Lector["Cliente"];
 
@@ -35,6 +41,9 @@ namespace negocio
 
                     aux.Sucursal = new Sucursal();
                     aux.Sucursal.Nombre = (string)datos.Lector["Sucursal"];
+
+                    aux.Estado.Descripcion = datos.Lector["Estado"].ToString();
+                    aux.Especialidad.Descripcion = datos.Lector["Tratamiento"].ToString();
 
 
                     list.Add(aux);
@@ -132,7 +141,7 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
-        }     
+        }
         public void ModificarTurno(Turno mod)
         {
             AccesoSQL data = new AccesoSQL();
@@ -151,7 +160,7 @@ namespace negocio
                 data.setParametro("@Abonado", mod.Abonado);
                 data.setParametro("@SucursalId", mod.Sucursal.IdSucursal);
                 data.setParametro("@TurnoEstadoId", mod.Estado.Id);
-
+                data.setParametro("@EspecialidadId", mod.Especialidad.IdEspecialidad);
                 data.ejecutarAccion();
             }
             catch (Exception ex)

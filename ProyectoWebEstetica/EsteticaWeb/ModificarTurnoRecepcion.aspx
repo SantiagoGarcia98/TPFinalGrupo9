@@ -25,7 +25,7 @@
                 <!-- Tratamiento / Especialidad -->
                 <div class="col-md-6">
                     <asp:Label ID="lblTratamiento" runat="server" CssClass="form-label fw-bold" Text="Tratamiento:"></asp:Label>
-                    <asp:DropDownList ID="ddlTratamiento" runat="server" CssClass="form-select" AutoPostBack="true"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlTratamiento" runat="server" CssClass="form-select" AutoPostBack="false"></asp:DropDownList>
                 </div>
 
                 <!-- Profesional -->
