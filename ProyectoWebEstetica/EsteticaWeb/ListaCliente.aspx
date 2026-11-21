@@ -14,8 +14,9 @@
             <div class="row">
                 <div class="col-3">
                     <div class="mb-3">
-                        <asp:Label Text="CAMPO" ID="ddlcampo" runat="server" CssClass="fw-bold" />
-                        <asp:DropDownList runat="server" CssClass="form-control">
+                        <asp:Label Text="Campo"  runat="server" CssClass="fw-bold" />
+                        <asp:DropDownList runat="server" ID="ddlcampo" CssClass="form-control"
+                            autopostback="true" OnTextChanged= "ddlcampo_TextChanged"  >
 
                             <asp:ListItem Text="Nombre" />
                             <asp:ListItem Text="Email" />
@@ -27,13 +28,14 @@
                 </div>
                 <div class="col-3">
                     <div class="mb-3">
-                        <asp:Label Text="FILTRO" runat="server" CssClass="fw-bold" />
-                        <asp:TextBox runat="server" ID="txtFiltro" CssClass="form-control" />
+                        <asp:Label Text="Filtro" runat="server" CssClass="fw-bold" />
+                        <asp:TextBox runat="server" id="txtFiltro" CssClass="form-control"
+                            autopostback="true" OnTextChanged="txtFiltro_TextChanged"  />
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="mb-3">
-                        <asp:Label Text="ESTADO" ID="txtEstado" runat="server" CssClass="fw-bold" />
+                        <asp:Label Text="Estado" ID="txtEstado" runat="server" CssClass="fw-bold" />
                         <asp:DropDownList runat="server" ID="dllEstado" CssClass="form-control">
                             <asp:ListItem Text="Activo" />
                             <asp:ListItem Text="Inactivo" />
