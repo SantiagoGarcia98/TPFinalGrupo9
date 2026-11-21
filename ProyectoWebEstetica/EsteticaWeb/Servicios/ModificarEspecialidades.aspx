@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container my-5">
         <div class="bg-white border rounded-3 shadow-sm p-4 mx-auto" style="max-width: 640px;">
-            <h1 class="h3 mb-3">Modificar Usuario</h1>
-            <h2 class="h4 mb-4">Listado de usuarios registrados</h2>
+            <h1 class="h3 mb-3">Modificar Especialidad</h1>
+            <h2 class="h4 mb-4">Listado de Especialidades registrados</h2>
             <asp:GridView ID="dgvUsuarios" runat="server" CssClass="table" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />

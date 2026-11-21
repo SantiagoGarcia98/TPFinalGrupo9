@@ -232,7 +232,7 @@
             </div>
 
             <asp:Panel ID="pnlBotonRegistro" runat="server" CssClass="text-start mt-4">
-                <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger d-block mb-2 fw-semibold"></asp:Label>
+                <asp:Label ID="lblMensaje" runat="server" CssClass=" d-block mb-2 fw-semibold"></asp:Label>
                 <div class="d-flex align-items-center gap-3">
                     <asp:Button ID="btnRegistrarse" runat="server" OnClick="btnRegistrarse_Click" CausesValidation="true" Text="Registrarse" CssClass="btn btn-primary px-4" />
                     <asp:HyperLink ID="lnkVolverMenu" runat="server" CssClass="btn btn-outline-secondary">Volver al menú</asp:HyperLink>

@@ -11,5 +11,9 @@ namespace dominio
         public int IdSucursal { get; set; }
         public string Direccion { get; set; }
         public string Nombre { get; set; }
+        public string Telefono { get; set; }
+
+        public bool? Activo { get; set; }
+
     }
 }
