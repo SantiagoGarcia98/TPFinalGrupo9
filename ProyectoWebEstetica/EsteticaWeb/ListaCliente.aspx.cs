@@ -28,5 +28,12 @@ namespace EsteticaWeb
             Response.Redirect("Recepcion.aspx");
 
         }
+
+        protected void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtFiltro.Text = string.Empty;
+  
+        }
     }
+
 }

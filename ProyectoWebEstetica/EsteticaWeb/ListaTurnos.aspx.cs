@@ -29,5 +29,11 @@ namespace EsteticaWeb
         {
             Response.Redirect("Recepcion.aspx");
         }
+
+        protected void BtnLimpiart_Click(object sender, EventArgs e)
+        {
+            txtFiltrot.Text = string.Empty;
+
+        }
     }
 }
