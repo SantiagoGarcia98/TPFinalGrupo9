@@ -217,5 +217,38 @@ namespace negocio
                 data.cerrarConexion();
             }
         }
+
+        public Dictionary<string, int> contarTurnosxEstado()
+        {
+            Dictionary<string, int> conteo = new Dictionary<string, int>();
+            conteo["Pendiente"] = 0;
+            conteo["Confirmado"] = 0;
+            conteo["Cancelado"] = 0;
+            conteo["Atendido"] = 0;
+
+            AccesoSQL datos = new AccesoSQL();
+            try
+            {
+                datos.setConsulta(
+                "SELECT TE.Descripcion AS Etiqueta, COUNT(T.Id) AS Cantidad " +
+                "FROM TurnoEstado TE " +
+                "LEFT JOIN Turno T ON T.TurnoEstadoId = TE.Id AND T.Baja = 0 " +
+                "GROUP BY TE.Id, TE.Descripcion " +
+                "ORDER BY TE.Id");
+                datos.ConsultaBD();
+
+                while (datos.Lector.Read())
+                {
+                    conteo[(string)datos.Lector["Etiqueta"]] = Convert.ToInt32(datos.Lector["Cantidad"]);
+                }
+
+                return conteo;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

@@ -203,6 +203,62 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
-        } 
+        }
+
+        public Dictionary<string, int> ContarPorBaja()
+        {
+            Dictionary<string, int> conteo = new Dictionary<string, int>();
+            conteo["Activos"] = 0;
+            conteo["Inactivos"] = 0;
+
+            AccesoSQL datos = new AccesoSQL();
+            try
+            {
+                datos.setConsulta(
+                    "SELECT CASE WHEN Baja = 0 THEN 'Activos' ELSE 'Inactivos' END AS Etiqueta, COUNT(*) AS Cantidad " +
+                    "FROM Usuario " +
+                    "GROUP BY CASE WHEN Baja = 0 THEN 'Activos' ELSE 'Inactivos' END");
+                datos.ConsultaBD();
+
+                while (datos.Lector.Read())
+                {
+                    conteo[(string)datos.Lector["Etiqueta"]] = Convert.ToInt32(datos.Lector["Cantidad"]);
+                }
+
+                return conteo;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public Dictionary<string, int> ContarPorTipo()
+        {
+            Dictionary<string, int> conteo = new Dictionary<string, int>();
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT T.Descripcion AS Etiqueta, COUNT(U.Id) AS Cantidad " +
+                    "FROM TipoUsuario T " +
+                    "LEFT JOIN Usuario U ON U.TipoUsuarioId = T.Id " +
+                    "GROUP BY T.Id, T.Descripcion " +
+                    "ORDER BY T.Id");
+                datos.ConsultaBD();
+
+                while (datos.Lector.Read())
+                {
+                    conteo[(string)datos.Lector["Etiqueta"]] = Convert.ToInt32(datos.Lector["Cantidad"]);
+                }
+
+                return conteo;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
