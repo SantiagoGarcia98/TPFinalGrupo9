@@ -12,28 +12,27 @@
                 <h2 class="fw-bold mb-0">Listado de Clientes</h2>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <div class="mb-3">
-                        <asp:Label Text="Campo"  runat="server" CssClass="fw-bold" />
+                <div class="col-4">
+                    <div class="mb-4">
+                        <asp:Label Text="Campo" runat="server" CssClass="fw-bold" />
                         <asp:DropDownList runat="server" ID="ddlcampo" CssClass="form-control"
-                            autopostback="true" OnTextChanged= "ddlcampo_TextChanged"  >
-
+                            AutoPostBack="true" OnTextChanged="ddlcampo_TextChanged">
                             <asp:ListItem Text="Nombre" />
+                            <asp:ListItem Text="Apellido" />
                             <asp:ListItem Text="Email" />
                             <asp:ListItem Text="Dni" />
                             <asp:ListItem Text="telefono" />
-
                         </asp:DropDownList>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="mb-3">
+                <div class="col-4">
+                    <div class="mb-4">
                         <asp:Label Text="Filtro" runat="server" CssClass="fw-bold" />
-                        <asp:TextBox runat="server" id="txtFiltro" CssClass="form-control"
-                            autopostback="true" OnTextChanged="txtFiltro_TextChanged"  />
+                        <asp:TextBox runat="server" ID="txtFiltro" CssClass="form-control"
+                            AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" />
                     </div>
                 </div>
-                <div class="col-3">
+                <%--<div class="col-3">
                     <div class="mb-3">
                         <asp:Label Text="Estado" ID="txtEstado" runat="server" CssClass="fw-bold" />
                         <asp:DropDownList runat="server" ID="dllEstado" CssClass="form-control">
@@ -42,9 +41,9 @@
                             <asp:ListItem Text="Todos" />
                         </asp:DropDownList>
                     </div>
-                </div>
+                </div>--%>
                 <div class="col-3 d-flex flex-column justify-content-end align-items-center ">
-                    <div class="mb-3 ">
+                    <div class="mb-4 ">
                         <asp:Button ID="BtnLimpiar" runat="server" CssClass="btn btn-secondary" OnClick="BtnLimpiar_Click" Text="Limpiar" />
                     </div>
                 </div>
@@ -52,7 +51,7 @@
             <div class="card border rounded shadow-sm overflow-hidden mx-auto">
                 <div class="table-responsive">
                     <asp:GridView runat="server" ID="dgvclientes" AutoGenerateColumns="false"
-                        CssClass="table table-hover mb-0" GridLines="None"
+                        CssClass="table table-hover table-striped table-bordered mb-0 tabla-clientes  " GridLines="None"
                         DataKeyNames="IdCliente"
                         OnSelectedIndexChanged="dgvclientes_SelectedIndexChanged">
                         <Columns>

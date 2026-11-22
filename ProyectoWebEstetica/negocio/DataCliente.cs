@@ -111,7 +111,7 @@ namespace negocio
                 datos.setParametro("@FechaNac", nuevo.fechaNac);
                 datos.setParametro("@Telefono", nuevo.Telefono);
                 datos.setParametro("@Email", nuevo.Email);
-                
+
 
                 // Parámetros del Usuario
                 datos.setParametro("@Usuario", usuario);
@@ -172,7 +172,7 @@ namespace negocio
                 datos.setParametro("@FechaNac", mod.fechaNac);
                 datos.setParametro("@Telefono", mod.Telefono);
                 datos.setParametro("@Email", mod.Email);
-          
+
                 // TipoUsuarioId de cliente es 3 
 
                 datos.ejecutarAccion();
@@ -188,7 +188,7 @@ namespace negocio
 
         }
 
-        public static void modificarClienteAdmin(string id , String Nombre, String apellido, String dni, String telefono)
+        public static void modificarClienteAdmin(string id, String Nombre, String apellido, String dni, String telefono)
         {
             AccesoSQL datos = new AccesoSQL();
             try
@@ -223,6 +223,10 @@ namespace negocio
                     return lista
                         .Where(c => c.Nombre != null && c.Nombre.ToLower().Contains(filtrolimpio))
                         .ToList();
+                case "apellido":
+                    return lista
+                        .Where(c => c.Apellido != null && c.Apellido.ToLower().Contains(filtrolimpio))
+                        .ToList();
 
                 case "email":
                     return lista
@@ -243,5 +247,7 @@ namespace negocio
                     return lista;
             }
         }
+
+      
     }
 }

@@ -23,6 +23,8 @@ namespace EsteticaWeb
             DataCliente data = new DataCliente();
             dgvclientes.DataSource = data.ListarClientes();
             dgvclientes.DataBind();
+
+     
         }
         protected void aplicarFiltro()
         {
@@ -32,6 +34,8 @@ namespace EsteticaWeb
 
             dgvclientes.DataSource = data.FiltrarClientes(campo, filtro);
             dgvclientes.DataBind();
+
+      
         }
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {

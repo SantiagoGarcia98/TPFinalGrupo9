@@ -87,7 +87,7 @@
                     </div>
                 </div>
 
-                <div class="col">
+               <%-- <div class="col">
                     <div class="card h-100 bg-dark bg-opacity-75 text-white border-0 rounded-4 shadow">
                         <img src="https://via.placeholder.com/400x200"
                             class="card-img-top rounded-top-4"
@@ -99,7 +99,7 @@
                             <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>
                         </div>
                     </div>
-                </div>
+                </div>--%>
 
             </div>
         </div>
