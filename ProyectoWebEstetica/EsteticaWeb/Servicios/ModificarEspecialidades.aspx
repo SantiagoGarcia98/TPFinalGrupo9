@@ -20,11 +20,21 @@
             <div class="mb-3">
                 <label>Descripcion</label>
                 <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" />
+                <asp:RegularExpressionValidator ID="revDescripcion" runat="server"
+                    ControlToValidate="txtDescripcion"
+                    ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]+$"
+                    ErrorMessage="La descripción solo admite letras y números."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
 
             <div class="mb-3">
                 <label>Precio</label>
                 <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" />
+                <asp:RegularExpressionValidator ID="revPrecio" runat="server"
+                    ControlToValidate="txtPrecio"
+                    ValidationExpression="^\d+([.,]\d{1,2})?$"
+                    ErrorMessage="El precio debe ser un número, con hasta 2 decimales."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
 
             <label>Activo</label>
@@ -37,6 +47,11 @@
             <div class="mb-3">
                 <label>duracionMinutos</label>
                 <asp:TextBox ID="txtDuracion" runat="server" CssClass="form-control" />
+                <asp:RegularExpressionValidator ID="revDuracion" runat="server"
+                    ControlToValidate="txtDuracion"
+                    ValidationExpression="^[1-9]\d{0,2}$"
+                    ErrorMessage="La duración debe ser entre 1 y 999 minutos."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
 
 

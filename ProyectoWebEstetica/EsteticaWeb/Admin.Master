@@ -21,7 +21,7 @@
      style="background: linear-gradient(90deg, #28133f, #5b2c83);"
      data-bs-theme="dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand fw-bold" href="PanelAdmin.aspx">
+                    <a class="navbar-brand fw-bold" href="~/PanelAdmin.aspx" runat="server">
     <span style="color: #c58be9; font-size: 26px;">🪷</span>
     EstetiMed
     <small class="ms-2 fw-normal"

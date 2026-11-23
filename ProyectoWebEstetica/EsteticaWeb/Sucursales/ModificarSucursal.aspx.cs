@@ -27,6 +27,9 @@ namespace EsteticaWeb.Sucursales
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             string id = Request.QueryString["IdSucursal"];
             try
             {

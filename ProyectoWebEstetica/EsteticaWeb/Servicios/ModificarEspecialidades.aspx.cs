@@ -19,6 +19,9 @@ namespace EsteticaWeb.Servicios
 
     protected void btnModificar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             try
             {
                 string id = Request.QueryString["id"];

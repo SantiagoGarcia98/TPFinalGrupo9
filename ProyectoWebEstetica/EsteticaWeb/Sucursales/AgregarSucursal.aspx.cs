@@ -17,6 +17,9 @@ namespace EsteticaWeb.Sucursales
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             try
             {
                 string nombre = txtNombre.Text;

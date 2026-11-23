@@ -20,7 +20,7 @@
     <div class="mb-3">
         <label class="form-label">Tabla a modificar</label>
 
-        <asp:DropDownList ID="ddlTipo" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlTipo_SelectedIndexChanged">
+        <asp:DropDownList ID="ddlTipo" runat="server" CssClass="form-select" AutoPostBack="true" CausesValidation="false" OnSelectedIndexChanged="ddlTipo_SelectedIndexChanged">
             <asp:ListItem Text="Seleccione..." Value="" />
             <asp:ListItem Text="Usuario" Value="Usuario" />
             <asp:ListItem Text="Cliente" Value="Cliente" />
@@ -33,6 +33,11 @@
         <div class="mb-3">
             <label>Pass</label>
             <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" />
+            <asp:RegularExpressionValidator ID="revPass" runat="server"
+                ControlToValidate="txtPass"
+                ValidationExpression="^.{4,50}$"
+                ErrorMessage="La contraseña debe tener entre 4 y 50 caracteres."
+                CssClass="text-danger small" Display="Dynamic" />
         </div>
 
         <label>Baja</label>
@@ -61,21 +66,41 @@
         <div class="mb-3">
             <label>Nombre</label>
             <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
+            <asp:RegularExpressionValidator ID="revNombre" runat="server"
+                ControlToValidate="txtNombre"
+                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                ErrorMessage="El nombre solo admite letras."
+                CssClass="text-danger small" Display="Dynamic" />
         </div>
 
         <div class="mb-3">
             <label>Apellido</label>
             <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" />
+            <asp:RegularExpressionValidator ID="revApellido" runat="server"
+                ControlToValidate="txtApellido"
+                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                ErrorMessage="El apellido solo admite letras."
+                CssClass="text-danger small" Display="Dynamic" />
         </div>
 
         <div class="mb-3">
             <label>DNI</label>
             <asp:TextBox ID="TxtDni" runat="server" CssClass="form-control" />
+            <asp:RegularExpressionValidator ID="revDni" runat="server"
+                ControlToValidate="TxtDni"
+                ValidationExpression="^\d{7,8}$"
+                ErrorMessage="El DNI debe tener 7 u 8 números."
+                CssClass="text-danger small" Display="Dynamic" />
         </div>
 
         <div class="mb-3">
             <label>Telefono</label>
             <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" />
+            <asp:RegularExpressionValidator ID="revTelefono" runat="server"
+                ControlToValidate="txtTelefono"
+                ValidationExpression="^\d{8,15}$"
+                ErrorMessage="El teléfono debe tener entre 8 y 15 números."
+                CssClass="text-danger small" Display="Dynamic" />
         </div>
 
     </asp:Panel>
