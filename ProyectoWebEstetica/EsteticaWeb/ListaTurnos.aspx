@@ -30,8 +30,8 @@
         <div class="card border rounded shadow-sm overflow-hidden mx-auto" style="max-width: 1300px;">
             <div class="table-responsive">
                 <asp:GridView runat="server" ID="dgvTurnos" AutoGenerateColumns="false"
-                    CssClass="table table-hover align-middle mb-0"
-                    HeaderStyle-CssClass="table-light text-secondary small text-uppercase"
+                    CssClass="table table-hover align-middle mb-0 estetimed-tabla"
+                    HeaderStyle-CssClass="small text-uppercase"
                     GridLines="None"
                     DataKeyNames="id"
                     OnSelectedIndexChanged="dgvTurnos_SelectedIndexChanged"

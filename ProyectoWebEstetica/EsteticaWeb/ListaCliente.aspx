@@ -8,9 +8,9 @@
     <div class="card shadow-sm rounded-3 overflow-hidden">
         <div class="table-responsive">
             <asp:GridView runat="server" ID="dgvclientes" AutoGenerateColumns="false" 
-                CssClass="table table-hover mb-0" GridLines="None"
-                DataKeyNames="IdCliente" 
-                OnSelectedIndexChanged="dgvclientes_SelectedIndexChanged">
+    CssClass="table table-hover mb-0 estetimed-tabla" GridLines="None"
+    DataKeyNames="IdCliente" 
+    OnSelectedIndexChanged="dgvclientes_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
