@@ -51,7 +51,7 @@
             <div class="card border rounded shadow-sm overflow-hidden mx-auto">
                 <div class="table-responsive">
                     <asp:GridView runat="server" ID="dgvclientes" AutoGenerateColumns="false"
-                        CssClass="table table-hover table-striped table-bordered mb-0 tabla-clientes  " GridLines="None"
+                        CssClass="table table-hover table-striped table-bordered mb-0 tabla-clientes estetimed-tabla" GridLines="None"
                         DataKeyNames="IdCliente"
                         OnSelectedIndexChanged="dgvclientes_SelectedIndexChanged">
                         <Columns>
