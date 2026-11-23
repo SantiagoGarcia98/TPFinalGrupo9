@@ -44,56 +44,6 @@ namespace negocio
             }
         }
 
-        //public List<Cliente> ListarClientes(string id = "")
-        //{
-        //    List<Cliente> lista = new List<Cliente>();
-        //    AccesoSQL datos = new AccesoSQL();
-
-        //    try
-        //    {
-        //        string consulta = "SELECT Id, Nombre, Apellido, DNI, FechaNac, Telefono, Email, UsuarioId FROM Cliente";
-        //        //if (id!="")
-        //        //{
-        //        //    consulta += "WHERE id = " + id;
-        //        //}
-        //        if (!string.IsNullOrWhiteSpace(id))
-        //        {
-        //            consulta += " WHERE Id = @id";
-        //            datos.setParametro("@id", int.Parse(id));
-        //        }
-        //        datos.setConsulta(consulta);
-        //        datos.ConsultaBD();
-
-        //        while (datos.Lector.Read())
-        //        {
-        //            Cliente aux = new Cliente();
-        //            aux.IdCliente = (int)datos.Lector["Id"];
-        //            aux.Nombre = (string)datos.Lector["Nombre"];
-        //            aux.Apellido = (string)datos.Lector["Apellido"];
-        //            aux.DNI = datos.Lector["DNI"] != DBNull.Value ? (string)datos.Lector["DNI"] : "";
-        //            aux.Telefono = datos.Lector["Telefono"] != DBNull.Value ? (string)datos.Lector["Telefono"] : "";
-        //            aux.Email = datos.Lector["Email"] != DBNull.Value ? (string)datos.Lector["Email"] : "";
-
-        //            if (!(datos.Lector["FechaNac"] is DBNull))
-        //                aux.fechaNac = (DateTime)datos.Lector["FechaNac"];
-
-        //            if (!(datos.Lector["UsuarioId"] is DBNull))
-        //                aux.UsuarioId = (int)datos.Lector["UsuarioId"];
-
-        //            lista.Add(aux);
-        //        }
-
-        //        return lista;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-        //}
         public List<Cliente> ListarClientes(string id = "")
         {
             List<Cliente> lista = new List<Cliente>();
@@ -161,7 +111,7 @@ namespace negocio
                 datos.setParametro("@FechaNac", nuevo.fechaNac);
                 datos.setParametro("@Telefono", nuevo.Telefono);
                 datos.setParametro("@Email", nuevo.Email);
-                
+
 
                 // Parámetros del Usuario
                 datos.setParametro("@Usuario", usuario);
@@ -222,7 +172,7 @@ namespace negocio
                 datos.setParametro("@FechaNac", mod.fechaNac);
                 datos.setParametro("@Telefono", mod.Telefono);
                 datos.setParametro("@Email", mod.Email);
-          
+
                 // TipoUsuarioId de cliente es 3 
 
                 datos.ejecutarAccion();
@@ -238,7 +188,7 @@ namespace negocio
 
         }
 
-        public static void modificarClienteAdmin(string id , String Nombre, String apellido, String dni, String telefono)
+        public static void modificarClienteAdmin(string id, String Nombre, String apellido, String dni, String telefono)
         {
             AccesoSQL datos = new AccesoSQL();
             try
@@ -258,5 +208,46 @@ namespace negocio
             }
         }
 
+        public List<Cliente> FiltrarClientes(string campo, string filtro)
+        {
+            List<Cliente> lista = ListarClientes();
+
+            if (string.IsNullOrWhiteSpace(filtro) || string.IsNullOrWhiteSpace(campo))
+                return lista;
+
+            string filtrolimpio = filtro.Trim().ToLower();
+
+            switch (campo.Trim().ToLower())
+            {
+                case "nombre":
+                    return lista
+                        .Where(c => c.Nombre != null && c.Nombre.ToLower().Contains(filtrolimpio))
+                        .ToList();
+                case "apellido":
+                    return lista
+                        .Where(c => c.Apellido != null && c.Apellido.ToLower().Contains(filtrolimpio))
+                        .ToList();
+
+                case "email":
+                    return lista
+                        .Where(c => c.Email != null && c.Email.ToLower().Contains(filtrolimpio))
+                        .ToList();
+
+                case "dni":
+                    return lista
+                        .Where(c => c.DNI != null && c.DNI.ToLower().Contains(filtrolimpio))
+                        .ToList();
+
+                case "telefono":
+                    return lista
+                        .Where(c => c.Telefono != null && c.Telefono.ToLower().Contains(filtrolimpio))
+                        .ToList();
+
+                default:
+                    return lista;
+            }
+        }
+
+      
     }
 }

@@ -24,5 +24,16 @@ namespace EsteticaWeb
             string id = dgvTurnos.SelectedDataKey.Value.ToString();
             Response.Redirect("ModificarTurnoRecepcion.aspx?id=" + id);
         }
+
+        protected void BtnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Recepcion.aspx");
+        }
+
+        protected void BtnLimpiart_Click(object sender, EventArgs e)
+        {
+            txtFiltrot.Text = string.Empty;
+
+        }
     }
 }

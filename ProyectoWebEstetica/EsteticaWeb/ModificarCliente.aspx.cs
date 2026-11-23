@@ -42,8 +42,34 @@ namespace EsteticaWeb
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
+            Page.Validate("Modificar");
+            if (!Page.IsValid)
+                return;
             try
             {
+                int idCliente = int.Parse(Request.QueryString["id"]);
+                string nombre = txtNombre.Text.Trim();
+                string apellido = txtApellido.Text.Trim();
+                string dni = txtDni.Text.Trim();
+                string telefono = TxtTelefono.Text.Trim();
+                string email = txtEmail.Text.Trim();
+
+                DateTime fecha;
+                if (!DateTime.TryParseExact(txtFecha.Text, "yyyy-MM-dd",
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        System.Globalization.DateTimeStyles.None, out fecha) &&
+                    !DateTime.TryParse(txtFecha.Text, out fecha))
+                {
+                    MostrarError("Ingresá una fecha de nacimiento válida.");
+                    return;
+                }
+
+                if (fecha > DateTime.Today || fecha < new DateTime(1900, 1, 1))
+                {
+                    MostrarError("La fecha de nacimiento debe estar entre 01/01/1900 y hoy.");
+                    return;
+                }
+
                 Cliente mod = new Cliente();
                 mod.IdCliente = int.Parse(Request.QueryString["id"]);
                 mod.Nombre = txtNombre.Text;
@@ -51,15 +77,6 @@ namespace EsteticaWeb
                 mod.DNI = txtDni.Text;
                 mod.Telefono = TxtTelefono.Text;
                 mod.Email = txtEmail.Text;
-                DateTime fecha;
-                if (DateTime.TryParse(txtFecha.Text, out fecha))
-                {
-                    mod.fechaNac = fecha;
-                }
-                else
-                {                
-                    return;
-                }// pregunte con IA por que vivia dandome error la fecha , posible eliminacion del dato  
 
                 DataCliente data = new DataCliente();
                 data.modificarCliente(mod);
@@ -71,7 +88,13 @@ namespace EsteticaWeb
                 Session.Add("error", ex);
                 throw;
             }
-
         }
+        private void MostrarError(string mensaje)
+        {
+            lblMensaje.Text = mensaje;
+            lblMensaje.CssClass = "alert alert-danger d-block mt-2";
+            lblMensaje.Visible = true;
+        }
+
     }
 }

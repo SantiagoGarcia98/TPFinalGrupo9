@@ -89,6 +89,9 @@
     <Content Include="Recepcion.aspx" />
     <Content Include="Recursos\Imagenes\Tulipanes.png" />
     <Content Include="site.css" />
+    <Content Include="Sucursales\AgregarSucursal.aspx" />
+    <Content Include="Sucursales\ListarSucursales.aspx" />
+    <Content Include="Sucursales\ModificarSucursal.aspx" />
     <Content Include="Usuarios\ListarUsuario.aspx" />
     <Content Include="Usuarios\ModificarUsuario.aspx" />
     <Content Include="Web.config" />
@@ -224,6 +227,27 @@
     </Compile>
     <Compile Include="RecepcionMaster.Master.designer.cs">
       <DependentUpon>RecepcionMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Sucursales\AgregarSucursal.aspx.cs">
+      <DependentUpon>AgregarSucursal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sucursales\AgregarSucursal.aspx.designer.cs">
+      <DependentUpon>AgregarSucursal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sucursales\ListarSucursales.aspx.cs">
+      <DependentUpon>ListarSucursales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sucursales\ListarSucursales.aspx.designer.cs">
+      <DependentUpon>ListarSucursales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sucursales\ModificarSucursal.aspx.cs">
+      <DependentUpon>ModificarSucursal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sucursales\ModificarSucursal.aspx.designer.cs">
+      <DependentUpon>ModificarSucursal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\ListarUsuario.aspx.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
