@@ -15,6 +15,7 @@ namespace EsteticaWeb
             if (!IsPostBack)
             {
                 CargarTurnos();
+                CargarEstados();
             }
 
         }
@@ -25,13 +26,29 @@ namespace EsteticaWeb
             dgvTurnos.DataBind();
 
         }
+        private void CargarEstados()
+        {
+            DataTurno data = new DataTurno();
+            List<string> estados = data.ListarTurnoSp()
+                .Where(t => t.Estado != null && !string.IsNullOrWhiteSpace(t.Estado.Descripcion))
+                .Select(t => t.Estado.Descripcion.Trim())
+                .Distinct()
+                .ToList();
+
+            ddlEstado.DataSource = estados;
+            ddlEstado.DataBind();
+
+            ddlEstado.Items.Insert(0, new ListItem("Todos", "Todos"));
+        }
         private void AplicarFiltro()
         {
             DataTurno data = new DataTurno();
             string campo = ddlCampo.SelectedItem.Text;
             string filtro = txtFiltrot.Text;
+            string estado = ddlEstado.SelectedItem != null ? ddlEstado.SelectedItem.Text : "Todos";
+            bool abonado = chkAbonado.Checked;
 
-            dgvTurnos.DataSource = data.FiltrarTurnos(campo, filtro);
+            dgvTurnos.DataSource = data.FiltrarTurnos(campo, filtro, estado, abonado);
             dgvTurnos.DataBind();
 
         }
@@ -50,6 +67,8 @@ namespace EsteticaWeb
         {
             txtFiltrot.Text = string.Empty;
             ddlCampo.SelectedIndex = 0;
+            ddlEstado.SelectedIndex = 0;
+            chkAbonado.Checked = false;
             CargarTurnos();
 
         }
@@ -60,6 +79,16 @@ namespace EsteticaWeb
         }
 
         protected void txtFiltrot_TextChanged(object sender, EventArgs e)
+        {
+            AplicarFiltro();
+        }
+
+        protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltro();
+        }
+
+        protected void chkAbonado_CheckedChanged(object sender, EventArgs e)
         {
             AplicarFiltro();
         }

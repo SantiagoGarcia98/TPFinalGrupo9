@@ -251,10 +251,25 @@ namespace negocio
 
         }
 
-        public List<Turno> FiltrarTurnos(string campo, string filtro)
+        public List<Turno> FiltrarTurnos(string campo, string filtro, string estado, bool abonado)
         {
             List<Turno> lista = ListarTurnoSp();
 
+            if (!string.IsNullOrWhiteSpace(estado) && estado.Trim().ToLower() != "todos")
+            {
+                string estadolimpio = estado.Trim().ToLower();
+
+                lista = lista
+                    .Where(t => t.Estado != null &&
+                           t.Estado.Descripcion != null &&
+                           t.Estado.Descripcion.Trim().ToLower() == estadolimpio)
+                    .ToList();
+            }
+            if (abonado)
+            {
+                lista = lista.Where(t => t.Abonado).ToList();
+
+            }
             if (string.IsNullOrWhiteSpace(filtro) || string.IsNullOrWhiteSpace(campo))
                 return lista;
 
@@ -264,8 +279,8 @@ namespace negocio
             {
                 case "cliente":
                     return lista
-                        .Where(t => t.cliente != null &&
-                               ($"{t.cliente.Nombre} {t.cliente.Nombre}").ToLower().Contains(filtroLimpio))
+                        .Where(t => t.cliente != null && t.cliente.Nombre != null &&
+                              t.cliente.Nombre.ToLower().Contains(filtroLimpio))
                         .ToList();
 
                 case "tratamiento":
@@ -276,8 +291,8 @@ namespace negocio
 
                 case "profesional":
                     return lista
-                        .Where(t => t.Profesional != null &&
-                               ($"{t.Profesional.Nombre} {t.Profesional.Apellido}").ToLower().Contains(filtroLimpio))
+                        .Where(t => t.Profesional != null && t.Profesional.Nombre != null &&
+                               t.Profesional.Nombre.ToLower().Contains(filtroLimpio))
                         .ToList();
 
                 case "sucursal":

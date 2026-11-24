@@ -7,48 +7,46 @@
 
 
     <div class="container-fluid py-5 px-4">
-        <asp:Button ID="BtnVolver" runat="server" Text="Panel Principal" OnClick="BtnVolver_Click" CssClass="btn btn-secondary" UseSubmitBehavior="false"/>
+        <asp:Button ID="BtnVolver" runat="server" Text="Panel Principal" OnClick="BtnVolver_Click" CssClass="btn btn-secondary" UseSubmitBehavior="false" />
         <div class="mx-auto" style="max-width: 1300px">
             <div class="d-flex justify-content-between align-items-center mx-auto mb-4">
                 <h2 class="fw-bold mb-0">Listado de Turnos</h2>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <div class="mb-3">
-                        <asp:Label Text="Campo" ID="txtCampoT" runat="server" CssClass="fw-bold" />
-                        <asp:DropDownList runat="server" ID="ddlCampo" CssClass="form-control" AutoPostBack="true" 
-                            OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged" >
-                            <asp:ListItem Text="Cliente" />
-                            <asp:ListItem Text="Tratamiento" />
-                            <asp:ListItem Text="Profesional" />
-                            <asp:ListItem Text="Sucursal" />
-                        </asp:DropDownList>
+            </div>        
+            <div class="row g-3 align-items-end mb-3">
+                <div class="col-3 col-md-2">
+                    <asp:Label Text="Campo" ID="txtCampoT" runat="server" CssClass="fw-bold" />
+                    <asp:DropDownList runat="server" ID="ddlCampo" CssClass="form-control" AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
+                        <asp:ListItem Text="Cliente" />
+                        <asp:ListItem Text="Tratamiento" />
+                        <asp:ListItem Text="Profesional" />
+                        <asp:ListItem Text="Sucursal" />
+                    </asp:DropDownList>
+                </div>
+                <div class="col-3 col-md-2">
+                    <asp:Label Text="Filtro" runat="server" CssClass="fw-bold" />
+                    <asp:TextBox runat="server" ID="txtFiltrot" CssClass="form-control" AutoPostBack="true"
+                        OnTextChanged="txtFiltrot_TextChanged" />
+                </div>
+                <div class="col-3 col-md-2">
+                    <asp:Label Text="Estado" runat="server" CssClass="fw-bold" />
+                    <asp:DropDownList runat="server" ID="ddlEstado" CssClass="form-control" 
+                        AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged" >                  
+                    </asp:DropDownList>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check d-flex align-items-center gap-2 pb-2">
+                        <asp:CheckBox  ID="chkAbonado" runat="server" AutoPostBack="true" OnCheckedChanged="chkAbonado_CheckedChanged" />
+                        <asp:Label Text="Abonado" runat="server" CssClass="fw-bold" AssociatedControlID="chkAbonado" />
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="mb-3">
-                        <asp:Label Text="Filtro" runat="server" CssClass="fw-bold" />
-                        <asp:TextBox runat="server" ID="txtFiltrot" CssClass="form-control" AutoPostBack="true"
-                            OnTextChanged="txtFiltrot_TextChanged" />
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="mb-3">
-                        <asp:Label Text="Estado" runat="server" CssClass="fw-bold" />
-                        <asp:DropDownList runat="server" CssClass="form-control">
-                            <asp:ListItem Text="" />
-                            <asp:ListItem Text="" />
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-end align-items-center ">
-                    <div class="mb-3 ">
-                        <asp:Button ID="BtnLimpiart" runat="server"
-                            OnClick="BtnLimpiart_Click" UseSubmitBehavior="false"
-                            CssClass="btn btn-secondary" Text="Limpiar" />
-                    </div>
+                <div class="col-auto">
+                    <asp:Button ID="BtnLimpiart" runat="server"
+                        OnClick="BtnLimpiart_Click" UseSubmitBehavior="false"
+                        CssClass="btn btn-secondary" Text="Limpiar" />
                 </div>
             </div>
+
             <div class="card border rounded shadow-sm overflow-hidden mx-auto">
                 <div class="table-responsive">
                     <asp:GridView runat="server" ID="dgvTurnos" AutoGenerateColumns="false"
@@ -70,7 +68,7 @@
                                 <ItemTemplate>
                                     <span class='<%# (bool)Eval("Abonado") ? "text-success fw-bold" : "text-danger fw-bold" %>'>
                                         <%# (bool)Eval("Abonado") ? "Sí" : "No" %>
-                                </span>
+                                    </span>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField HeaderText="Observaciones" DataField="observaciones" />
