@@ -7,7 +7,7 @@
 
 
     <div class="container-fluid py-5 px-4">
-        <asp:Button ID="BtnVolver" runat="server" Text="Panel Principal" OnClick="BtnVolver_Click" CssClass="btn btn-secondary" />
+        <asp:Button ID="BtnVolver" runat="server" Text="Panel Principal" OnClick="BtnVolver_Click" CssClass="btn btn-secondary" UseSubmitBehavior="false"/>
         <div class="mx-auto" style="max-width: 1300px">
             <div class="d-flex justify-content-between align-items-center mx-auto mb-4">
                 <h2 class="fw-bold mb-0">Listado de Turnos</h2>
@@ -16,7 +16,8 @@
                 <div class="col-3">
                     <div class="mb-3">
                         <asp:Label Text="Campo" ID="txtCampoT" runat="server" CssClass="fw-bold" />
-                        <asp:DropDownList runat="server" CssClass="form-control">
+                        <asp:DropDownList runat="server" ID="ddlCampo" CssClass="form-control" AutoPostBack="true" 
+                            OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged" >
                             <asp:ListItem Text="Cliente" />
                             <asp:ListItem Text="Tratamiento" />
                             <asp:ListItem Text="Profesional" />
@@ -27,7 +28,8 @@
                 <div class="col-3">
                     <div class="mb-3">
                         <asp:Label Text="Filtro" runat="server" CssClass="fw-bold" />
-                        <asp:TextBox runat="server" ID="txtFiltrot" CssClass="form-control" />
+                        <asp:TextBox runat="server" ID="txtFiltrot" CssClass="form-control" AutoPostBack="true"
+                            OnTextChanged="txtFiltrot_TextChanged" />
                     </div>
                 </div>
                 <div class="col-3">
@@ -41,7 +43,9 @@
                 </div>
                 <div class="col-3 d-flex flex-column justify-content-end align-items-center ">
                     <div class="mb-3 ">
-                        <asp:Button ID="BtnLimpiart" runat="server" OnClick="BtnLimpiart_Click" CssClass="btn btn-secondary" Text="Limpiar" />
+                        <asp:Button ID="BtnLimpiart" runat="server"
+                            OnClick="BtnLimpiart_Click" UseSubmitBehavior="false"
+                            CssClass="btn btn-secondary" Text="Limpiar" />
                     </div>
                 </div>
             </div>

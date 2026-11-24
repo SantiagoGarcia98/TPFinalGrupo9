@@ -65,10 +65,18 @@
                 </div>
                 <div class="mb-3">
                     <label for="txtFecha" class="form-label">Fecha de nacimiento</label>
-                    <asp:TextBox runat="server" TextMode="Date" ID="txtFecha" CssClass="form-control" />                  
+                    <asp:TextBox runat="server" TextMode="Date" ID="txtFecha" CssClass="form-control" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFecha"
+                        ErrorMessage="La fecha de nacimiento es obligatoria." Display="Dynamic"
+                        CssClass="text-danger small" ValidationGroup="Modificar" />
+                    <asp:CompareValidator ID="cmpFecha" runat="server" ControlToValidate="txtFecha"
+                        Operator="LessThanEqual" Type="Date" CultureInvariantValues="true"
+                        ErrorMessage="La fecha no puede ser posterior a la fecha actual."
+                        Display="Dynamic" CssClass="text-danger small" ValidationGroup="Modificar" />
                 </div>
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" />
                 <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" CssClass="btn btn-primary" ValidationGroup="modificar" />
+                <asp:Button id="btnVolver" Text="Volver" runat="server" CssClass="btn btn-primary" OnClick="btnVolver_Click"  ValidationGroup="modificar" />
             </div>
         </div>
     </div>

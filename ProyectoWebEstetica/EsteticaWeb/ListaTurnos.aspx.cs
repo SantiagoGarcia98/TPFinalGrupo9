@@ -1,10 +1,10 @@
-﻿using negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
 
 namespace EsteticaWeb
 {
@@ -12,15 +12,31 @@ namespace EsteticaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                CargarTurnos();
+            }
+
+        }
+        private void CargarTurnos()
+        {
             DataTurno data = new DataTurno();
             dgvTurnos.DataSource = data.ListarTurnoSp();
             dgvTurnos.DataBind();
 
         }
+        private void AplicarFiltro()
+        {
+            DataTurno data = new DataTurno();
+            string campo = ddlCampo.SelectedItem.Text;
+            string filtro = txtFiltrot.Text;
+
+            dgvTurnos.DataSource = data.FiltrarTurnos(campo, filtro);
+            dgvTurnos.DataBind();
+
+        }
         protected void dgvTurnos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //int idTurno = Convert.ToInt32(dgvTurnos.SelectedDataKey.Value);
-            //Response.Redirect("ModificarTurno.aspx?id=" + idTurno);
             string id = dgvTurnos.SelectedDataKey.Value.ToString();
             Response.Redirect("ModificarTurnoRecepcion.aspx?id=" + id);
         }
@@ -33,7 +49,19 @@ namespace EsteticaWeb
         protected void BtnLimpiart_Click(object sender, EventArgs e)
         {
             txtFiltrot.Text = string.Empty;
+            ddlCampo.SelectedIndex = 0;
+            CargarTurnos();
 
+        }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltro();
+        }
+
+        protected void txtFiltrot_TextChanged(object sender, EventArgs e)
+        {
+            AplicarFiltro();
         }
     }
 }
