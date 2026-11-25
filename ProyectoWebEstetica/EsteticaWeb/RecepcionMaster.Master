@@ -19,17 +19,52 @@
             <nav class="navbar navbar-expand-lg navbar-dark py-2"
      style="background: linear-gradient(90deg, #28133f, #5b2c83);"
      data-bs-theme="dark">
-                <div class="container-fluid">
-                   <a class="navbar-brand fw-bold" href="Recepcion.aspx">
-    <span style="color: #c58be9; font-size: 26px;">🪷</span>
-    EstetiMed
-    <small class="ms-2 fw-normal"
-           style="font-size: 13px; color: #d8c9e9;">
-        | Recepción
-    </small>
-</a>
-                </div>
-            </nav>
+
+    <div class="container-fluid d-flex flex-wrap align-items-center justify-content-between gap-2">
+
+        <!-- LOGO ESTETIMED -->
+        <a class="navbar-brand fw-bold" href="Inicio.aspx">
+            <span style="color: #c58be9; font-size: 26px;">🪷</span>
+            EstetiMed
+            <small class="ms-2 fw-normal"
+                   style="font-size: 13px; color: #d8c9e9;">
+                | Recepción
+            </small>
+        </a>
+
+        <!-- BOTONES DE NAVEGACIÓN -->
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+
+            <asp:HyperLink
+                ID="lnkInicio"
+                runat="server"
+                NavigateUrl="~/Inicio.aspx"
+                CssClass="btn btn-outline-light btn-sm">
+                Inicio
+            </asp:HyperLink>
+
+            <asp:HyperLink
+                ID="lnkPanelRecepcion"
+                runat="server"
+                NavigateUrl="~/Recepcion.aspx"
+                CssClass="btn btn-outline-light btn-sm">
+                Panel principal
+            </asp:HyperLink>
+
+            <asp:LinkButton
+                ID="btnCerrarSesion"
+                runat="server"
+                CssClass="btn btn-light btn-sm"
+                CausesValidation="false"
+                OnClick="btnCerrarSesion_Click">
+                Cerrar sesión
+            </asp:LinkButton>
+
+        </div>
+
+    </div>
+
+</nav>
             <%--<div class="nav-overflow" data-bs-toggle="nav-overflow">
                 <ul class="nav nav-underline">
                     <li class="nav-item">
