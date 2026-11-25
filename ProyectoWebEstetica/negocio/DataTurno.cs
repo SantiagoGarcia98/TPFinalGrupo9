@@ -250,5 +250,60 @@ namespace negocio
             }
 
         }
+
+        public List<Turno> FiltrarTurnos(string campo, string filtro, string estado, bool abonado)
+        {
+            List<Turno> lista = ListarTurnoSp();
+
+            if (!string.IsNullOrWhiteSpace(estado) && estado.Trim().ToLower() != "todos")
+            {
+                string estadolimpio = estado.Trim().ToLower();
+
+                lista = lista
+                    .Where(t => t.Estado != null &&
+                           t.Estado.Descripcion != null &&
+                           t.Estado.Descripcion.Trim().ToLower() == estadolimpio)
+                    .ToList();
+            }
+            if (abonado)
+            {
+                lista = lista.Where(t => t.Abonado).ToList();
+
+            }
+            if (string.IsNullOrWhiteSpace(filtro) || string.IsNullOrWhiteSpace(campo))
+                return lista;
+
+            string filtroLimpio = filtro.Trim().ToLower();
+
+            switch (campo.Trim().ToLower())
+            {
+                case "cliente":
+                    return lista
+                        .Where(t => t.cliente != null && t.cliente.Nombre != null &&
+                              t.cliente.Nombre.ToLower().Contains(filtroLimpio))
+                        .ToList();
+
+                case "tratamiento":
+                    return lista
+                        .Where(t => t.Especialidad != null && t.Especialidad.Descripcion != null &&
+                               t.Especialidad.Descripcion.ToLower().Contains(filtroLimpio))
+                        .ToList();
+
+                case "profesional":
+                    return lista
+                        .Where(t => t.Profesional != null && t.Profesional.Nombre != null &&
+                               t.Profesional.Nombre.ToLower().Contains(filtroLimpio))
+                        .ToList();
+
+                case "sucursal":
+                    return lista
+                        .Where(t => t.Sucursal != null && t.Sucursal.Nombre != null &&
+                               t.Sucursal.Nombre.ToLower().Contains(filtroLimpio))
+                        .ToList();
+
+                default:
+                    return lista;
+            }
+        }
     }
 }

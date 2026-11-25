@@ -20,7 +20,7 @@
             <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>
             <div class="vstack gap-2">
                 <br />
-      <a class="theme-secondary" href="#">Registrate</a>
+      <a class="theme-secondary" href="AltaCliente.aspx">Registrate</a>
       <a class="theme-secondary" href="#">Has olvidado la contraseña?</a>
     </div>
         </div>

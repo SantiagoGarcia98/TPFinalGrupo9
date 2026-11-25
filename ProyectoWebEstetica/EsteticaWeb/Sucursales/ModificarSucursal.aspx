@@ -21,16 +21,31 @@
             <div class="mb-3">
                 <label>Nombre</label>
                 <asp:TextBox ID="txtNombreSuc" runat="server" CssClass="form-control" />
+                <asp:RegularExpressionValidator ID="revNombreSuc" runat="server"
+                    ControlToValidate="txtNombreSuc"
+                    ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]+$"
+                    ErrorMessage="El nombre solo admite letras y números."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
 
             <div class="mb-3">
                 <label>Direccion</label>
                 <asp:TextBox ID="txtDireccionSuc" runat="server" CssClass="form-control" />
+                <asp:RegularExpressionValidator ID="revDireccionSuc" runat="server"
+                    ControlToValidate="txtDireccionSuc"
+                    ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.,\-°]+$"
+                    ErrorMessage="La dirección tiene caracteres que no se permiten."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
 
             <div class="mb-3">
                 <label>Telefono</label>
                 <asp:TextBox ID="txtTelefonoSuc" runat="server" CssClass="form-control" />
+                <asp:RegularExpressionValidator ID="revTelefonoSuc" runat="server"
+                    ControlToValidate="txtTelefonoSuc"
+                    ValidationExpression="^\d{8,15}$"
+                    ErrorMessage="El teléfono debe tener entre 8 y 15 números."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
 
             <label>Activo</label>

@@ -17,6 +17,9 @@ namespace EsteticaWeb.Servicios
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+                return;
+
             try
             {
                 string descripcion = txtDescripcion.Text;

@@ -29,6 +29,8 @@ namespace EsteticaWeb
                 lnkVolverMenu.NavigateUrl = "~/Recepcion.aspx";
             else
                 lnkVolverMenu.NavigateUrl = "~/MenuCliente.aspx";
+
+            ConfigurarValidaciones();
             try
             {
                 if (!IsPostBack)
@@ -64,7 +66,7 @@ namespace EsteticaWeb
                 {
                     int tipo = 3;
                     Usuario logueado = Session["usuario"] as Usuario;
-                    if (logueado != null && logueado.Rol == "Administrador")
+                    if (logueado != null && logueado.TipoUsuarioId == 1)
                         tipo = int.Parse(ddlRol.SelectedValue);
 
                     DateTime? fecha = null;
@@ -125,6 +127,38 @@ namespace EsteticaWeb
             filaMatricula.Visible = esProfesional;
             filaSucursal.Visible = esProfesional;
             filaEspecialidades.Visible = esProfesional;
+        }
+
+        private void ConfigurarValidaciones()
+        {
+            int tipo = 3;
+            Usuario logueado = Session["usuario"] as Usuario;
+            if (logueado != null && logueado.TipoUsuarioId == 1)
+                tipo = int.Parse(ddlRol.SelectedValue);
+
+            bool persona = tipo == 3 || tipo == 4;
+            rfvNombre.Enabled = persona;
+            rfvApellido.Enabled = persona;
+            rfvDNI.Enabled = persona;
+            rfvTelefono.Enabled = persona;
+            revNombre.Enabled = persona;
+            revApellido.Enabled = persona;
+            revDNI.Enabled = persona;
+            revTelefono.Enabled = persona;
+            rfvFecha.Enabled = tipo == 3;
+        }
+
+        protected void cvEspecialidades_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = false;
+            foreach (ListItem item in cblEspecialidades.Items)
+            {
+                if (item.Selected)
+                {
+                    args.IsValid = true;
+                    break;
+                }
+            }
         }
     }
 }

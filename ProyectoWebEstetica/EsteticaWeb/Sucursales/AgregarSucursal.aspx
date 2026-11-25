@@ -11,14 +11,41 @@
             <div class="mb-3">
                 <label class="form-label fw-bold">Nombre</label>
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
+                <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
+                    ControlToValidate="txtNombre"
+                    ErrorMessage="El nombre es obligatorio."
+                    CssClass="text-danger small" Display="Dynamic" />
+                <asp:RegularExpressionValidator ID="revNombre" runat="server"
+                    ControlToValidate="txtNombre"
+                    ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]+$"
+                    ErrorMessage="El nombre solo admite letras y números."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
             <div class="mb-3">
                 <label class="form-label fw-bold">Direccion</label>
                 <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" />
+                <asp:RequiredFieldValidator ID="rfvDireccion" runat="server"
+                    ControlToValidate="txtDireccion"
+                    ErrorMessage="La dirección es obligatoria."
+                    CssClass="text-danger small" Display="Dynamic" />
+                <asp:RegularExpressionValidator ID="revDireccion" runat="server"
+                    ControlToValidate="txtDireccion"
+                    ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.,\-°]+$"
+                    ErrorMessage="La dirección tiene caracteres que no se permiten."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
             <div class="mb-3">
                 <label class="form-label fw-bold">Telefono</label>
                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" />
+                <asp:RequiredFieldValidator ID="rfvTelefono" runat="server"
+                    ControlToValidate="txtTelefono"
+                    ErrorMessage="El teléfono es obligatorio."
+                    CssClass="text-danger small" Display="Dynamic" />
+                <asp:RegularExpressionValidator ID="revTelefono" runat="server"
+                    ControlToValidate="txtTelefono"
+                    ValidationExpression="^\d{8,15}$"
+                    ErrorMessage="El teléfono debe tener entre 8 y 15 números."
+                    CssClass="text-danger small" Display="Dynamic" />
             </div>
             <asp:Label ID="LabelMensajeActualizado" runat="server" CssClass="text-danger d-block mb-2" Visible="false"></asp:Label>
             <div class="d-flex justify-content-center gap-3">
@@ -26,4 +53,5 @@
                 <asp:HyperLink ID="lnkVolverMenu" runat="server" NavigateUrl="~/PanelAdmin.aspx" CssClass="btn btn-outline-secondary">Volver al menú</asp:HyperLink>
             </div>
         </div>
+    </div>
 </asp:Content>

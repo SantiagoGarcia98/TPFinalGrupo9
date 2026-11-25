@@ -13,6 +13,9 @@ namespace EsteticaWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string fechaHoy = DateTime.Today.ToString("yyyy-MM-dd");
+            txtFecha.Attributes["max"] = fechaHoy;
+            cmpFecha.ValueToCompare = fechaHoy;
             if (!IsPostBack)
             {
 
@@ -77,6 +80,7 @@ namespace EsteticaWeb
                 mod.DNI = txtDni.Text;
                 mod.Telefono = TxtTelefono.Text;
                 mod.Email = txtEmail.Text;
+                mod.fechaNac = fecha;
 
                 DataCliente data = new DataCliente();
                 data.modificarCliente(mod);
@@ -96,5 +100,9 @@ namespace EsteticaWeb
             lblMensaje.Visible = true;
         }
 
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("listaCliente.aspx");
+        }
     }
 }
