@@ -55,6 +55,29 @@ a {
     color: #ffffff;
 }
 
+/* Cerrar sesión sobre la barra violeta. Sin la clase btn: Bootstrap 6 la pinta de negro. */
+.navbar .btn-cerrar {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: 1px solid #ffffff;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.navbar .btn-cerrar:hover,
+.navbar .btn-cerrar:focus {
+    color: #28133f !important;
+    background-color: #ffffff !important;
+    border-color: #ffffff;
+    text-decoration: none;
+}
+
 /* Texto de los botones principales */
 .btn-primary,
 .btn-primary:hover,
