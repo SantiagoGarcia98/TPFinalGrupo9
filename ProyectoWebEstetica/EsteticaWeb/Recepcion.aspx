@@ -46,7 +46,7 @@
                         <h2 class="h5">Liquidaciones</h2>
                         <p class="text-muted">listar ganancias.</p>
                         <div class="d-flex gap-2">
-                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-primary btn-sm">Ver liquidaciones</asp:LinkButton>                          
+                            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CssClass="btn btn-primary btn-sm">Ver liquidaciones</asp:LinkButton>                          
                         </div>
                     </div>
                 </div>

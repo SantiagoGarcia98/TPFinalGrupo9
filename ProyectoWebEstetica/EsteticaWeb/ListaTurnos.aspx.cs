@@ -40,6 +40,17 @@ namespace EsteticaWeb
 
             ddlEstado.Items.Insert(0, new ListItem("Todos", "Todos"));
         }
+        private string FiltroFechaActual 
+        {
+            get { return ViewState["FiltroFecha"] != null ? ViewState["FiltroFecha"].ToString() : string.Empty; }
+            set { ViewState["FiltroFecha"] = value; }
+        }
+        private void ActualizarEstiloBotonesFecha()
+        {
+            btnTurnosPasados.CssClass = FiltroFechaActual == "pasados" ? "btn btn-dark btn-sm" : "btn btn-outline-secondary btn-sm";
+            btnTurnosHoy.CssClass = FiltroFechaActual == "hoy" ? "btn btn-dark btn-sm" : "btn btn-outline-secondary btn-sm";
+            btnTurnosProximos.CssClass = FiltroFechaActual == "proximos" ? "btn btn-dark btn-sm" : "btn btn-outline-secondary btn-sm";
+        }
         private void AplicarFiltro()
         {
             DataTurno data = new DataTurno();
@@ -48,7 +59,7 @@ namespace EsteticaWeb
             string estado = ddlEstado.SelectedItem != null ? ddlEstado.SelectedItem.Text : "Todos";
             bool abonado = chkAbonado.Checked;
 
-            dgvTurnos.DataSource = data.FiltrarTurnos(campo, filtro, estado, abonado);
+            dgvTurnos.DataSource = data.FiltrarTurnos(campo, filtro, estado, abonado,FiltroFechaActual);
             dgvTurnos.DataBind();
 
         }
@@ -69,6 +80,8 @@ namespace EsteticaWeb
             ddlCampo.SelectedIndex = 0;
             ddlEstado.SelectedIndex = 0;
             chkAbonado.Checked = false;
+            FiltroFechaActual = string.Empty;
+            ActualizarEstiloBotonesFecha();
             CargarTurnos();
 
         }
@@ -91,6 +104,19 @@ namespace EsteticaWeb
         protected void chkAbonado_CheckedChanged(object sender, EventArgs e)
         {
             AplicarFiltro();
+        }
+
+        protected void BtnfiltroFecha_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string seleccionado = btn.CommandArgument;
+
+            // Si vuelve a hacer clic en el que ya estaba activo, lo desactiva
+            FiltroFechaActual = (FiltroFechaActual == seleccionado) ? string.Empty : seleccionado;
+
+            ActualizarEstiloBotonesFecha();
+            AplicarFiltro();
+
         }
     }
 }

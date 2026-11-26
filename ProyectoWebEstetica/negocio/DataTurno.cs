@@ -49,7 +49,7 @@ namespace negocio
                     list.Add(aux);
 
                 }
-                return list;
+                return list.OrderBy(t => t.fecha).ToList();
             }
             catch (Exception ex)
             {
@@ -251,7 +251,7 @@ namespace negocio
 
         }
 
-        public List<Turno> FiltrarTurnos(string campo, string filtro, string estado, bool abonado)
+        public List<Turno> FiltrarTurnos(string campo, string filtro, string estado, bool abonado, string filtroFecha = "")
         {
             List<Turno> lista = ListarTurnoSp();
 
@@ -269,6 +269,26 @@ namespace negocio
             {
                 lista = lista.Where(t => t.Abonado).ToList();
 
+            }
+
+            if (!string.IsNullOrWhiteSpace(filtroFecha))
+            {
+                DateTime hoy = DateTime.Today;
+
+                switch (filtroFecha.Trim().ToLower())
+                {
+                    case "pasados":
+                        lista = lista.Where(t => t.fecha.Date < hoy).ToList();
+                        break;
+
+                    case "hoy":
+                        lista = lista.Where(t => t.fecha.Date == hoy).ToList();
+                        break;
+
+                    case "proximos":
+                        lista = lista.Where(t => t.fecha.Date > hoy).ToList();
+                        break;
+                }
             }
             if (string.IsNullOrWhiteSpace(filtro) || string.IsNullOrWhiteSpace(campo))
                 return lista;

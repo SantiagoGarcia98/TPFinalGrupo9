@@ -32,6 +32,11 @@ namespace EsteticaWeb
         protected void LnkAltaTurno_Click(object sender, EventArgs e)
         {
             Response.Redirect("solicitudTurno.aspx");
-        }   
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaGanancias.aspx");
+        }
     }
 }

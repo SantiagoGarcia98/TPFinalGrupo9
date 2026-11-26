@@ -11,7 +11,7 @@
         <div class="mx-auto" style="max-width: 1300px">
             <div class="d-flex justify-content-between align-items-center mx-auto mb-4">
                 <h2 class="fw-bold mb-0">Listado de Turnos</h2>
-            </div>        
+            </div>
             <div class="row g-3 align-items-end mb-3">
                 <div class="col-3 col-md-2">
                     <asp:Label Text="Campo" ID="txtCampoT" runat="server" CssClass="fw-bold" />
@@ -30,13 +30,13 @@
                 </div>
                 <div class="col-3 col-md-2">
                     <asp:Label Text="Estado" runat="server" CssClass="fw-bold" />
-                    <asp:DropDownList runat="server" ID="ddlEstado" CssClass="form-control" 
-                        AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged" >                  
+                    <asp:DropDownList runat="server" ID="ddlEstado" CssClass="form-control"
+                        AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged">
                     </asp:DropDownList>
                 </div>
                 <div class="col-auto">
                     <div class="form-check d-flex align-items-center gap-2 pb-2">
-                        <asp:CheckBox  ID="chkAbonado" runat="server" AutoPostBack="true" OnCheckedChanged="chkAbonado_CheckedChanged" />
+                        <asp:CheckBox ID="chkAbonado" runat="server" AutoPostBack="true" OnCheckedChanged="chkAbonado_CheckedChanged" />
                         <asp:Label Text="Abonado" runat="server" CssClass="fw-bold" AssociatedControlID="chkAbonado" />
                     </div>
                 </div>
@@ -45,6 +45,15 @@
                         OnClick="BtnLimpiart_Click" UseSubmitBehavior="false"
                         CssClass="btn btn-secondary" Text="Limpiar" />
                 </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <asp:Button ID="btnTurnosPasados" runat="server" Text="Turnos pasados"
+                    CssClass="btn btn-outline-secondary btn-sm" OnClick="BtnfiltroFecha_Click" CommandArgument="pasados" />
+                <asp:Button ID="btnTurnosHoy" runat="server" Text="Turnos de hoy"
+                    CssClass="btn btn-outline-secondary btn-sm" OnClick="BtnfiltroFecha_Click" CommandArgument="hoy" />
+                <asp:Button ID="btnTurnosProximos" runat="server" Text="Próximos turnos"
+                    CssClass="btn btn-outline-secondary btn-sm" OnClick="BtnfiltroFecha_Click"  CommandArgument="proximos" />
             </div>
 
             <div class="card border rounded shadow-sm overflow-hidden mx-auto">

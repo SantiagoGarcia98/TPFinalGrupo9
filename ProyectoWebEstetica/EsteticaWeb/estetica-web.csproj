@@ -71,6 +71,7 @@
     <Content Include="estetimed.css" />
     <Content Include="Global.asax" />
     <Content Include="ListaCliente.aspx" />
+    <Content Include="ListaGanancias.aspx" />
     <Content Include="ListaTurnosClientes.aspx" />
     <Content Include="MenuCliente.aspx" />
     <Content Include="ModificarCliente.aspx" />
@@ -79,6 +80,7 @@
     <Content Include="Recursos\Imagenes\electrodos.jpg" />
     <Content Include="Recursos\Imagenes\lifting.jpg" />
     <Content Include="Recursos\Imagenes\manicura.jpg" />
+    <Content Include="Recursos\Imagenes\Micropigmentacion.jpg" />
     <Content Include="Servicios\AgregarEspecialidad.aspx" />
     <Content Include="Servicios\ListarEspecialidades.aspx" />
     <Content Include="Servicios\ModificarEspecialidades.aspx" />
@@ -128,6 +130,13 @@
     </Compile>
     <Compile Include="ListaCliente.aspx.designer.cs">
       <DependentUpon>ListaCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaGanancias.aspx.cs">
+      <DependentUpon>ListaGanancias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaGanancias.aspx.designer.cs">
+      <DependentUpon>ListaGanancias.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaTurnosClientes.aspx.cs">
       <DependentUpon>ListaTurnosClientes.aspx</DependentUpon>

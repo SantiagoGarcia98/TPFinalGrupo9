@@ -23,11 +23,11 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Manicura</h5>
                             <p class="card-text">Tratamiento cosmético y de higiene enfocado en el cuidado, embellecimiento y salud de las manos y las uñas..</p>
-                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>
+<%--                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>--%>
                         </div>
                     </div>
                 </div>
-          
+
                 <div class="col">
                     <div class="card h-100 bg-dark bg-opacity-75 text-white border-0 rounded-4 shadow">
                         <img src="Recursos/Imagenes/lifting.jpg"
@@ -40,7 +40,7 @@
                                 Tratamiento estético que eleva, curva y estira tus pestañas naturales .
                                 En lugar de rizarlas de manera temporal o añadir pestañas postizas, este procedimiento reestructura el vello para darle una apariencia más larga, espesa y con mayor volumen de forma natural
                             </p>
-                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>
+<%--                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>--%>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Limpieza facial</h5>
                             <p class="card-text">Tratamiento dermatológico diseñado para purificar la piel del rostro en profundidad. Buscamos eliminar el exceso de sebo, células muertas, impurezas, puntos negros y restos de maquillaje o contaminación acumulados en los poros.</p>
-                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>
+<%--                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>--%>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                                 Procedimiento médico y estético que utiliza un haz de luz concentrado (láser) para reducir o eliminar el vello no deseado.
                                 
                             </p>
-                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>
+<%--                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>--%>
                         </div>
                     </div>
                 </div>
@@ -82,24 +82,24 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Electrodos</h5>
                             <p class="card-text">Tratamientos de electroestimulación (corporal) o de alta frecuencia (facial) que utilizan corrientes eléctricas suaves para tonificar músculos o mejorar la piel..</p>
-                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>
+<%--                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>--%>
                         </div>
                     </div>
                 </div>
 
-               <%-- <div class="col">
+                <div class="col">
                     <div class="card h-100 bg-dark bg-opacity-75 text-white border-0 rounded-4 shadow">
-                        <img src="https://via.placeholder.com/400x200"
+                        <img src="Recursos/Imagenes/Micropigmentacion.jpg"
                             class="card-img-top rounded-top-4"
                             style="height: 200px;"
                             alt="...">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">En camino...</h5>
-                            <p class="card-text">Descripción breve del tratamiento o servicio.</p>
-                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>
+                            <h5 class="card-title">MicroPigmentacion</h5>
+                            <p class="card-text"> Tecnica estética semipermanente que implanta pigmentos en la capa superficial de la piel para realzar rasgos, corregir imperfecciones</p>
+<%--                            <a href="#" class="btn btn-outline-light mt-auto">Ver más</a>--%>
                         </div>
                     </div>
-                </div>--%>
+                </div>
 
             </div>
         </div>

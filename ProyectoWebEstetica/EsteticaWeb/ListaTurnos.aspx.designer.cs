@@ -78,6 +78,33 @@ namespace EsteticaWeb
         protected global::System.Web.UI.WebControls.Button BtnLimpiart;
 
         /// <summary>
+        /// Control btnTurnosPasados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTurnosPasados;
+
+        /// <summary>
+        /// Control btnTurnosHoy.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTurnosHoy;
+
+        /// <summary>
+        /// Control btnTurnosProximos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTurnosProximos;
+
+        /// <summary>
         /// Control dgvTurnos.
         /// </summary>
         /// <remarks>
