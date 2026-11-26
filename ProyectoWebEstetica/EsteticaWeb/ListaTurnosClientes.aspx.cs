@@ -9,6 +9,28 @@ namespace EsteticaWeb
 {
     public partial class ListaTurnosClientes : System.Web.UI.Page
     {
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+
+            // Obtener el usuario conectado
+            dominio.Usuario usuario = Session["usuario"] as dominio.Usuario;
+
+            // Si no inició sesión, enviarlo al Login
+            if (usuario == null)
+            {
+                Response.Redirect("~/Login.aspx", true);
+                return;
+            }
+
+            // Solo los clientes pueden consultar sus turnos
+            if (usuario.TipoUsuarioId != 3)
+            {
+                Response.Redirect("~/Inicio.aspx", true);
+                return;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

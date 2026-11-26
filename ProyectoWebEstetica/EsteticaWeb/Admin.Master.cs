@@ -10,14 +10,36 @@ namespace EsteticaWeb
 {
     public partial class Admin : System.Web.UI.MasterPage
     {
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+
+            // Obtener el usuario que inició sesión
+            Usuario usuario = Session["usuario"] as Usuario;
+
+            // Si no hay sesión, volver al login
+            if (usuario == null)
+            {
+                Response.Redirect("~/Login.aspx", true);
+                return;
+            }
+
+            // Solo los administradores pueden acceder
+            if (usuario.TipoUsuarioId != 1)
+            {
+                Response.Redirect("~/Login.aspx", true);
+                return;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario usuario = Session["usuario"] as Usuario;
 
-            if (usuario == null)
+            if (usuario == null || usuario.TipoUsuarioId != 1)
             {
-                lblUsuarioNavbar.Visible = false;
-                btnCerrarSesion.Visible = false;
+                Response.Redirect("~/Login.aspx", true);
                 return;
             }
 

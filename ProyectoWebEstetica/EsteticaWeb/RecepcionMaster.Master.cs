@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
 
 namespace EsteticaWeb
 {
@@ -12,13 +13,22 @@ namespace EsteticaWeb
     {
         protected override void OnInit(EventArgs e)
         {
-
             base.OnInit(e);
 
-            // Verificar que el usuario haya iniciado sesión
-            if (Session["usuario"] == null)
+            // Obtener el usuario conectado
+            Usuario usuario = Session["usuario"] as Usuario;
+
+            // Verificar que haya iniciado sesión
+            if (usuario == null)
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/Login.aspx", true);
+                return;
+            }
+
+            // Permitir el acceso únicamente a Recepcionistas
+            if (usuario.TipoUsuarioId != 2)
+            {
+                Response.Redirect("~/Inicio.aspx", true);
                 return;
             }
         }
