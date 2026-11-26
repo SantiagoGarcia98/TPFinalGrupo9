@@ -62,6 +62,95 @@ namespace negocio
             }
         }
 
+        public List<Turno> ListarPorProfesional(int usuarioId)
+        {
+            List<Turno> lista = new List<Turno>();
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT T.Id, T.FechaTurno, T.Precio, T.Observaciones, T.Abonado, " +
+                    "C.Nombre + ' ' + C.Apellido AS Cliente, " +
+                    "S.Nombre AS Sucursal, TE.Descripcion AS Estado, " +
+                    "(SELECT TOP 1 E.Descripcion FROM TurnoServicio TS " +
+                    "INNER JOIN Especialidad E ON E.Id = TS.EspecialidadId " +
+                    "WHERE TS.TurnoId = T.Id) AS Tratamiento " +
+                    "FROM Turno T " +
+                    "INNER JOIN Profesional P ON T.ProfesionalId = P.Id " +
+                    "INNER JOIN Cliente C ON T.ClienteId = C.Id " +
+                    "INNER JOIN Sucursal S ON T.SucursalId = S.Id " +
+                    "INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id " +
+                    "WHERE P.UsuarioId = @UsuarioId AND T.Baja = 0 " +
+                    "ORDER BY T.FechaTurno DESC");
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ConsultaBD();
+
+                while (datos.Lector.Read())
+                {
+                    Turno turno = new Turno();
+                    turno.id = (int)datos.Lector["Id"];
+                    turno.fecha = (DateTime)datos.Lector["FechaTurno"];
+                    turno.precio = (decimal)datos.Lector["Precio"];
+                    turno.Abonado = (bool)datos.Lector["Abonado"];
+                    turno.observaciones = datos.Lector["Observaciones"] == DBNull.Value
+                        ? ""
+                        : datos.Lector["Observaciones"].ToString();
+                    turno.cliente.Nombre = (string)datos.Lector["Cliente"];
+                    turno.Sucursal.Nombre = (string)datos.Lector["Sucursal"];
+                    turno.Estado.Descripcion = (string)datos.Lector["Estado"];
+                    turno.Especialidad.Descripcion = datos.Lector["Tratamiento"] == DBNull.Value
+                        ? ""
+                        : datos.Lector["Tratamiento"].ToString();
+                    lista.Add(turno);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public Turno BuscarParaProfesional(int turnoId, int usuarioId)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT T.Id, T.FechaTurno, " +
+                    "C.Nombre + ' ' + C.Apellido AS Cliente, " +
+                    "(SELECT TOP 1 E.Descripcion FROM TurnoServicio TS " +
+                    "INNER JOIN Especialidad E ON E.Id = TS.EspecialidadId " +
+                    "WHERE TS.TurnoId = T.Id) AS Tratamiento " +
+                    "FROM Turno T " +
+                    "INNER JOIN Profesional P ON T.ProfesionalId = P.Id " +
+                    "INNER JOIN Cliente C ON T.ClienteId = C.Id " +
+                    "WHERE T.Id = @Id AND P.UsuarioId = @UsuarioId AND T.Baja = 0");
+                datos.setParametro("@Id", turnoId);
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ConsultaBD();
+
+                if (!datos.Lector.Read())
+                    return null;
+
+                Turno turno = new Turno();
+                turno.id = (int)datos.Lector["Id"];
+                turno.fecha = (DateTime)datos.Lector["FechaTurno"];
+                turno.cliente.Nombre = (string)datos.Lector["Cliente"];
+                turno.Especialidad.Descripcion = datos.Lector["Tratamiento"] == DBNull.Value
+                    ? ""
+                    : datos.Lector["Tratamiento"].ToString();
+                return turno;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public System.Data.DataTable ListarTurnosPorCliente(int usuarioId)
         {
             AccesoSQL datos = new AccesoSQL();
@@ -225,6 +314,7 @@ namespace negocio
             conteo["Confirmado"] = 0;
             conteo["Cancelado"] = 0;
             conteo["Atendido"] = 0;
+            conteo["No Asistio"] = 0;
 
             AccesoSQL datos = new AccesoSQL();
             try
@@ -303,6 +393,157 @@ namespace negocio
 
                 default:
                     return lista;
+            }
+        }
+
+        public Turno BuscarParaProfesional2(int id, int usuarioId)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT T.Id, T.FechaTurno, T.Precio, T.Observaciones, T.Abonado, " +
+                    "C.Nombre + ' ' + C.Apellido AS Cliente, C.DNI, U.Email, " +
+                    "P.Nombre + ' ' + P.Apellido AS Profesional, P.Matricula, " +
+                    "S.Nombre AS Sucursal, TE.Descripcion AS Estado, " +
+                    "(SELECT TOP 1 E.Descripcion FROM TurnoServicio TS " +
+                    "INNER JOIN Especialidad E ON E.Id = TS.EspecialidadId " +
+                    "WHERE TS.TurnoId = T.Id) AS Tratamiento " +
+                    "FROM Turno T " +
+                    "INNER JOIN Profesional P ON T.ProfesionalId = P.Id " +
+                    "INNER JOIN Cliente C ON T.ClienteId = C.Id " +
+                    "INNER JOIN Usuario U ON C.UsuarioId = U.Id " +
+                    "INNER JOIN Sucursal S ON T.SucursalId = S.Id " +
+                    "INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id " +
+                    "WHERE P.UsuarioId = @UsuarioId AND T.Baja = 0 AND T.Id = @id");
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.setParametro("@id", id);
+                datos.ConsultaBD();
+
+                if (!datos.Lector.Read())
+                    return null;
+
+                Turno turno = new Turno();
+                turno.id = (int)datos.Lector["Id"];
+                turno.fecha = (DateTime)datos.Lector["FechaTurno"];
+                turno.precio = (decimal)datos.Lector["Precio"];
+                turno.Abonado = (bool)datos.Lector["Abonado"];
+                turno.observaciones = datos.Lector["Observaciones"] == DBNull.Value
+                    ? ""
+                    : datos.Lector["Observaciones"].ToString();
+                turno.cliente.Nombre = (string)datos.Lector["Cliente"];
+                turno.cliente.DNI = (string)datos.Lector["DNI"];
+                turno.cliente.Email = (string)datos.Lector["Email"];
+                turno.Profesional.Nombre = (string)datos.Lector["Profesional"];
+                turno.Profesional.Matricula = (string)datos.Lector["Matricula"];
+                turno.Sucursal.Nombre = (string)datos.Lector["Sucursal"];
+                turno.Estado.Descripcion = (string)datos.Lector["Estado"];
+                turno.Especialidad.Descripcion = datos.Lector["Tratamiento"] == DBNull.Value
+                    ? ""
+                    : datos.Lector["Tratamiento"].ToString();
+
+                return turno;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void MarcarAtendido(int id, int usuarioId, string observaciones)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "UPDATE T SET " +
+                    "T.Observaciones = @Observaciones, " +
+                    "T.TurnoEstadoId = (SELECT Id FROM TurnoEstado WHERE Descripcion = 'Atendido') " +
+                    "FROM Turno T " +
+                    "INNER JOIN Profesional P ON T.ProfesionalId = P.Id " +
+                    "WHERE T.Id = @id AND P.UsuarioId = @UsuarioId AND T.Baja = 0");
+                datos.setParametro("@Observaciones", observaciones);
+                datos.setParametro("@id", id);
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void MarcarNoAsistio(int id, int usuarioId, string observaciones)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "UPDATE T SET " +
+                    "T.Observaciones = @Observaciones, " +
+                    "T.TurnoEstadoId = (SELECT Id FROM TurnoEstado WHERE Descripcion = 'No Asistio') " +
+                    "FROM Turno T " +
+                    "INNER JOIN Profesional P ON T.ProfesionalId = P.Id " +
+                    "WHERE T.Id = @id AND P.UsuarioId = @UsuarioId AND T.Baja = 0");
+                datos.setParametro("@Observaciones", observaciones ?? "");
+                datos.setParametro("@id", id);
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Turno> ListarHistorialCliente(int turnoId, int usuarioId)
+        {
+            List<Turno> lista = new List<Turno>();
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT T.FechaTurno, T.Observaciones, TE.Descripcion AS Estado, " +
+                    "P.Nombre + ' ' + P.Apellido AS Profesional, " +
+                    "(SELECT TOP 1 E.Descripcion FROM TurnoServicio TS " +
+                    "INNER JOIN Especialidad E ON E.Id = TS.EspecialidadId " +
+                    "WHERE TS.TurnoId = T.Id) AS Tratamiento " +
+                    "FROM Turno T " +
+                    "INNER JOIN Turno Actual ON Actual.ClienteId = T.ClienteId " +
+                    "INNER JOIN Profesional PActual ON Actual.ProfesionalId = PActual.Id " +
+                    "INNER JOIN Profesional P ON T.ProfesionalId = P.Id " +
+                    "INNER JOIN TurnoEstado TE ON T.TurnoEstadoId = TE.Id " +
+                    "WHERE Actual.Id = @id AND PActual.UsuarioId = @UsuarioId AND Actual.Baja = 0 " +
+                    "AND T.Baja = 0 AND T.Id <> Actual.Id AND T.FechaTurno < Actual.FechaTurno " +
+                    "ORDER BY T.FechaTurno DESC");
+                datos.setParametro("@id", turnoId);
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ConsultaBD();
+
+                while (datos.Lector.Read())
+                {
+                    Turno turno = new Turno();
+                    turno.fecha = (DateTime)datos.Lector["FechaTurno"];
+                    turno.observaciones = datos.Lector["Observaciones"] == DBNull.Value
+                        ? ""
+                        : datos.Lector["Observaciones"].ToString();
+                    turno.Estado.Descripcion = (string)datos.Lector["Estado"];
+                    turno.Profesional.Nombre = (string)datos.Lector["Profesional"];
+                    turno.Especialidad.Descripcion = datos.Lector["Tratamiento"] == DBNull.Value
+                        ? ""
+                        : datos.Lector["Tratamiento"].ToString();
+                    lista.Add(turno);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }

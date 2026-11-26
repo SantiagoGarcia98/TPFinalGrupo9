@@ -132,7 +132,8 @@ INSERT INTO TurnoEstado (Descripcion) VALUES
 ('Pendiente'),
 ('Confirmado'),
 ('Cancelado'),
-('Atendido');
+('Atendido'),
+('No Asistio');
 
 -- Especialidades (con precio, duración y estado activo)
 INSERT INTO Especialidad (Descripcion, Precio, DuracionMinutos, Activo) VALUES

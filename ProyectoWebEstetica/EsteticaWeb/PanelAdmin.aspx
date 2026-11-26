@@ -102,6 +102,6 @@
 
         torta('graficoEstado', <%= JsonEstado %>, ['#198754', '#dc3545']);
         torta('graficoTipo', <%= JsonTipo %>, ['#0d6efd', '#6f42c1', '#fd7e14', '#20c997']);
-        torta('graficoTurnos', <%= JsonTurno %>, ['#ffc107', '#0d6efd', '#dc3545', '#198754']);
+        torta('graficoTurnos', <%= JsonTurno %>, ['#ffc107', '#0d6efd', '#dc3545', '#198754', '#6c757d']);
     </script>
 </asp:Content>

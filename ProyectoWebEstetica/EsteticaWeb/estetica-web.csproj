@@ -75,6 +75,9 @@
     <Content Include="MenuCliente.aspx" />
     <Content Include="ModificarCliente.aspx" />
     <Content Include="ModificarTurnoRecepcion.aspx" />
+    <Content Include="PanelProfesional.aspx" />
+    <Content Include="Profesional\AtenderTurno.aspx" />
+    <Content Include="Profesional\ListarTurnos.aspx" />
     <Content Include="Recursos\Imagenes\depilacionLaser.jpg" />
     <Content Include="Recursos\Imagenes\electrodos.jpg" />
     <Content Include="Recursos\Imagenes\lifting.jpg" />
@@ -178,6 +181,34 @@
     <Compile Include="PanelAdmin.aspx.designer.cs">
       <DependentUpon>PanelAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProfesionalMaster.Master.cs">
+      <DependentUpon>ProfesionalMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfesionalMaster.Master.designer.cs">
+      <DependentUpon>ProfesionalMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PanelProfesional.aspx.cs">
+      <DependentUpon>PanelProfesional.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelProfesional.aspx.designer.cs">
+      <DependentUpon>PanelProfesional.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesional\AtenderTurno.aspx.cs">
+      <DependentUpon>AtenderTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesional\AtenderTurno.aspx.designer.cs">
+      <DependentUpon>AtenderTurno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profesional\ListarTurnos.aspx.cs">
+      <DependentUpon>ListarTurnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profesional\ListarTurnos.aspx.designer.cs">
+      <DependentUpon>ListarTurnos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -273,6 +304,7 @@
     <Content Include="Admin.Master" />
     <None Include="packages.config" />
     <Content Include="RecepcionMaster.Master" />
+    <Content Include="ProfesionalMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dominio\dominio.csproj">
