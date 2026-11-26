@@ -11,5 +11,7 @@ namespace dominio
         public int IdProfesional { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public string Matricula { get; set; }
+        public string SucursalNombre { get; set; }
     }
 }

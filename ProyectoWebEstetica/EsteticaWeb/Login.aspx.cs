@@ -46,7 +46,7 @@ namespace EsteticaWeb
                 }
                 else if (usuario.TipoUsuarioId == 4)
                 {
-                    Response.Redirect("Recepcion.aspx", false); //Agregar aca cuando se creen estos perfiles.
+                    Response.Redirect("PanelProfesional.aspx", false); 
                 }
                 else
                 {

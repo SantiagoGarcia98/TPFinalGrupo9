@@ -9,6 +9,37 @@ namespace negocio
 {
     public class DataProfesional
     {
+        public Profesional BuscarPorUsuario(int usuarioId)
+        {
+            AccesoSQL datos = new AccesoSQL();
+
+            try
+            {
+                datos.setConsulta(
+                    "SELECT P.Id, P.Nombre, P.Apellido, P.Matricula, S.Nombre AS Sucursal " +
+                    "FROM Profesional P " +
+                    "INNER JOIN Sucursal S ON P.SucursalId = S.Id " +
+                    "WHERE P.UsuarioId = @UsuarioId");
+                datos.setParametro("@UsuarioId", usuarioId);
+                datos.ConsultaBD();
+
+                if (!datos.Lector.Read())
+                    return null;
+
+                Profesional profesional = new Profesional();
+                profesional.IdProfesional = (int)datos.Lector["Id"];
+                profesional.Nombre = (string)datos.Lector["Nombre"];
+                profesional.Apellido = (string)datos.Lector["Apellido"];
+                profesional.Matricula = (string)datos.Lector["Matricula"];
+                profesional.SucursalNombre = (string)datos.Lector["Sucursal"];
+                return profesional;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public List<Profesional> ListarPorEspecialidad(int  especialidadId)
         {
             List<Profesional> lista = new List<Profesional>();
